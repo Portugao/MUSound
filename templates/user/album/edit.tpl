@@ -70,9 +70,10 @@
             {if $mode ne 'create'}
                 {formdateinput group='album' id='publishedDate' mandatory=false __title='Enter the published date of the album' includeTime=true cssClass='' }
             {else}
-                {formdateinput group='album' id='publishedDate' mandatory=false __title='Enter the published date of the album' includeTime=true defaultValue='now' cssClass='' }
+                {formdateinput group='album' id='publishedDate' mandatory=false __title='Enter the published date of the album' includeTime=true cssClass='' }
             {/if}
             
+            <span class="z-formnote"><a id="resetPublishedDateVal" href="javascript:void(0);" class="z-hide">{gt text='Reset to empty value'}</a></span>
         </div>
         
         <div class="z-formrow">
@@ -82,6 +83,7 @@
     </fieldset>
     
     {include file='user/include_categories_edit.tpl' obj=$album groupName='albumObj'}
+    {include file='user/collection/include_selectEditOne.tpl' group='album' alias='collection' aliasReverse='album' mandatory=false idPrefix='musoundAlbum_Collection' linkingItem=$album displayMode='dropdown' allowEditing=true}
     {if $mode ne 'create'}
         {include file='user/include_standardfields_edit.tpl' obj=$album}
     {/if}
@@ -175,6 +177,7 @@
 
         Zikula.UI.Tooltips($$('.musound-form-tooltips'));
         musoundInitUploadField('uploadCover');
+        musoundInitDateField('publishedDate');
     });
 
 /* ]]> */

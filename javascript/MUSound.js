@@ -123,6 +123,9 @@ function musoundInitQuickNavigation(objectType, controller)
 
     switch (objectType) {
     case 'album':
+        if ($('collection') != undefined) {
+            $('collection').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+        }
         if ($('workflowState') != undefined) {
             $('workflowState').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
         }

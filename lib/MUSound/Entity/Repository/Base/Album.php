@@ -211,6 +211,7 @@ class MUSound_Entity_Repository_Base_Album extends EntityRepository
     
         $parameters = array();
         $parameters['catIdList'] = ModUtil::apiFunc('MUSound', 'category', 'retrieveCategoriesFromRequest', array('ot' => 'album', 'source' => 'GET'));
+        $parameters['collection'] = isset($this->controllerArguments['collection']) ? $this->controllerArguments['collection'] : FormUtil::getPassedValue('collection', 0, 'GET');
         $parameters['workflowState'] = isset($this->controllerArguments['workflowState']) ? $this->controllerArguments['workflowState'] : FormUtil::getPassedValue('workflowState', '', 'GET');
         $parameters['searchterm'] = isset($this->controllerArguments['searchterm']) ? $this->controllerArguments['searchterm'] : FormUtil::getPassedValue('searchterm', '', 'GET');
         
@@ -870,7 +871,7 @@ class MUSound_Entity_Repository_Base_Album extends EntityRepository
      */
     protected function addJoinsToSelection()
     {
-        $selection = ', tblTrack';
+        $selection = ', tblCollection, tblTrack';
     
         $selection = ', tblCategories';
     
@@ -886,6 +887,7 @@ class MUSound_Entity_Repository_Base_Album extends EntityRepository
      */
     protected function addJoinsToFrom(QueryBuilder $qb)
     {
+        $qb->leftJoin('tbl.collection', 'tblCollection');
         $qb->leftJoin('tbl.track', 'tblTrack');
     
         $qb->leftJoin('tbl.categories', 'tblCategories');

@@ -35,6 +35,17 @@
                 {/nocache}
             {/if}
         {/if}
+        {if !isset($collectionFilter) || $collectionFilter eq true}
+                <label for="collection">{gt text='Collections'}</label>
+                {modapifunc modname='MUSound' type='selection' func='getEntities' ot='collection' useJoins=false assign='listEntries'}
+                <select id="collection" name="collection">
+                    <option value="">{$lblDefault}</option>
+                {foreach item='option' from=$listEntries}
+                    {assign var='entryId' value=$option.id}
+                    <option value="{$entryId}"{if $entryId eq $collection} selected="selected"{/if}>{$option->getTitleFromDisplayPattern()}</option>
+                {/foreach}
+                </select>
+        {/if}
         {if !isset($workflowStateFilter) || $workflowStateFilter eq true}
                 <label for="workflowState">{gt text='Workflow state'}</label>
                 <select id="workflowState" name="workflowState">

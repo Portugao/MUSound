@@ -64,6 +64,16 @@ class MUSound_Form_Handler_User_Album_Base_Edit extends MUSound_Form_Handler_Use
         }
     
         $entity = $this->entityRef;
+        
+        // assign identifiers of predefined incoming relationships
+        // editable relation, we store the id and assign it now to show it in UI
+        $this->relationPresets['collection'] = FormUtil::getPassedValue('collection', '', 'GET');
+        if (!empty($this->relationPresets['collection'])) {
+            $relObj = ModUtil::apiFunc($this->name, 'selection', 'getEntity', array('ot' => 'collection', 'id' => $this->relationPresets['collection']));
+            if ($relObj != null) {
+                $relObj->addAlbum($entity);
+            }
+        }
     
         // save entity reference for later reuse
         $this->entityRef = $entity;

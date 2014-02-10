@@ -2,10 +2,10 @@
 {include file='user/header.tpl'}
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jQuery.jPlayer.2.5.0/jquery.jplayer.min.js'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jQuery.jPlayer.2.5.0/add-on/jplayer.playlist.min.js'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jQuery.jPlayer.2.5.0/add-on/jquery.jplayer.inspector.js'}
-{pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/jQuery.jPlayer.2.5.0/skins/pink.flag/jplayer.pink.flag.css'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/jquery.jplayer.min.js'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jplayer.playlist.min.js'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jquery.jplayer.inspector.js'}
+{pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/jPlayer/skins/pink.flag/jplayer.pink.flag.css'}
 
 
 <div class="musound-album musound-display with-rightbox">
@@ -54,6 +54,28 @@
         <dd>{$album.publishedDate|dateformat:'datetimebrief'}</dd>
         <dt>{gt text='Published text'}</dt>
         <dd>{$album.publishedText}</dd>
+                <dt>{gt text='Collection'}</dt>
+        <dd>
+        {if isset($album.Collection) && $album.Collection ne null}
+          {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
+          <a href="{modurl modname='MUSound' type='user' func='display' ot='collection' id=$album.Collection.id}">{strip}
+            {$album.Collection->getTitleFromDisplayPattern()|default:""}
+          {/strip}</a>
+          <a id="collectionItem{$album.Collection.id}Display" href="{modurl modname='MUSound' type='user' func='display' ot='collection' id=$album.Collection.id theme='Printer' forcelongurl=true}" title="{gt text='Open quick view window'}" class="z-hide">{icon type='view' size='extrasmall' __alt='Quick view'}</a>
+          <script type="text/javascript">
+          /* <![CDATA[ */
+              document.observe('dom:loaded', function() {
+                  musoundInitInlineWindow($('collectionItem{{$album.Collection.id}}Display'), '{{$album.Collection->getTitleFromDisplayPattern()|replace:"'":""}}');
+              });
+          /* ]]> */
+          </script>
+          {else}
+            {$album.Collection->getTitleFromDisplayPattern()|default:""}
+          {/if}
+        {else}
+            {gt text='Not set.'}
+        {/if}
+        </dd>
         
     </dl>
     {include file='user/include_categories_display.tpl' obj=$album}
@@ -83,3 +105,24 @@
     {/if}
 </div>
 {include file='user/footer.tpl'}
+            <script type="text/javascript">
+            /* <![CDATA[ */
+                document.observe('dom:loaded', function() {
+                    musoundInitItemActions('track', 'display', 'itemActions');
+                });
+                
+                var MU = jQuery.noConflict();  
+                MU(document).ready(function(){
+	            MU("#jquery_jplayer_1").jPlayer({
+		            ready: function () {
+			        MU(this).jPlayer("setMedia", {
+                    mp3: "{{$baseurl}}{{$track.uploadTrackFullPath}}"
+        	    });
+		        },
+		        swfPath: "/modules/MUSound/lib/vendor/jPlayer",
+		        supplied: "mp3"
+	});
+
+});
+            /* ]]> */
+            </script>

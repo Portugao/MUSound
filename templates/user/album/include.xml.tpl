@@ -8,6 +8,7 @@
     <publishedDate>{$item.publishedDate|dateformat:'datetimebrief'}</publishedDate>
     <publishedText><![CDATA[{$item.publishedText}]]></publishedText>
     <workflowState>{$item.workflowState|musoundObjectState:false|lower}</workflowState>
+    <collection>{if isset($item.Collection) && $item.Collection ne null}{$item.Collection->getTitleFromDisplayPattern()|default:''}{/if}</collection>
     <track>
     {if isset($item.Track) && $item.Track ne null}
         {foreach name='relationLoop' item='relatedItem' from=$item.Track}

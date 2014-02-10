@@ -46,6 +46,7 @@
                     <col id="cUploadCover" />
                     <col id="cPublishedDate" />
                     <col id="cPublishedText" />
+                    <col id="cCollection" />
                     <col id="cItemActions" />
                 </colgroup>
                 <thead>
@@ -55,25 +56,28 @@
                         <input type="checkbox" id="toggleAlbums" />
                     </th>
                     <th id="hWorkflowState" scope="col" class="z-left">
-                        {sortlink __linktext='State' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='workflowState' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
+                        {sortlink __linktext='State' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='workflowState' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
                     </th>
                     <th id="hTitle" scope="col" class="z-left">
-                        {sortlink __linktext='Title' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='title' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
+                        {sortlink __linktext='Title' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='title' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
                     </th>
                     <th id="hDescription" scope="col" class="z-left">
-                        {sortlink __linktext='Description' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='description' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
+                        {sortlink __linktext='Description' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='description' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
                     </th>
                     <th id="hAuthor" scope="col" class="z-left">
-                        {sortlink __linktext='Author' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='author' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
+                        {sortlink __linktext='Author' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='author' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
                     </th>
                     <th id="hUploadCover" scope="col" class="z-left">
-                        {sortlink __linktext='Upload cover' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='uploadCover' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
+                        {sortlink __linktext='Upload cover' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='uploadCover' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
                     </th>
                     <th id="hPublishedDate" scope="col" class="z-left">
-                        {sortlink __linktext='Published date' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='publishedDate' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
+                        {sortlink __linktext='Published date' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='publishedDate' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
                     </th>
                     <th id="hPublishedText" scope="col" class="z-left">
-                        {sortlink __linktext='Published text' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='publishedText' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
+                        {sortlink __linktext='Published text' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='publishedText' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
+                    </th>
+                    <th id="hCollection" scope="col" class="z-left">
+                        {sortlink __linktext='Collection' currentsort=$sort modname='MUSound' type='admin' func='view' ot='album' sort='collection' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
                     </th>
                     <th id="hItemActions" scope="col" class="z-right z-order-unsorted">{gt text='Actions'}</th>
                 </tr>
@@ -114,6 +118,23 @@
                     <td headers="hPublishedText" class="z-left">
                         {$album.publishedText}
                     </td>
+                    <td headers="hCollection" class="z-left">
+                        {if isset($album.Collection) && $album.Collection ne null}
+                            <a href="{modurl modname='MUSound' type='admin' func='display' ot='collection' id=$album.Collection.id}">{strip}
+                              {$album.Collection->getTitleFromDisplayPattern()|default:""}
+                            {/strip}</a>
+                            <a id="collectionItem{$album.id}_rel_{$album.Collection.id}Display" href="{modurl modname='MUSound' type='admin' func='display' ot='collection' id=$album.Collection.id theme='Printer'}" title="{gt text='Open quick view window'}" class="z-hide">{icon type='view' size='extrasmall' __alt='Quick view'}</a>
+                            <script type="text/javascript">
+                            /* <![CDATA[ */
+                                document.observe('dom:loaded', function() {
+                                    musoundInitInlineWindow($('collectionItem{{$album.id}}_rel_{{$album.Collection.id}}Display'), '{{$album.Collection->getTitleFromDisplayPattern()|replace:"'":""}}');
+                                });
+                            /* ]]> */
+                            </script>
+                        {else}
+                            {gt text='Not set.'}
+                        {/if}
+                    </td>
                     <td id="itemActions{$album.id}" headers="hItemActions" class="z-right z-nowrap z-w02">
                         {if count($album._actions) gt 0}
                             {foreach item='option' from=$album._actions}
@@ -132,7 +153,7 @@
                 </tr>
             {foreachelse}
                 <tr class="z-admintableempty">
-                  <td class="z-left" colspan="9">
+                  <td class="z-left" colspan="10">
                 {gt text='No albums found.'}
                   </td>
                 </tr>

@@ -51,6 +51,28 @@
         <dd>{$album.publishedDate|dateformat:'datetimebrief'}</dd>
         <dt>{gt text='Published text'}</dt>
         <dd>{$album.publishedText}</dd>
+        <dt>{gt text='Collection'}</dt>
+        <dd>
+        {if isset($album.Collection) && $album.Collection ne null}
+          {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
+          <a href="{modurl modname='MUSound' type='admin' func='display' ot='collection' id=$album.Collection.id}">{strip}
+            {$album.Collection->getTitleFromDisplayPattern()|default:""}
+          {/strip}</a>
+          <a id="collectionItem{$album.Collection.id}Display" href="{modurl modname='MUSound' type='admin' func='display' ot='collection' id=$album.Collection.id theme='Printer'}" title="{gt text='Open quick view window'}" class="z-hide">{icon type='view' size='extrasmall' __alt='Quick view'}</a>
+          <script type="text/javascript">
+          /* <![CDATA[ */
+              document.observe('dom:loaded', function() {
+                  musoundInitInlineWindow($('collectionItem{{$album.Collection.id}}Display'), '{{$album.Collection->getTitleFromDisplayPattern()|replace:"'":""}}');
+              });
+          /* ]]> */
+          </script>
+          {else}
+            {$album.Collection->getTitleFromDisplayPattern()|default:""}
+          {/if}
+        {else}
+            {gt text='Not set.'}
+        {/if}
+        </dd>
         
     </dl>
     {include file='admin/include_categories_display.tpl' obj=$album}

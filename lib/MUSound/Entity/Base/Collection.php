@@ -106,9 +106,9 @@ abstract class MUSound_Entity_Base_Collection extends Zikula_EntityAccess
             protected $updatedDate;
     
     /**
-     * Unidirectional - One collection [collection] has many album [albums] (INVERSE SIDE).
+     * Bidirectional - One collection [collection] has many album [albums] (INVERSE SIDE).
      *
-     * @ORM\ManyToMany(targetEntity="MUSound_Entity_Album")
+     * @ORM\OneToMany(targetEntity="MUSound_Entity_Album", mappedBy="collection")
      * @ORM\JoinTable(name="musound_collectionalbum")
      * @var MUSound_Entity_Album[] $album.
      */
@@ -461,6 +461,7 @@ abstract class MUSound_Entity_Base_Collection extends Zikula_EntityAccess
     public function addAlbum(MUSound_Entity_Album $album)
     {
         $this->album->add($album);
+        $album->setCollection($this);
     }
     
     /**
@@ -473,6 +474,7 @@ abstract class MUSound_Entity_Base_Collection extends Zikula_EntityAccess
     public function removeAlbum(MUSound_Entity_Album $album)
     {
         $this->album->removeElement($album);
+        $album->setCollection(null);
     }
     
     
