@@ -1,0 +1,28 @@
+
+
+CUSTOMISATIONS
+--------------
+
+MUSound - Manual additions and amendments
+
+
+Changed Files
+
+
+Implemented Classes
+
+
+*lib/MUSound/Version.php
+
+
+Additional Files
+
+customisations.txt
+
+*themes/user/album/display.tpl
+*themes/user/track/display.tpl
+*themes/user/track/include_displayItemListMany.tpl
+
+
+
+
