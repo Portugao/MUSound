@@ -7,7 +7,6 @@
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jquery.jplayer.inspector.js'}
 {pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/jPlayer/skins/pink.flag/jplayer.pink.flag.css'}
 
-
 <div class="musound-album musound-display with-rightbox">
     {gt text='Album' assign='templateTitle'}
     {assign var='templateTitle' value=$album->getTitleFromDisplayPattern()|default:$templateTitle}
@@ -33,10 +32,10 @@
     {/if}
 
     <dl>
-        <dt>{gt text='State'}</dt>
+       {* <dt>{gt text='State'}</dt>
         <dd>{$album.workflowState|musoundGetListEntry:'album':'workflowState'|safetext}</dd>
         <dt>{gt text='Title'}</dt>
-        <dd>{$album.title}</dd>
+        <dd>{$album.title}</dd> *}
         <dt>{gt text='Description'}</dt>
         <dd>{$album.description}</dd>
         <dt>{gt text='Upload cover'}</dt>
@@ -105,24 +104,3 @@
     {/if}
 </div>
 {include file='user/footer.tpl'}
-            <script type="text/javascript">
-            /* <![CDATA[ */
-                document.observe('dom:loaded', function() {
-                    musoundInitItemActions('track', 'display', 'itemActions');
-                });
-                
-                var MU = jQuery.noConflict();  
-                MU(document).ready(function(){
-	            MU("#jquery_jplayer_1").jPlayer({
-		            ready: function () {
-			        MU(this).jPlayer("setMedia", {
-                    mp3: "{{$baseurl}}{{$track.uploadTrackFullPath}}"
-        	    });
-		        },
-		        swfPath: "/modules/MUSound/lib/vendor/jPlayer",
-		        supplied: "mp3"
-	});
-
-});
-            /* ]]> */
-            </script>

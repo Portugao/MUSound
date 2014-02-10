@@ -126,6 +126,14 @@
                     musoundInitItemActions('track', 'display', 'itemActions');
                 });
                 
+            /* ]]> */
+            </script>
+        {/if}
+    {/if}
+</div>
+{include file='user/footer.tpl'}
+            <script type="text/javascript">
+            /* <![CDATA[ */
                 var MU = jQuery.noConflict();  
                 MU(document).ready(function(){
 	            MU("#jquery_jplayer_1").jPlayer({
@@ -135,13 +143,9 @@
         	    });
 		        },
 		        swfPath: "/modules/MUSound/lib/vendor/jPlayer",
-		        supplied: "mp3"
-	});
+		        supplied: "mp3, mp4, oga"
+	            });
+	            });
 
-});
             /* ]]> */
             </script>
-        {/if}
-    {/if}
-</div>
-{include file='user/footer.tpl'}
