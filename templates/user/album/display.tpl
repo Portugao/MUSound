@@ -4,10 +4,6 @@
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/jquery.jplayer.min.js'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jplayer.playlist.min.js'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jquery.jplayer.inspector.js'}
-{pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/jPlayer/skins/pink.flag/jplayer.pink.flag.css'}
 
 <div class="musound-album musound-display with-rightbox">
     {gt text='Album' assign='templateTitle'}
