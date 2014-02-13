@@ -64,8 +64,8 @@
         
     </dl>
  
-		<audio src="{$baseurl}{$track.uploadTrackFullPath}" preload="auto" />
-		<div id="track-details">{$track.title} by {$track.author}</div>
+    <audio src="{$baseurl}{$track.uploadTrackFullPath}" preload="auto" />
+		
     {include file='user/include_standardfields_display.tpl' obj=$track}
 
     {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
@@ -94,18 +94,6 @@
 {include file='user/footer.tpl'}
             <script type="text/javascript">
             /* <![CDATA[ */
-                var MU = jQuery.noConflict();  
-                MU(document).ready(function(){
-	            MU("#jquery_jplayer_1").jPlayer({
-		            ready: function () {
-			        MU(this).jPlayer("setMedia", {
-                    mp3: "{{$baseurl}}{{$track.uploadTrackFullPath}}"
-        	    });
-		        },
-		        swfPath: "/modules/MUSound/lib/vendor/jPlayer",
-		        supplied: "mp3, mp4, oga"
-	            });
-	            });
 	            
   audiojs.events.ready(function() {
     var as = audiojs.createAll();
