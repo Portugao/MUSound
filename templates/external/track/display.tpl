@@ -1,4 +1,10 @@
 {* Purpose of this template: Display one certain track within an external context *}
+{if $displayMode eq 'embed'}
+{pageaddvar name='javascript' value='jquery'}
+{pageaddvar name='javascript' value='jquery-ui'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
+{/if}
+
 <div id="track{$track.id}" class="musound-external-track">
 {if $displayMode eq 'link'}
     <p class="musound-external-link">
@@ -18,7 +24,7 @@
 {if $displayMode eq 'link'}
 {elseif $displayMode eq 'embed'}
     <div class="musound-external-snippet">
-        &nbsp;
+        <audio src="{$baseurl}{$track.uploadTrackFullPath}" preload="auto" />
     </div>
 
     {* you can distinguish the context like this: *}
@@ -36,3 +42,14 @@
     *}
 {/if}
 </div>
+
+  <script type="text/javascript">
+  /* <![CDATA[ */
+	            
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+
+
+  /* ]]> */
+  </script>
