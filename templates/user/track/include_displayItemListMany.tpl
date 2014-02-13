@@ -2,6 +2,7 @@
 {if !isset($nolink)}
     {assign var='nolink' value=false}
 {/if}
+{*
 {if isset($items) && $items ne null && count($items) gt 0}
 <ul class="musound-related-item-list track">
 {foreach name='relLoop' item='item' from=$items}
@@ -29,93 +30,68 @@
 {/foreach}
 </ul>
 {/if}
+*}
 
-		<div id="jp_container_N" class="jp-video jp-video-270p">
-			<div class="jp-type-playlist">
-				<div id="jquery_jplayer_N" class="jp-jplayer"></div>
-				<div class="jp-gui">
-					<div class="jp-video-play">
-						<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
-					</div>
-					<div class="jp-interface">
-						<div class="jp-progress">
-							<div class="jp-seek-bar">
-								<div class="jp-play-bar"></div>
-							</div>
-						</div>
-						<div class="jp-current-time"></div>
-						<div class="jp-duration"></div>
-						<div class="jp-title">
-							<ul>
-								<li></li>
-							</ul>
-						</div>
-						<div class="jp-controls-holder">
-							<ul class="jp-controls">
-								<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
-								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-								<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
-								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-							</ul>
-							<div class="jp-volume-bar">
-								<div class="jp-volume-bar-value"></div>
-							</div>
-							<ul class="jp-toggles">
-								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
-								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
-								<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
-								<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
-								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
-								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="jp-playlist">
-					<ul>
-						<!-- The method Playlist.displayPlaylist() uses this unordered list -->
-						<li></li>
-					</ul>
-				</div>
-				<div class="jp-no-solution">
-					<span>Update Required</span>
-					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-				</div>
-			</div>
+		<div id="wrapper">
+		<audio preload></audio>
+		<ol>
+		    {foreach item=track from=$items}
+		    <li><a href="#" data-src="/{$track.uploadTrackFullPath}">{$track.title} - {$track.author}</a></li>
+		    {/foreach}
+		</ol>
+		
 		</div>
   
 <script type="text/javascript">  
   //<![CDATA[
-    var MU = jQuery.noConflict(true);  
-    MU(document).ready(function(){
+
+    jQuery(document).ready(function(){
+ 
+       jQuery(function() { 
+        // Setup the player to autoplay the next track
+        var a = audiojs.createAll({
+          trackEnded: function() {
+            var next = jQuery('ol li.playing').next();
+            if (!next.length) next = jQuery('ol li').first();
+            next.addClass('playing').siblings().removeClass('playing');
+            audio.load(jQuery('a', next).attr('data-src'));
+            audio.play();
+          }
+        });
+        
+        // Load in the first track
+        var audio = a[0];
+            first = jQuery('ol a').attr('data-src');
+        jQuery('ol li').first().addClass('playing');
+        audio.load(first);
+
+        // Load in a track on click
+        jQuery('ol li').click(function(e) {
+          e.preventDefault();
+          jQuery(this).addClass('playing').siblings().removeClass('playing');
+          audio.load(jQuery('a', this).attr('data-src'));
+          audio.play();
+        });
+        // Keyboard shortcuts
+        jQuery(document).keydown(function(e) {
+          var unicode = e.charCode ? e.charCode : e.keyCode;
+             // right arrow
+          if (unicode == 39) {
+            var next = jQuery('li.playing').next();
+            if (!next.length) next = jQuery('ol li').first();
+            next.click();
+            // back arrow
+          } else if (unicode == 37) {
+            var prev = jQuery('li.playing').prev();
+            if (!prev.length) prev = jQuery('ol li').last();
+            prev.click();
+            // spacebar
+          } else if (unicode == 32) {
+            audio.playPause();
+          }
+        })
+      });
     
-    MU("#jquery_jplayer_N").jPlayer({
     });
-	
-	var myPlaylist = new jPlayerPlaylist({
-    jPlayer: "#jquery_jplayer_N",
-    cssSelectorAncestor: "#jp_container_N"
-    }, 
-    {
-    playlistOptions: {
-    enableRemoveControls: true
-    },
-    swfPath: "/modules/MUSound/lib/vendor/jPlayer",
-    supplied: "mp3, mp4",
-    audioFullScreen: true // Allows the audio poster to go full screen via keyboard
-    });
-    
-    {{foreach item='item' from=$items}}
-    myPlaylist.add({
-    title:"{{$item.title}}",
-    artist:"{{$item.author}}",
-    mp3:"{{$baseurl}}{{$item.uploadTrackFullPath}}"
-    });
-    {{/foreach}}
-});
 /* ]]> */
 </script>

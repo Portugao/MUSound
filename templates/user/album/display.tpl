@@ -1,7 +1,9 @@
 {* purpose of this template: albums display view in user area *}
 {include file='user/header.tpl'}
+
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/jquery.jplayer.min.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jplayer.playlist.min.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jquery.jplayer.inspector.js'}

@@ -2,6 +2,7 @@
 {include file='user/header.tpl'}
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/jquery.jplayer.min.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jplayer.playlist.min.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/jPlayer/add-on/jquery.jplayer.inspector.js'}
@@ -106,6 +107,8 @@
 				</div>
 			</div>
 		</div>
+		<audio src="{$baseurl}{$track.uploadTrackFullPath}" preload="auto" />
+		<div id="track-details">{$track.title} by {$track.author}</div>
     {include file='user/include_standardfields_display.tpl' obj=$track}
 
     {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
@@ -146,6 +149,11 @@
 		        supplied: "mp3, mp4, oga"
 	            });
 	            });
+	            
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+
 
             /* ]]> */
             </script>
