@@ -3,7 +3,7 @@
 # Purpose of file: give access to upload files treated in this directory
 # ----------------------------------------------------------------------
 deny from all
-<FilesMatch "\.(mp3)$">
+<FilesMatch "\.(mp3|mp4|oga)$">
     order allow,deny
     allow from all
 </filesmatch>
