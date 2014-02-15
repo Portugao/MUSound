@@ -47,11 +47,17 @@
           </a>
         {else}&nbsp;{/if}
         </dd>
+        {if $album.publishedText ne '' || $album.publishedDate}
         <dt>{gt text='Published date'}</dt>
-        <dd>{$album.publishedDate|dateformat:'datetimebrief'}</dd>
-        <dt>{gt text='Published text'}</dt>
+        {if $album.publishedText ne ''}
         <dd>{$album.publishedText}</dd>
-                <dt>{gt text='Collection'}</dt>
+        {else}
+        <dd>{$album.publishedDate|dateformat:'datetimebrief'}</dd>
+        {/if}
+        {/if}
+        {* <dt>{gt text='Published text'}</dt>
+        <dd>{$album.publishedText}</dd>*}
+                <dt>{gt text='Collection'}</dt> 
         <dd>
         {if isset($album.Collection) && $album.Collection ne null}
           {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
