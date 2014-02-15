@@ -1,4 +1,9 @@
 {* Purpose of this template: Display one certain album within an external context *}
+{if $displayMode eq 'embed'}
+{pageaddvar name='javascript' value='jquery'}
+{pageaddvar name='javascript' value='jquery-ui'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
+{/if}
 <div id="album{$album.id}" class="musound-external-album">
 {if $displayMode eq 'link'}
     <p class="musound-external-link">
@@ -26,6 +31,15 @@
               {gt text='Download'} ({$album.uploadCoverMeta.size|musoundGetFileSize:$album.uploadCoverFullPath:false:false})
           {/if}
           </a>
+        <div id="wrapper">
+		<audio preload></audio>
+		<ol>
+		    {foreach item=track from=$album.track}
+		    <li><a href="#" data-src="/{$track.uploadTrackFullPath}">{$track.title} - {$track.author}</a></li>
+		    {/foreach}
+		</ol>
+		
+		</div>
         {else}&nbsp;{/if}
     </div>
 
@@ -45,3 +59,58 @@
     *}
 {/if}
 </div>
+{if $displayMode eq 'embed'}
+<script type="text/javascript">  
+  //<![CDATA[
+
+    jQuery(document).ready(function(){
+ 
+       jQuery(function() { 
+        // Setup the player to autoplay the next track
+        var a = audiojs.createAll({
+          trackEnded: function() {
+            var next = jQuery('ol li.playing').next();
+            if (!next.length) next = jQuery('ol li').first();
+            next.addClass('playing').siblings().removeClass('playing');
+            audio.load(jQuery('a', next).attr('data-src'));
+            audio.play();
+          }
+        });
+        
+        // Load in the first track
+        var audio = a[0];
+            first = jQuery('ol a').attr('data-src');
+        jQuery('ol li').first().addClass('playing');
+        audio.load(first);
+
+        // Load in a track on click
+        jQuery('ol li').click(function(e) {
+          e.preventDefault();
+          jQuery(this).addClass('playing').siblings().removeClass('playing');
+          audio.load(jQuery('a', this).attr('data-src'));
+          audio.play();
+        });
+        // Keyboard shortcuts
+        jQuery(document).keydown(function(e) {
+          var unicode = e.charCode ? e.charCode : e.keyCode;
+             // right arrow
+          if (unicode == 39) {
+            var next = jQuery('li.playing').next();
+            if (!next.length) next = jQuery('ol li').first();
+            next.click();
+            // back arrow
+          } else if (unicode == 37) {
+            var prev = jQuery('li.playing').prev();
+            if (!prev.length) prev = jQuery('ol li').last();
+            prev.click();
+            // spacebar
+          } else if (unicode == 32) {
+            audio.playPause();
+          }
+        })
+      });
+    
+    });
+/* ]]> */
+</script>
+{/if}
