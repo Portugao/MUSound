@@ -36,7 +36,7 @@
         <dd>{$album.title}</dd> *}
         <dt>{gt text='Description'}</dt>
         <dd>{$album.description}</dd>
-        <dt>{gt text='Upload cover'}</dt>
+        <dt>{gt text='Cover'}</dt>
         <dd>{if $album.uploadCover ne ''}
           <a href="{$album.uploadCoverFullPathURL}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}"{if $album.uploadCoverMeta.isImage} rel="imageviewer[album]"{/if}>
           {if $album.uploadCoverMeta.isImage}
