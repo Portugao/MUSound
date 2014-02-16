@@ -16,5 +16,45 @@
  */
 class MUSound_Api_User extends MUSound_Api_Base_User
 {
-    // feel free to add own api methods here
+    /**
+     * Returns available user panel links.
+     *
+     * @return array Array of user links.
+     */
+    public function getlinks()
+    {
+        $links = array();
+
+        if (SecurityUtil::checkPermission($this->name . '::', '::', ACCESS_ADMIN)) {
+            $links[] = array('url' => ModUtil::url($this->name, 'admin', 'main'),
+                             'text' => $this->__('Backend'),
+                             'title' => $this->__('Switch to administration area.'),
+                             'class' => 'z-icon-es-options');
+        }
+
+        $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
+        $utilArgs = array('api' => 'user', 'action' => 'getlinks');
+        $allowedObjectTypes = $controllerHelper->getObjectTypes('api', $utilArgs);
+        
+        if (in_array('collection', $allowedObjectTypes)
+                && SecurityUtil::checkPermission($this->name . ':Collection:', '::', ACCESS_READ)) {
+            $links[] = array('url' => ModUtil::url($this->name, 'user', 'view', array('ot' => 'collection')),
+                    'text' => $this->__('Collections'),
+                    'title' => $this->__('Collection list'));
+        }
+        if (in_array('album', $allowedObjectTypes)
+            && SecurityUtil::checkPermission($this->name . ':Album:', '::', ACCESS_READ)) {
+            $links[] = array('url' => ModUtil::url($this->name, 'user', 'view', array('ot' => 'album')),
+                             'text' => $this->__('Albums'),
+                             'title' => $this->__('Album list'));
+        }
+        if (in_array('track', $allowedObjectTypes)
+            && SecurityUtil::checkPermission($this->name . ':Track:', '::', ACCESS_READ)) {
+            $links[] = array('url' => ModUtil::url($this->name, 'user', 'view', array('ot' => 'track')),
+                             'text' => $this->__('Tracks'),
+                             'title' => $this->__('Track list'));
+        }
+
+        return $links;
+    }
 }

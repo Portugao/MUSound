@@ -14,6 +14,10 @@ Implemented Classes
 
 *lib/MUSound/Version.php
 
+*lib/MUSound/Api/User.php
+
+*lib/MUSound/Controller/User.php
+
 
 Additional Files
 

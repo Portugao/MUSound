@@ -16,5 +16,16 @@
  */
 class MUSound_Controller_User extends MUSound_Controller_Base_User
 {
-    // feel free to add your own controller methods here
+    /**
+     * Post initialise.
+     *
+     * Run after construction.
+     *
+     * @return void
+     */
+    protected function postInitialize()
+    {
+        // Set caching to true by default.
+        $this->view->setCaching(Zikula_View::CACHE_DISABLED);
+    }
 }
