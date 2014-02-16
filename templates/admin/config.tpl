@@ -102,20 +102,7 @@
                 </div>
             </fieldset>
             {/formtabbedpanel}
-            {gt text='Player' assign='tabTitle'}
-            {formtabbedpanel title=$tabTitle}
-            <fieldset>
-                <legend>{$tabTitle}</legend>
-            
-            
-                <div class="z-formrow">
-                    {formlabel for='skin' __text='Skin' cssClass=''}
-                        {formdropdownlist id='skin' group='config' __title='Choose the skin'}
-                </div>
-            </fieldset>
-            {/formtabbedpanel}
             {/formtabbedpanelset}
-
             <div class="z-buttons z-formbuttons">
                 {formbutton commandName='save' __text='Update configuration' class='z-bt-save'}
                 {formbutton commandName='cancel' __text='Cancel' class='z-bt-cancel'}

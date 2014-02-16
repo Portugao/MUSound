@@ -52,7 +52,7 @@ class MUSound_Base_Installer extends Zikula_AbstractInstaller
         $this->setVar('maxSizeTrack', 1024000);
         $this->setVar('maxSizeZip', 1024000);
         $this->setVar('allowedExtensionCover', 'gif, jpeg, jpg, png');
-        $this->setVar('allowedExtensionTrack', 'mp3, mp4');
+        $this->setVar('allowedExtensionTrack', 'mp3');
         $this->setVar('backendWidth', 200);
         $this->setVar('backendHeight', 150);
         $this->setVar('frontendWidth', 200);
@@ -61,7 +61,6 @@ class MUSound_Base_Installer extends Zikula_AbstractInstaller
         $this->setVar('backendHeight', 300);
         $this->setVar('frontendWidth', 400);
         $this->setVar('frontendHeight', 300);
-        $this->setVar('skin',  'bluemonday' );
     
         $categoryRegistryIdsPerEntity = array();
     
