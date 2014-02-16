@@ -36,7 +36,7 @@
 		<audio preload></audio>
 		<ol>
 		    {foreach item=track from=$items}
-		    <li><a href="#" data-src="/{$track.uploadTrackFullPath}">{$track.title} - {$track.author}</a></li>
+		    <li><a href="#" data-src="/{$track.uploadTrackFullPath}">{$track.title}{if $track.author ne ''} - {$track.author}{/if}</a></li>
 		    {/foreach}
 		</ol>
 		
