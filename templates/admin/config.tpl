@@ -50,7 +50,9 @@
                 </div>
                 <div class="z-formrow">
                     {formlabel for='allowedExtensionTrack' __text='Allowed extension track' cssClass=''}
-                        {formtextinput id='allowedExtensionTrack' group='config' maxLength=255 __title='Enter the allowed extension track.'}
+                        {formtextinput disabled="disabled" id='allowedExtensionTrack' group='config' maxLength=255 __title='Enter the allowed extension track.'}
+                        <span class="z-formnote z-warningmsg">{gt text='Only mp3 supported at the moment.'}</span>
+                        
                 </div>
             </fieldset>
             {/formtabbedpanel}
