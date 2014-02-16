@@ -42,7 +42,8 @@
                 </div>
                 <div class="z-formrow">
                     {formlabel for='maxSizeZip' __text='Max size zip' cssClass=''}
-                        {formintinput id='maxSizeZip' group='config' maxLength=255 __title='Enter the max size zip. Only digits are allowed.'}
+                        {formintinput disabled="disabled" id='maxSizeZip' group='config' maxLength=255 __title='Enter the max size zip. Only digits are allowed.'}
+                        <span class="z-formnote z-warningmsg">{gt text='Not supported at the moment.'}</span>
                 </div>
                 <div class="z-formrow">
                     {formlabel for='allowedExtensionCover' __text='Allowed extension cover' cssClass=''}
