@@ -12,9 +12,9 @@
         {* add validation summary and a <div> element for styling the form *}
         {musoundFormFrame}
             {formsetinitialfocus inputId='pageSizeCollection'}
-            {formtabbedpanelset}
+           {* {formtabbedpanelset}
             {gt text='General' assign='tabTitle'}
-            {formtabbedpanel title=$tabTitle}
+            {formtabbedpanel title=$tabTitle} *}
             <fieldset>
                 <legend>{$tabTitle}</legend>
             
@@ -56,7 +56,7 @@
                         
                 </div>
             </fieldset>
-            {/formtabbedpanel}
+           {* {/formtabbedpanel}
             {gt text='Thumbnails view' assign='tabTitle'}
             {formtabbedpanel title=$tabTitle}
             <fieldset>
@@ -105,7 +105,7 @@
                 </div>
             </fieldset>
             {/formtabbedpanel}
-            {/formtabbedpanelset}
+            {/formtabbedpanelset} *}
             <div class="z-buttons z-formbuttons">
                 {formbutton commandName='save' __text='Update configuration' class='z-bt-save'}
                 {formbutton commandName='cancel' __text='Cancel' class='z-bt-cancel'}
