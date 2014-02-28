@@ -32,10 +32,10 @@
     <table class="z-datatable">
         <colgroup>
             <col id="cTitle" />
-            <col id="cDescription" />
+           {* <col id="cDescription" /> *}
             <col id="cAuthor" />
-            <col id="cUploadTrack" />
-            <col id="cUploadZip" />
+           {* <col id="cUploadTrack" />
+            <col id="cUploadZip" /> *}
             <col id="cAlbum" />
             <col id="cItemActions" />
         </colgroup>
@@ -44,18 +44,18 @@
             <th id="hTitle" scope="col" class="z-left">
                 {sortlink __linktext='Title' currentsort=$sort modname='MUSound' type='user' func='view' ot='track' sort='title' sortdir=$sdir all=$all own=$own album=$album workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
             </th>
-            <th id="hDescription" scope="col" class="z-left">
+           {* <th id="hDescription" scope="col" class="z-left">
                 {sortlink __linktext='Description' currentsort=$sort modname='MUSound' type='user' func='view' ot='track' sort='description' sortdir=$sdir all=$all own=$own album=$album workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
-            </th>
+            </th> *}
             <th id="hAuthor" scope="col" class="z-left">
                 {sortlink __linktext='Author' currentsort=$sort modname='MUSound' type='user' func='view' ot='track' sort='author' sortdir=$sdir all=$all own=$own album=$album workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
             </th>
-            <th id="hUploadTrack" scope="col" class="z-left">
+          {*  <th id="hUploadTrack" scope="col" class="z-left">
                 {sortlink __linktext='Upload track' currentsort=$sort modname='MUSound' type='user' func='view' ot='track' sort='uploadTrack' sortdir=$sdir all=$all own=$own album=$album workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
             </th>
             <th id="hUploadZip" scope="col" class="z-left">
                 {sortlink __linktext='Upload zip' currentsort=$sort modname='MUSound' type='user' func='view' ot='track' sort='uploadZip' sortdir=$sdir all=$all own=$own album=$album workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
-            </th>
+            </th> *}
             <th id="hAlbum" scope="col" class="z-left">
                 {sortlink __linktext='Album' currentsort=$sort modname='MUSound' type='user' func='view' ot='track' sort='album' sortdir=$sdir all=$all own=$own album=$album workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
             </th>
@@ -69,13 +69,13 @@
             <td headers="hTitle" class="z-left">
                 <a href="{modurl modname='MUSound' type='user' func='display' ot='track' id=$track.id}" title="{gt text='View detail page'}">{$track.title|notifyfilters:'musound.filterhook.tracks'}</a>
             </td>
-            <td headers="hDescription" class="z-left">
+           {* <td headers="hDescription" class="z-left">
                 {$track.description}
-            </td>
+            </td> *}
             <td headers="hAuthor" class="z-left">
                 {$track.author}
             </td>
-            <td headers="hUploadTrack" class="z-left">
+           {* <td headers="hUploadTrack" class="z-left">
                 {if $track.uploadTrack ne ''}
                   <a href="{$track.uploadTrackFullPathURL}" title="{$track->getTitleFromDisplayPattern()|replace:"\"":""}"{if $track.uploadTrackMeta.isImage} rel="imageviewer[track]"{/if}>
                   {if $track.uploadTrackMeta.isImage}
@@ -96,7 +96,7 @@
                   {/if}
                   </a>
                 {else}&nbsp;{/if}
-            </td>
+            </td> *}
             <td headers="hAlbum" class="z-left">
                 {if isset($track.Album) && $track.Album ne null}
                     <a href="{modurl modname='MUSound' type='user' func='display' ot='album' id=$track.Album.id}">{strip}
@@ -132,7 +132,7 @@
         </tr>
     {foreachelse}
         <tr class="z-datatableempty">
-          <td class="z-left" colspan="7">
+          <td class="z-left" colspan="4">
         {gt text='No tracks found.'}
           </td>
         </tr>

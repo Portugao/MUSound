@@ -31,32 +31,32 @@
 
     <table class="z-datatable">
         <colgroup>
-            <col id="cWorkflowState" />
+           {* <col id="cWorkflowState" /> *}
             <col id="cTitle" />
-            <col id="cDescription" />
+           {* <col id="cDescription" /> *}
             <col id="cAuthor" />
-            <col id="cUploadCover" />
+           {* <col id="cUploadCover" />
             <col id="cPublishedDate" />
-            <col id="cPublishedText" />
+            <col id="cPublishedText" /> *}
             <col id="cCollection" />
             <col id="cItemActions" />
         </colgroup>
         <thead>
         <tr>
             {assign var='catIdListMainString' value=','|implode:$catIdList.Main}
-            <th id="hWorkflowState" scope="col" class="z-left">
+           {* <th id="hWorkflowState" scope="col" class="z-left">
                 {sortlink __linktext='State' currentsort=$sort modname='MUSound' type='user' func='view' ot='album' sort='workflowState' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
-            </th>
+            </th> *}
             <th id="hTitle" scope="col" class="z-left">
                 {sortlink __linktext='Title' currentsort=$sort modname='MUSound' type='user' func='view' ot='album' sort='title' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
             </th>
-            <th id="hDescription" scope="col" class="z-left">
+           {* <th id="hDescription" scope="col" class="z-left">
                 {sortlink __linktext='Description' currentsort=$sort modname='MUSound' type='user' func='view' ot='album' sort='description' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
-            </th>
+            </th> *}
             <th id="hAuthor" scope="col" class="z-left">
                 {sortlink __linktext='Author' currentsort=$sort modname='MUSound' type='user' func='view' ot='album' sort='author' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
             </th>
-            <th id="hUploadCover" scope="col" class="z-left">
+           {* <th id="hUploadCover" scope="col" class="z-left">
                 {sortlink __linktext='Upload cover' currentsort=$sort modname='MUSound' type='user' func='view' ot='album' sort='uploadCover' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
             </th>
             <th id="hPublishedDate" scope="col" class="z-left">
@@ -64,10 +64,10 @@
             </th>
             <th id="hPublishedText" scope="col" class="z-left">
                 {sortlink __linktext='Published text' currentsort=$sort modname='MUSound' type='user' func='view' ot='album' sort='publishedText' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
-            </th>
+            </th> *}
             <th id="hCollection" scope="col" class="z-left">
                 {sortlink __linktext='Collection' currentsort=$sort modname='MUSound' type='user' func='view' ot='album' sort='collection' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize}
-            </th>
+            </th> 
             <th id="hItemActions" scope="col" class="z-right z-order-unsorted">{gt text='Actions'}</th>
         </tr>
         </thead>
@@ -75,19 +75,19 @@
     
     {foreach item='album' from=$items}
         <tr class="{cycle values='z-odd, z-even'}">
-            <td headers="hWorkflowState" class="z-left z-nowrap">
+           {* <td headers="hWorkflowState" class="z-left z-nowrap">
                 {$album.workflowState|musoundObjectState}
-            </td>
+            </td> *}
             <td headers="hTitle" class="z-left">
                 <a href="{modurl modname='MUSound' type='user' func='display' ot='album' id=$album.id}" title="{gt text='View detail page'}">{$album.title|notifyfilters:'musound.filterhook.albums'}</a>
             </td>
-            <td headers="hDescription" class="z-left">
+           {* <td headers="hDescription" class="z-left">
                 {$album.description}
-            </td>
+            </td> *}
             <td headers="hAuthor" class="z-left">
                 {$album.author}
             </td>
-            <td headers="hUploadCover" class="z-left">
+           {* <td headers="hUploadCover" class="z-left">
                 {if $album.uploadCover ne ''}
                   <a href="{$album.uploadCoverFullPathURL}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}"{if $album.uploadCoverMeta.isImage} rel="imageviewer[album]"{/if}>
                   {if $album.uploadCoverMeta.isImage}
@@ -103,7 +103,7 @@
             </td>
             <td headers="hPublishedText" class="z-left">
                 {$album.publishedText}
-            </td>
+            </td> *}
             <td headers="hCollection" class="z-left">
                 {if isset($album.Collection) && $album.Collection ne null}
                     <a href="{modurl modname='MUSound' type='user' func='display' ot='collection' id=$album.Collection.id}">{strip}
@@ -139,7 +139,7 @@
         </tr>
     {foreachelse}
         <tr class="z-datatableempty">
-          <td class="z-left" colspan="9">
+          <td class="z-left" colspan="4">
         {gt text='No albums found.'}
           </td>
         </tr>
