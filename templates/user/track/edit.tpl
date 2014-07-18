@@ -67,7 +67,7 @@
         
         <div class="z-formrow">
             {formlabel for='uploadZip' __text='Upload zip' cssClass=''}<br />{* break required for Google Chrome *}
-            {formuploadinput group='track' id='uploadZip' mandatory=false readOnly=false cssClass=' validate-upload' }
+            {formuploadinput disabled=disabled group='track' id='uploadZip' mandatory=false readOnly=false cssClass=' validate-upload' }
             <span class="z-formnote"><a id="resetUploadZipVal" href="javascript:void(0);" class="z-hide" style="clear:left;">{gt text='Reset to empty value'}</a></span>
             
                 <span class="z-formnote">{gt text='Allowed file extensions:'} <span id="uploadZipFileExtensions">zip</span></span>
@@ -91,6 +91,7 @@
                 {/if}
             {/if}
             {musoundValidationError id='uploadZip' class='validate-upload'}
+            <span class="z-formnote z-warningmsg">{gt text='Not supported at the moment.'}</span>
         </div>
     </fieldset>
     
