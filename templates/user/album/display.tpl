@@ -52,10 +52,10 @@
         </dd> *}
         {if $album.publishedText ne '' || $album.publishedDate}
         <dt>{gt text='Published date'}</dt>
-        {if $album.publishedDate ne NULL}
-        <dd>{$album.publishedDate|dateformat:'datetimebrief'}</dd>
-        {else}
+        {if $album.publishedText ne NULL}
         <dd>{$album.publishedText}</dd>
+        {else}
+       <dd>{$album.publishedDate|dateformat:'datetimebrief'}</dd>
         {/if}
         {/if}
         {* <dt>{gt text='Published text'}</dt>
