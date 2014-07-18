@@ -8,6 +8,9 @@ MUSound - Manual additions and amendments
 
 Changed Files
 
+*themes/user/album/display.tpl
+*themes/user/track/display.tpl
+*themes/user/track/include_displayItemListMany.tpl
 
 Implemented Classes
 
@@ -19,14 +22,14 @@ Implemented Classes
 
 *lib/MUSound/Controller/User.php
 
+*lib/MUSound/UploadHandler.php
+
 
 Additional Files
 
 customisations.txt
 
-*themes/user/album/display.tpl
-*themes/user/track/display.tpl
-*themes/user/track/include_displayItemListMany.tpl
+
 
 
 
