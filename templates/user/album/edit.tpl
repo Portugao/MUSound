@@ -43,7 +43,7 @@
             <span class="z-formnote"><a id="resetUploadCoverVal" href="javascript:void(0);" class="z-hide" style="clear:left;">{gt text='Reset to empty value'}</a></span>
             
                 <span class="z-formnote">{gt text='Allowed file extensions:'} <span id="uploadCoverFileExtensions">gif, jpeg, jpg, png</span></span>
-            <span class="z-formnote">{gt text='Allowed file size:'} {'102400'|musoundGetFileSize:'':false:false}</span>
+            <span class="z-formnote">{gt text='Allowed file size:'}{modgetvar module='MUSound' name='maxSizeCover' assign='allowedFileSize'} {$allowedFileSize|musoundGetFileSize:'':false:false}</span>
             {if $mode ne 'create'}
                 {if $album.uploadCover ne ''}
                     <span class="z-formnote">

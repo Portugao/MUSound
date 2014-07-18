@@ -3,7 +3,7 @@
  * MUSound.
  *
  * @copyright Michael Ueberschaer (MU)
- * @license 
+ * @license
  * @package MUSound
  * @author Michael Ueberschaer <kontakt@webdesign-in-bremen.com>.
  * @link http://webdesign-in-bremen.com
@@ -15,6 +15,16 @@
  * Upload handler implementation class.
  */
 class MUSound_UploadHandler extends MUSound_Base_UploadHandler
+
 {
-    // feel free to add your upload handler enhancements here
+    /**
+     * Constructor initialising the supported object types.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->allowedFileSizes['album'] = ModUtil::getVar('VerySimpleDownload', 'maxSizeCover', 102400);
+        $this->allowedFileSizes = array('album' => array('uploadCover' => ModUtil::getVar('MUSound', 'maxSizeCover', 102400)), 'track' => array('uploadTrack' => ModUtil::getVar('MUSound', 'maxSizeTrack', 102400), 'uploadZip' => 1024000));
+
+    }
 }
