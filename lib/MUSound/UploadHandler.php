@@ -27,4 +27,46 @@ class MUSound_UploadHandler extends MUSound_Base_UploadHandler
         $this->allowedFileSizes = array('album' => array('uploadCover' => ModUtil::getVar('MUSound', 'maxSizeCover', 102400)), 'track' => array('uploadTrack' => ModUtil::getVar('MUSound', 'maxSizeTrack', 102400), 'uploadZip' => 1024000));
 
     }
+    
+    /**
+     * Determines the allowed file extensions for a given object type.
+     *
+     * @param string $objectType Currently treated entity type.
+     * @param string $fieldName  Name of upload field.
+     * @param string $extension  Input file extension.
+     *
+     * @return array the list of allowed file extensions
+     */
+    protected function isAllowedFileExtension($objectType, $fieldName, $extension)
+    {
+        // determine the allowed extensions
+        $allowedExtensions = array();
+        switch ($objectType) {
+            case 'album':
+                $allowedExtensions = explode(',', ModUtil::getVar('MUSound', 'allowedExtensions'));
+                break;
+            case 'track':
+                switch ($fieldName) {
+                    case 'uploadTrack':
+                        $allowedExtensions = array('mp3');
+                        break;
+                    case 'uploadZip':
+                        $allowedExtensions = array('zip');
+                        break;
+                }
+                break;
+        }
+    
+        if (count($allowedExtensions) > 0) {
+            if (!in_array($extension, $allowedExtensions)) {
+                return false;
+            }
+        }
+    
+        if (in_array($extension, $this->forbiddenFileTypes)) {
+            return false;
+        }
+    
+        return true;
+    }
 }
