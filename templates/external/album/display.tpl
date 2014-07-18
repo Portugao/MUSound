@@ -3,6 +3,9 @@
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/jquery.jplayer.js'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/ttw-music-player-min.js'}
+{pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/musicplayer/css/style.css'}
 {/if}
 <div id="album{$album.id}" class="musound-external-album">
 {if $displayMode eq 'link'}
@@ -22,8 +25,8 @@
 
 {if $displayMode eq 'link'}
 {elseif $displayMode eq 'embed'}
-    <div class="musound-external-snippet">
-        {if $album.uploadCover ne ''}
+   {* <div class="musound-external-snippet"> *}
+       {* {if $album.uploadCover ne ''}
           <a href="{$album.uploadCoverFullPathURL}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}"{if $album.uploadCoverMeta.isImage} rel="imageviewer[album]"{/if}>
           {if $album.uploadCoverMeta.isImage}
               {thumb image=$album.uploadCoverFullPath objectid="album-`$album.id`" preset=$albumThumbPresetUploadCover tag=true img_alt=$album->getTitleFromDisplayPattern()}
@@ -31,6 +34,7 @@
               {gt text='Download'} ({$album.uploadCoverMeta.size|musoundGetFileSize:$album.uploadCoverFullPath:false:false})
           {/if}
           </a>
+        {else}&nbsp;{/if}
         <div id="wrapper">
 		<audio preload></audio>
 		<ol>
@@ -39,9 +43,9 @@
 		    {/foreach}
 		</ol>
 		
-		</div>
-        {else}&nbsp;{/if}
-    </div>
+		</div> *}
+		<div id="wrapper2"></div>
+   {* </div> *}
 
     {* you can distinguish the context like this: *}
     {*if $source eq 'contentType'}
@@ -65,7 +69,7 @@
 
     jQuery(document).ready(function(){
  
-       jQuery(function() { 
+     {{*  jQuery(function() { 
         // Setup the player to autoplay the next track
         var a = audiojs.createAll({
           trackEnded: function() {
@@ -108,7 +112,27 @@
             audio.playPause();
           }
         })
-      });
+      }); *}}
+      
+          var myPlaylist = [
+    {{foreach name=albumtracks item=track from=$album.track}}
+        {
+            mp3:'{{$track.uploadTrackFullPathUrl}}',
+            title:'{{$track.title}}',
+            artist:'{{if $track.author ne ''}}{{$track.author}}{{else}}{{$track.album.author}}{{/if}}',
+            cover:'{{$track.album.uploadCoverFullPathUrl}}'
+        }{{if $smarty.foreach.albumtracks.last ne true}},{{/if}}
+    {{/foreach}}
+    ];
+            var description = '{{$track.album.description}}';
+
+            jQuery('#wrapper2').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                    swfPath:'{{$baseurl}}modules/MUSound/lib/vendor/musicplayer/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                }
+            });
     
     });
 /* ]]> */

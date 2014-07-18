@@ -2,7 +2,9 @@
 {include file='user/header.tpl'}
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/jquery.jplayer.js'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/ttw-music-player-min.js'}
+{pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/musicplayer/css/style.css'}
 
 <div class="musound-track musound-display">
     {gt text='Track' assign='templateTitle'}
@@ -64,7 +66,8 @@
         
     </dl>
  
-    <audio src="{$baseurl}{$track.uploadTrackFullPath}" preload="auto" />
+    <div id="wrapper2"></div>
+    {* <audio src="{$baseurl}{$track.uploadTrackFullPath}" preload="auto" /> *}
 		
     {include file='user/include_standardfields_display.tpl' obj=$track}
 
@@ -94,10 +97,28 @@
 {include file='user/footer.tpl'}
             <script type="text/javascript">
             /* <![CDATA[ */
+                      var myPlaylist = [
+
+        {
+            mp3:'{{$track.uploadTrackFullPathUrl}}',
+            title:'{{$track.title}}',
+            artist:'{{if $track.author ne ''}}{{$track.author}}{{else}}{{$track.album.author}}{{/if}}',
+            cover:'{{$track.album.uploadCoverFullPathUrl}}'
+        }
+    ];
+            var description = '{{$track.album.description}}';
+
+            jQuery('#wrapper2').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                    swfPath:'{{$baseurl}}modules/MUSound/lib/vendor/musicplayer/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                }
+            });
 	            
-  audiojs.events.ready(function() {
+{{*  audiojs.events.ready(function() {
     var as = audiojs.createAll();
-  });
+  }); *}}
 
 
             /* ]]> */

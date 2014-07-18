@@ -32,66 +32,44 @@
 {/if}
 *}
 
-		<div id="wrapper">
+		{* <div id="wrapper">
 		<audio preload></audio>
 		<ol>
 		    {foreach item=track from=$items}
 		    <li><a href="#" data-src="/{$track.uploadTrackFullPath}">{$track.title}{if $track.author ne ''} - {$track.author}{/if}</a></li>
 		    {/foreach}
-		</ol>
+		</ol>	
+		</div> *}
 		
-		</div>
+		<div id="wrapper2"></div>
   
 <script type="text/javascript">  
-  //<![CDATA[
 
+    var MU = jQuery.noConflict();
     jQuery(document).ready(function(){
- 
-       jQuery(function() { 
-        // Setup the player to autoplay the next track
-        var a = audiojs.createAll({
-          trackEnded: function() {
-            var next = jQuery('ol li.playing').next();
-            if (!next.length) next = jQuery('ol li').first();
-            next.addClass('playing').siblings().removeClass('playing');
-            audio.load(jQuery('a', next).attr('data-src'));
-            audio.play();
-          }
-        });
-        
-        // Load in the first track
-        var audio = a[0];
-            first = jQuery('ol a').attr('data-src');
-        jQuery('ol li').first().addClass('playing');
-        audio.load(first);
 
-        // Load in a track on click
-        jQuery('ol li').click(function(e) {
-          e.preventDefault();
-          jQuery(this).addClass('playing').siblings().removeClass('playing');
-          audio.load(jQuery('a', this).attr('data-src'));
-          audio.play();
-        });
-        // Keyboard shortcuts
-        jQuery(document).keydown(function(e) {
-          var unicode = e.charCode ? e.charCode : e.keyCode;
-             // right arrow
-          if (unicode == 39) {
-            var next = jQuery('li.playing').next();
-            if (!next.length) next = jQuery('ol li').first();
-            next.click();
-            // back arrow
-          } else if (unicode == 37) {
-            var prev = jQuery('li.playing').prev();
-            if (!prev.length) prev = jQuery('ol li').last();
-            prev.click();
-            // spacebar
-          } else if (unicode == 32) {
-            audio.playPause();
-          }
-        })
-      });
+    var myPlaylist = [
+    {{foreach name=albumtracks item=track from=$items}}
+        {
+            mp3:'{{$track.uploadTrackFullPathUrl}}',
+            title:'{{$track.title}}',
+            artist:'{{if $track.author ne ''}}{{$track.author}}{{else}}{{$track.album.author}}{{/if}}',
+            cover:'{{$track.album.uploadCoverFullPathUrl}}'
+        }{{if $smarty.foreach.albumtracks.last ne true}},{{/if}}
+    {{/foreach}}
+    ];
+            var description = '{{$track.album.description}}';
+
+            jQuery('#wrapper2').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                    swfPath:'{{$baseurl}}modules/MUSound/lib/vendor/musicplayer/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+      
+
     
     });
-/* ]]> */
+
 </script>

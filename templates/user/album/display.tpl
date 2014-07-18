@@ -3,7 +3,10 @@
 
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
+{* {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'} *}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/jquery.jplayer.js'}
+{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/ttw-music-player-min.js'}
+{pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/musicplayer/css/style.css'}
 
 <div class="musound-album musound-display with-rightbox">
     {gt text='Album' assign='templateTitle'}
@@ -12,7 +15,7 @@
     <h2>{$templateTitle|notifyfilters:'musound.filter_hooks.albums.filter'} <small>({$album.workflowState|musoundObjectState:false|lower})</small>{icon id='itemActionsTrigger' type='options' size='extrasmall' __alt='Actions' class='z-pointer z-hide'}</h2>
 
     {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
-        <div class="musound-rightbox">
+        <div class="musound-player">
             <h3>{gt text='Tracks'}</h3>
             
             {if isset($album.track) && $album.track ne null}
@@ -33,7 +36,7 @@
        {* <dt>{gt text='State'}</dt>
         <dd>{$album.workflowState|musoundGetListEntry:'album':'workflowState'|safetext}</dd>
         <dt>{gt text='Title'}</dt>
-        <dd>{$album.title}</dd> *}
+        <dd>{$album.title}</dd>
         <dt>{gt text='Description'}</dt>
         <dd>{$album.description}</dd>
         <dt>{gt text='Cover'}</dt>
@@ -46,13 +49,13 @@
           {/if}
           </a>
         {else}&nbsp;{/if}
-        </dd>
+        </dd> *}
         {if $album.publishedText ne '' || $album.publishedDate}
         <dt>{gt text='Published date'}</dt>
-        {if $album.publishedText ne ''}
-        <dd>{$album.publishedText}</dd>
-        {else}
+        {if $album.publishedDate ne NULL}
         <dd>{$album.publishedDate|dateformat:'datetimebrief'}</dd>
+        {else}
+        <dd>{$album.publishedText}</dd>
         {/if}
         {/if}
         {* <dt>{gt text='Published text'}</dt>
