@@ -251,3 +251,13 @@ div.musound-view form.musound-quicknav fieldset #num {
 	width: 25%;
 }
 
+#wrapper2 .ttw-music-player {
+    background: #333;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    border-radius: 10px;
+}
+
+.rating, .duration {
+    display: none !important;	
+}
