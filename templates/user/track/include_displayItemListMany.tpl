@@ -31,26 +31,18 @@
 </ul>
 {/if}
 *}
-
-		{* <div id="wrapper">
-		<audio preload></audio>
-		<ol>
-		    {foreach item=track from=$items}
-		    <li><a href="#" data-src="/{$track.uploadTrackFullPath}">{$track.title}{if $track.author ne ''} - {$track.author}{/if}</a></li>
-		    {/foreach}
-		</ol>	
-		</div> *}
 		
 		<div id="wrapper2"></div>
   
-<script type="text/javascript">  
-
+<script type="text/javascript">
+/* <![CDATA[ */
     var MU = jQuery.noConflict();
     jQuery(document).ready(function(){
 
     var myPlaylist = [
     {{foreach name=albumtracks item=track from=$items}}
         {
+            oga:'',
             mp3:'{{$track.uploadTrackFullPathUrl}}',
             title:'{{$track.title}}',
             artist:'{{if $track.author ne ''}}{{$track.author}}{{else}}{{$track.album.author}}{{/if}}',
@@ -60,16 +52,16 @@
     ];
             var description = '{{$track.album.description}}';
 
-            jQuery('#wrapper2').ttwMusicPlayer(myPlaylist, {
+            MU('#wrapper2').ttwMusicPlayer(myPlaylist, {
                 autoPlay:false, 
                 description:description,
                 jPlayer:{
-                    swfPath:'{{$baseurl}}modules/MUSound/lib/vendor/musicplayer/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                    swfPath:'/modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/' //You need to override the default swf path any time the directory structure changes
                 }
             });
       
 
     
     });
-
+/* ]]> */
 </script>

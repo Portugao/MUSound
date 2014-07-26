@@ -2,7 +2,6 @@
 {if $displayMode eq 'embed'}
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
 {/if}
 
 <div id="track{$track.id}" class="musound-external-track">

@@ -2,7 +2,6 @@
 {if $displayMode eq 'embed'}
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/jquery.jplayer.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/ttw-music-player-min.js'}
 {pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/musicplayer/css/style.css'}
