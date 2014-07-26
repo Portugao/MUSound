@@ -1,9 +1,7 @@
 {* purpose of this template: albums display view in user area *}
 {include file='user/header.tpl'}
-
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
-{* {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/audiojs/audio.min.js'} *}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/jquery.jplayer.js'}
 {pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/ttw-music-player-min.js'}
 {pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/musicplayer/css/style.css'}
@@ -22,7 +20,7 @@
                 {include file='user/track/include_displayItemListMany.tpl' items=$album.track}
             {/if}
             
-            {checkpermission component='MUSound:Album:' instance="`$album.id`::" level='ACCESS_COMMENT' assign='mayManage'}
+            {checkpermission component='MUSound:Album:' instance="`$album.id`::" level='ACCESS_ADD' assign='mayManage'}
             {if $mayManage || (isset($uid) && isset($album.createdUserId) && $album.createdUserId eq $uid)}
             <p class="managelink">
                 {gt text='Create track' assign='createTitle'}
