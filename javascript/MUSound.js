@@ -102,7 +102,7 @@ function musoundSubmitQuickNavForm(objectType)
 /**
  * Initialise the quick navigation panel in list views.
  */
-function musoundInitQuickNavigation(objectType, controller)
+function musoundInitQuickNavigation(objectType)
 {
     if ($('musound' + musoundCapitaliseFirstLetter(objectType) + 'QuickNavForm') == undefined) {
         return;
@@ -174,7 +174,7 @@ function musoundInitInlineWindow(containerElem, title)
         }
     );
 
-    // return the instance
+    // return the instance;
     return newWindow;
 }
 

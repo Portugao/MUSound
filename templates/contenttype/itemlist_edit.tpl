@@ -67,7 +67,7 @@
     {gt text='Custom template' domain='module_musound' assign='customTemplateLabel'}
     {formlabel for='mUSoundCustomTemplate' text=$customTemplateLabel}
         {formtextinput id='mUSoundCustomTemplate' dataField='customTemplate' group='data' mandatory=false maxLength=80}
-        <span class="z-sub z-formnote">{gt text='Example' domain='module_musound'}: <em>itemlist_[objecttype]_display.tpl</em></span>
+        <span class="z-sub z-formnote">{gt text='Example' domain='module_musound'}: <em>itemlist_[objectType]_display.tpl</em></span>
 </div>
 
 <div class="z-formrow z-hide">

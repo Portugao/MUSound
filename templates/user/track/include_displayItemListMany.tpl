@@ -46,7 +46,7 @@
             mp3:'{{$track.uploadTrackFullPathUrl}}',
             title:'{{$track.title}}',
             artist:'{{if $track.author ne ''}}{{$track.author}}{{else}}{{$track.album.author}}{{/if}}',
-            cover:'{{$track.album.uploadCoverFullPathUrl}}'
+            cover:'{{if $track.album.uploadCoverFullPathUrl}}{{$track.album.uploadCoverFullPathUrl}}{{else}}/modules/MUSound/images/NoCover.jpg{{/if}}'
         }{{if $smarty.foreach.albumtracks.last ne true}},{{/if}}
     {{/foreach}}
     ];

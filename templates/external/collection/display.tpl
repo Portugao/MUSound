@@ -2,7 +2,7 @@
 <div id="collection{$collection.id}" class="musound-external-collection">
 {if $displayMode eq 'link'}
     <p class="musound-external-link">
-    <a href="{modurl modname='MUSound' type='user' func='display' ot='collection' id=$collection.id}" title="{$collection->getTitleFromDisplayPattern()|replace:"\"":""}">
+    <a href="{modurl modname='MUSound' type='user' func='display' ot='collection'  id=$collection.id}" title="{$collection->getTitleFromDisplayPattern()|replace:"\"":""}">
     {$collection->getTitleFromDisplayPattern()|notifyfilters:'musound.filter_hooks.collections.filter'}
     </a>
     </p>

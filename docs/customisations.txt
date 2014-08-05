@@ -8,6 +8,8 @@ MUSound - Manual additions and amendments
 
 Changed Files
 
+*images/admin.png
+
 *themes/user/album/display.tpl
 *themes/user/track/display.tpl
 *themes/user/track/include_displayItemListMany.tpl

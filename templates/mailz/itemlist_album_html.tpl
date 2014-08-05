@@ -3,7 +3,8 @@
 <ul>
 {foreach item='album' from=$items}
     <li>
-        <a href="{modurl modname='MUSound' type='user' func='display' ot=$objectType id=$album.id fqurl=true}">{$album->getTitleFromDisplayPattern()}
+        <a href="{modurl modname='MUSound' type='user' func='display' ot='album'  id=$$objectType.id fqurl=true}
+        ">{$album->getTitleFromDisplayPattern()}
         </a>
     </li>
 {foreachelse}

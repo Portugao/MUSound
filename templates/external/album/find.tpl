@@ -77,7 +77,7 @@
                         {foreach item='album' from=$items}
                             <li>
                                 <a href="#" onclick="musound.finder.selectItem({$album.id})" onkeypress="musound.finder.selectItem({$album.id})">{$album->getTitleFromDisplayPattern()}</a>
-                                <input type="hidden" id="url{$album.id}" value="{modurl modname='MUSound' type='user' func='display' ot='album' id=$album.id fqurl=true}" />
+                                <input type="hidden" id="url{$album.id}" value="{modurl modname='MUSound' type='user' func='display' ot='album'  id=$album.id fqurl=true}" />
                                 <input type="hidden" id="title{$album.id}" value="{$album->getTitleFromDisplayPattern()|replace:"\"":""}" />
                                 <input type="hidden" id="desc{$album.id}" value="{capture assign='description'}{if $album.description ne ''}{$album.description}{/if}
                                 {/capture}{$description|strip_tags|replace:"\"":""}" />

@@ -52,7 +52,7 @@
                         {foreach item='track' from=$items}
                             <li>
                                 <a href="#" onclick="musound.finder.selectItem({$track.id})" onkeypress="musound.finder.selectItem({$track.id})">{$track->getTitleFromDisplayPattern()}</a>
-                                <input type="hidden" id="url{$track.id}" value="{modurl modname='MUSound' type='user' func='display' ot='track' id=$track.id fqurl=true}" />
+                                <input type="hidden" id="url{$track.id}" value="{modurl modname='MUSound' type='user' func='display' ot='track'  id=$track.id fqurl=true}" />
                                 <input type="hidden" id="title{$track.id}" value="{$track->getTitleFromDisplayPattern()|replace:"\"":""}" />
                                 <input type="hidden" id="desc{$track.id}" value="{capture assign='description'}{if $track.description ne ''}{$track.description}{/if}
                                 {/capture}{$description|strip_tags|replace:"\"":""}" />

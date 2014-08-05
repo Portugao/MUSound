@@ -48,12 +48,12 @@ class MUSound_Api_User extends MUSound_Api_Base_User
                              'text' => $this->__('Albums'),
                              'title' => $this->__('Album list'));
         }
-        if (in_array('track', $allowedObjectTypes)
+        /* if (in_array('track', $allowedObjectTypes)
             && SecurityUtil::checkPermission($this->name . ':Track:', '::', ACCESS_READ)) {
             $links[] = array('url' => ModUtil::url($this->name, 'user', 'view', array('ot' => 'track')),
                              'text' => $this->__('Tracks'),
                              'title' => $this->__('Track list'));
-        }
+        } */
 
         return $links;
     }

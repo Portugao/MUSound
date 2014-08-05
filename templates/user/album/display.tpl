@@ -10,7 +10,7 @@
     {gt text='Album' assign='templateTitle'}
     {assign var='templateTitle' value=$album->getTitleFromDisplayPattern()|default:$templateTitle}
     {pagesetvar name='title' value=$templateTitle|@html_entity_decode}
-    <h2>{$templateTitle|notifyfilters:'musound.filter_hooks.albums.filter'} <small>({$album.workflowState|musoundObjectState:false|lower})</small>{icon id='itemActionsTrigger' type='options' size='extrasmall' __alt='Actions' class='z-pointer z-hide'}</h2>
+    <h2>{$templateTitle|notifyfilters:'musound.filter_hooks.albums.filter'} {* <small>({$album.workflowState|musoundObjectState:false|lower})</small> *}{icon id='itemActionsTrigger' type='options' size='extrasmall' __alt='Actions' class='z-pointer z-hide'}</h2>
 
     {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
         <div class="musound-player">

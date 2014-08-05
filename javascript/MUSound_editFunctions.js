@@ -12,7 +12,7 @@ Ajax.Autocompleter.prototype.updateChoices = function (choices)
         if (!choices || choices == '<ul></ul>') {
             this.stopIndicator();
             var idPrefix = this.options.indicator.replace('Indicator', '');
-            if ($(idPrefix + 'NoResultsHint') != undefined) {
+            if ($(idPrefix + 'NoResultsHint') != null) {
                 $(idPrefix + 'NoResultsHint').removeClassName('z-hide');
             }
         } else {
@@ -49,7 +49,7 @@ Ajax.Autocompleter.prototype.updateChoices = function (choices)
  */
 function musoundResetUploadField(fieldName)
 {
-    if ($(fieldName) != undefined) {
+    if ($(fieldName) != null) {
         $(fieldName).setAttribute('type', 'input');
         $(fieldName).setAttribute('type', 'file');
     }
@@ -60,7 +60,7 @@ function musoundResetUploadField(fieldName)
  */
 function musoundInitUploadField(fieldName)
 {
-    if ($('reset' + fieldName.capitalize() + 'Val') != undefined) {
+    if ($('reset' + fieldName.capitalize() + 'Val') != null) {
         $('reset' + fieldName.capitalize() + 'Val').observe('click', function (evt) {
             evt.preventDefault();
             musoundResetUploadField(fieldName);
@@ -73,11 +73,11 @@ function musoundInitUploadField(fieldName)
  */
 function musoundResetDateField(fieldName)
 {
-    if ($(fieldName) != undefined) {
+    if ($(fieldName) != null) {
         $(fieldName).value = '';
     }
-    if ($(fieldName + 'cal') != undefined) {
-        $(fieldName + 'cal').update(Zikula.__('No date set.', 'module_MUSound'));
+    if ($(fieldName + 'cal') != null) {
+        $(fieldName + 'cal').update(Zikula.__('No date set.', 'module_musound_js'));
     }
 }
 
@@ -86,7 +86,7 @@ function musoundResetDateField(fieldName)
  */
 function musoundInitDateField(fieldName)
 {
-    if ($('reset' + fieldName.capitalize() + 'Val') != undefined) {
+    if ($('reset' + fieldName.capitalize() + 'Val') != null) {
         $('reset' + fieldName.capitalize() + 'Val').observe('click', function (evt) {
             evt.preventDefault();
             musoundResetDateField(fieldName);
@@ -100,7 +100,7 @@ function musoundInitDateField(fieldName)
 function musoundToggleRelatedItemForm(idPrefix)
 {
     // if we don't have a toggle link do nothing
-    if ($(idPrefix + 'AddLink') === undefined) {
+    if ($(idPrefix + 'AddLink') === null) {
         return;
     }
 
@@ -128,7 +128,7 @@ function musoundResetRelatedItemForm(idPrefix)
  * For edit forms we use "iframe: true" to ensure file uploads work without problems.
  * For all other windows we use "iframe: false" because we want the escape key working.
  */
-function musoundCreateWindowInstance(containerElem, useIframe)
+function musoundCreateRelationWindowInstance(containerElem, useIframe)
 {
     var newWindow;
 
@@ -156,7 +156,7 @@ function musoundCreateWindowInstance(containerElem, useIframe)
 /**
  * Observe a link for opening an inline window
  */
-function musoundInitInlineWindow(objectType, containerID)
+function musoundinitInlineRelationWindow(objectType, containerID)
 {
     var found, newItem;
 
@@ -175,7 +175,7 @@ function musoundInitInlineWindow(objectType, containerID)
                 relationHandler.windowInstance.destroy();
             }
             // create and assign the new window instance
-            relationHandler.windowInstance = musoundCreateWindowInstance($(containerID), true);
+            relationHandler.windowInstance = musoundCreateRelationWindowInstance($(containerID), true);
         }
     });
 
@@ -187,7 +187,7 @@ function musoundInitInlineWindow(objectType, containerID)
         newItem.alias = '';
         newItem.prefix = containerID;
         newItem.acInstance = null;
-        newItem.windowInstance = musoundCreateWindowInstance($(containerID), true);
+        newItem.windowInstance = musoundCreateRelationWindowInstance($(containerID), true);
 
         // add it to the list of handlers
         relationHandler.push(newItem);
@@ -249,7 +249,7 @@ function musoundSelectRelatedItem(objectType, idPrefix, inputField, selectedList
         editLink.update(' ' + editImage);
 
         $(elemPrefix + 'Edit').observe('click', function (e) {
-            musoundInitInlineWindow(objectType, idPrefix + 'Reference_' + newItemId + 'Edit');
+            musoundinitInlineRelationWindow(objectType, idPrefix + 'Reference_' + newItemId + 'Edit');
             e.stop();
         });
     }
@@ -283,13 +283,13 @@ function musoundInitRelationItemsForm(objectType, idPrefix, includeEditing)
     var acOptions, itemIds, itemIdsArr;
 
     // add handling for the toggle link if existing
-    if ($(idPrefix + 'AddLink') !== undefined) {
+    if ($(idPrefix + 'AddLink') !== null) {
         $(idPrefix + 'AddLink').observe('click', function (e) {
             musoundToggleRelatedItemForm(idPrefix);
         });
     }
     // add handling for the cancel button
-    if ($(idPrefix + 'SelectorDoCancel') !== undefined) {
+    if ($(idPrefix + 'SelectorDoCancel') !== null) {
         $(idPrefix + 'SelectorDoCancel').observe('click', function (e) {
             musoundResetRelatedItemForm(idPrefix);
         });
@@ -306,11 +306,11 @@ function musoundInitRelationItemsForm(objectType, idPrefix, includeEditing)
 
             // modify the query string before the request
             queryString = defaultQueryString + '&ot=' + objectType;
-            if ($(idPrefix + 'ItemList') !== undefined) {
+            if ($(idPrefix + 'ItemList') !== null) {
                 queryString += '&exclude=' + $F(idPrefix + 'ItemList');
             }
 
-            if ($(idPrefix + 'NoResultsHint') != undefined) {
+            if ($(idPrefix + 'NoResultsHint') != null) {
                 $(idPrefix + 'NoResultsHint').addClassName('z-hide');
             }
 
@@ -333,14 +333,14 @@ function musoundInitRelationItemsForm(objectType, idPrefix, includeEditing)
         }
     });
 
-    if (!includeEditing || $(idPrefix + 'SelectorDoNew') === undefined) {
+    if (!includeEditing || $(idPrefix + 'SelectorDoNew') === null) {
         return;
     }
 
     // from here inline editing will be handled
     $(idPrefix + 'SelectorDoNew').href += '&theme=Printer&idp=' + idPrefix + 'SelectorDoNew';
     $(idPrefix + 'SelectorDoNew').observe('click', function(e) {
-        musoundInitInlineWindow(objectType, idPrefix + 'SelectorDoNew');
+        musoundinitInlineRelationWindow(objectType, idPrefix + 'SelectorDoNew');
         e.stop();
     });
 
@@ -353,7 +353,7 @@ function musoundInitRelationItemsForm(objectType, idPrefix, includeEditing)
             elemPrefix = idPrefix + 'Reference_' + existingId + 'Edit';
             $(elemPrefix).href += '&theme=Printer&idp=' + elemPrefix;
             $(elemPrefix).observe('click', function (e) {
-                musoundInitInlineWindow(objectType, elemPrefix);
+                musoundinitInlineRelationWindow(objectType, elemPrefix);
                 e.stop();
             });
         }
@@ -380,8 +380,8 @@ function musoundCloseWindowFromInside(idPrefix, itemId)
                 if (relationHandler.acInstance !== null) {
                     // activate it
                     relationHandler.acInstance.activate();
-                    // show a message 
-                    Zikula.UI.Alert(Zikula.__('Action has been completed.', 'module_musound_js'), Zikula.__('Information','module_musound_js'), {
+                    // show a message
+                    Zikula.UI.Alert(Zikula.__('Action has been completed.', 'module_musound_js'), Zikula.__('Information', 'module_musound_js'), {
                         autoClose: 3 // time in seconds
                     });
                 }

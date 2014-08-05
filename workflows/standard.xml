@@ -42,7 +42,6 @@
             <operation>update</operation>
         </action>
         
-        
         <action id="submit">
             <title>Submit</title>
             <description>Submit content for acceptance by a moderator.</description>
@@ -51,7 +50,6 @@
         
             <operation>update</operation>
         </action>
-        
         
         <action id="approve">
             <title>Submit and Approve</title>
@@ -63,7 +61,6 @@
         </action>
         
         <!-- From state: Deferred -->
-        
         <action id="submit">
             <title>Submit</title>
             <description>Submit content for acceptance by a moderator.</description>
@@ -93,7 +90,6 @@
             <operation>update</operation>
         </action>
         
-        
         <action id="reject">
             <title>Reject</title>
             <description>Reject content and require improvements.</description>
@@ -103,7 +99,6 @@
         
             <operation>update</operation>
         </action>
-        
         
         <action id="approve">
             <title>Approve</title>
@@ -165,6 +160,7 @@
             <state>deferred</state>
         
             <operation>delete</operation>
+            <operation recipientType="creator" action="delete">notify</operation>
         </action>
         
         <action id="delete">
@@ -174,6 +170,7 @@
             <state>waiting</state>
         
             <operation>delete</operation>
+            <operation recipientType="creator" action="delete">notify</operation>
         </action>
         
         <action id="delete">
@@ -183,6 +180,7 @@
             <state>approved</state>
         
             <operation>delete</operation>
+            <operation recipientType="creator" action="delete">notify</operation>
         </action>
         
         <action id="delete">
@@ -192,6 +190,7 @@
             <state>suspended</state>
         
             <operation>delete</operation>
+            <operation recipientType="creator" action="delete">notify</operation>
         </action>
         
     </actions>
