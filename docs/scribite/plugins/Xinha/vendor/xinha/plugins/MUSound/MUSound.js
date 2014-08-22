@@ -19,7 +19,7 @@ function MUSound(editor) {
         id       : 'MUSound',
         tooltip  : 'Insert MUSound object',
      // image    : _editor_url + 'plugins/MUSound/img/ed_MUSound.gif',
-        image    : '/images/icons/extrasmall/favorites.png',
+        image    : '/modules/MUSound/images/musound.png',
         textMode : false,
         action   : function (editor) {
             var url = Zikula.Config.baseURL + 'index.php'/*Zikula.Config.entrypoint*/ + '?module=MUSound&type=external&func=finder&editor=xinha';
