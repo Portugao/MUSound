@@ -16,7 +16,7 @@ Changed Files
 
 Implemented Classes
 
-
+*lib/MUSound/Installer.php
 *lib/MUSound/Version.php
 
 *lib/MUSound/Api/Admin.php

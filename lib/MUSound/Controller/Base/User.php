@@ -73,6 +73,7 @@ class MUSound_Controller_Base_User extends Zikula_AbstractController
         }
         $permLevel = ACCESS_READ;
         $this->throwForbiddenUnless(SecurityUtil::checkPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel), LogUtil::getErrorMsgPermission());
+        
         // redirect to entity controller
         
         System::queryStringSetVar('lct', 'user');
@@ -103,6 +104,7 @@ class MUSound_Controller_Base_User extends Zikula_AbstractController
         }
         $permLevel = ACCESS_READ;
         $this->throwForbiddenUnless(SecurityUtil::checkPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel), LogUtil::getErrorMsgPermission());
+        
         // redirect to entity controller
         
         System::queryStringSetVar('lct', 'user');
@@ -132,6 +134,7 @@ class MUSound_Controller_Base_User extends Zikula_AbstractController
         }
         $permLevel = ACCESS_EDIT;
         $this->throwForbiddenUnless(SecurityUtil::checkPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel), LogUtil::getErrorMsgPermission());
+        
         // redirect to entity controller
         
         System::queryStringSetVar('lct', 'user');
