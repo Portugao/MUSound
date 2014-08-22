@@ -43,7 +43,7 @@ class MUSound_UploadHandler extends MUSound_Base_UploadHandler
         $allowedExtensions = array();
         switch ($objectType) {
             case 'album':
-                $allowedExtensions = explode(',', ModUtil::getVar('MUSound', 'allowedExtensions'));
+                $allowedExtensions = explode(',', ModUtil::getVar('MUSound', 'allowedExtensionCover'));
                 break;
             case 'track':
                 switch ($fieldName) {
