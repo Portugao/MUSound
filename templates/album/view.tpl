@@ -50,11 +50,13 @@
                     <col id="cWorkflowState" />
                 {/if}
                 <col id="cTitle" />
+                {if $lct eq 'admin'}
                 <col id="cDescription" />
                 <col id="cAuthor" />
                 <col id="cUploadCover" />
                 <col id="cPublishedDate" />
                 <col id="cPublishedText" />
+                {/if}
                 <col id="cCollection" />
                 <col id="cItemActions" />
             </colgroup>
@@ -73,6 +75,7 @@
                 <th id="hTitle" scope="col" class="z-left">
                     {sortlink __linktext='Title' currentsort=$sort modname='MUSound' type=$lct func='view' sort='title' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
                 </th>
+                {if $lct eq 'admin'}
                 <th id="hDescription" scope="col" class="z-left">
                     {sortlink __linktext='Description' currentsort=$sort modname='MUSound' type=$lct func='view' sort='description' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
                 </th>
@@ -88,6 +91,7 @@
                 <th id="hPublishedText" scope="col" class="z-left">
                     {sortlink __linktext='Published text' currentsort=$sort modname='MUSound' type=$lct func='view' sort='publishedText' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
                 </th>
+                {/if}
                 <th id="hCollection" scope="col" class="z-left">
                     {sortlink __linktext='Collection' currentsort=$sort modname='MUSound' type=$lct func='view' sort='collection' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
                 </th>
@@ -110,6 +114,7 @@
                 <td headers="hTitle" class="z-left">
                     <a href="{modurl modname='MUSound' type=$lct func='display' ot='album'  id=$album.id}" title="{gt text='View detail page'}">{$album.title|notifyfilters:'musound.filterhook.albums'}</a>
                 </td>
+                {if $lct eq 'admin'}
                 <td headers="hDescription" class="z-left">
                     {$album.description}
                 </td>
@@ -133,6 +138,7 @@
                 <td headers="hPublishedText" class="z-left">
                     {$album.publishedText}
                 </td>
+                {/if}
                 <td headers="hCollection" class="z-left">
                     {if isset($album.Collection) && $album.Collection ne null}
                         <a href="{modurl modname='MUSound' type=$lct func='display' ot='collection'  id=$album.Collection.id}">{strip}

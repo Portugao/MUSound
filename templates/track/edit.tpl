@@ -1,5 +1,9 @@
 {* purpose of this template: build the Form to edit an instance of track *}
-{include file='admin/header.tpl'}
+{assign var='lct' value='user'}
+{if isset($smarty.get.lct) && $smarty.get.lct eq 'admin'}
+    {assign var='lct' value='admin'}
+{/if}
+{include file="`$lct`/header.tpl"}
 {pageaddvar name='javascript' value='modules/MUSound/javascript/MUSound_editFunctions.js'}
 {pageaddvar name='javascript' value='modules/MUSound/javascript/MUSound_validation.js'}
 
@@ -150,7 +154,7 @@
     {/musoundFormFrame}
 {/form}
 </div>
-{include file='admin/footer.tpl'}
+{include file="`$lct`/footer.tpl"}
 
 {icon type='edit' size='extrasmall' assign='editImageArray'}
 {icon type='delete' size='extrasmall' assign='removeImageArray'}

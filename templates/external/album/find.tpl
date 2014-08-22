@@ -66,6 +66,7 @@
                     <select id="mUSoundPasteAs" name="pasteas">
                         <option value="1">{gt text='Link to the album'}</option>
                         <option value="2">{gt text='ID of album'}</option>
+                        <option value="3">{gt text='Player'}</option>
                     </select>
             </div>
             <br />
