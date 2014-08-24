@@ -33,6 +33,13 @@ class MUSound_Controller_Track extends MUSound_Controller_Base_Track
         $legacyControllerType = $this->request->query->filter('lct', 'user', FILTER_SANITIZE_STRING);
         System::queryStringSetVar('type', $legacyControllerType);
         $this->request->query->set('type', $legacyControllerType);
+        
+        $dom = ZLanguage::getModuleDomain($this->name);
+        
+        if ($legacyControllerType == 'user') {
+            LogUtil::registerError(__('Sorry. You have no permission to have a view to tracks.', $dom ));
+            return System::redirect(ModUtil::url($this->name, 'user', 'view', array('ot' => 'collection')));
+        }
     
         $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
         
