@@ -22,6 +22,9 @@ Implemented Classes
 *lib/MUSound/Api/Admin.php
 *lib/MUSound/Api/User.php
 
+*lib/MUSound/Controller/Album.php
+*lib/MUSound/Controller/Collection.php
+*lib/MUSound/Controller/Tracks.php
 *lib/MUSound/Controller/User.php
 
 *lib/MUSound/UploadHandler.php
