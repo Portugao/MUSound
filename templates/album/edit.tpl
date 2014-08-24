@@ -93,7 +93,7 @@
     </fieldset>
     
     {include file='admin/include_categories_edit.tpl' obj=$album groupName='albumObj'}
-    {include file='admin/collection/include_selectEditOne.tpl' group='album' alias='collection' aliasReverse='album' mandatory=false idPrefix='musoundAlbum_Collection' linkingItem=$album displayMode='dropdown' allowEditing=true}
+    {include file='collection/include_selectEditOne.tpl' group='album' alias='collection' aliasReverse='album' mandatory=false idPrefix='musoundAlbum_Collection' linkingItem=$album displayMode='dropdown' allowEditing=true}
     {if $mode ne 'create'}
         {include file='admin/include_standardfields_edit.tpl' obj=$album}
     {/if}

@@ -105,7 +105,7 @@
         </div>
     </fieldset>
     
-    {include file='admin/album/include_selectEditOne.tpl' group='track' alias='album' aliasReverse='track' mandatory=false idPrefix='musoundTrack_Album' linkingItem=$track displayMode='dropdown' allowEditing=true}
+    {include file='album/include_selectEditOne.tpl' group='track' alias='album' aliasReverse='track' mandatory=false idPrefix='musoundTrack_Album' linkingItem=$track displayMode='dropdown' allowEditing=true}
     {if $mode ne 'create'}
         {include file='admin/include_standardfields_edit.tpl' obj=$track}
     {/if}
