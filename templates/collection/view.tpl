@@ -50,6 +50,7 @@
                 {/if}
                 <col id="cTitle" />
                 <col id="cDescription" />
+                <col id="cAlbums" />
                 <col id="cItemActions" />
             </colgroup>
             <thead>
@@ -64,6 +65,9 @@
                 </th>
                 <th id="hDescription" scope="col" class="z-left">
                     {sortlink __linktext='Description' currentsort=$sort modname='MUSound' type=$lct func='view' sort='description' sortdir=$sdir all=$all own=$own workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='collection'}
+                </th>
+                <th id="hAlbums" scope="col" class="z-left">
+                    {gt text='Amount of albums'}   
                 </th>
                 <th id="hItemActions" scope="col" class="z-right z-order-unsorted">{gt text='Actions'}</th>
             </tr>
@@ -82,6 +86,9 @@
                 </td>
                 <td headers="hDescription" class="z-left">
                     {$collection.description}
+                </td>
+                <td headers="hDescription" class="z-left">
+                    {gt text="%s Album" plural="%s Albums" tag1=$collection.album|@count count=$collection.album|@count}
                 </td>
                 <td id="itemActions{$collection.id}" headers="hItemActions" class="z-right z-nowrap z-w02">
                     {if count($collection._actions) gt 0}
