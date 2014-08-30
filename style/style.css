@@ -12,7 +12,7 @@ div#z-maincontent.z-module-musound table tbody tr td {
     float: right;
     margin: 0 1em;
     padding: .5em;
-    width: 20%;
+    width: 40%;
     /*border: 1px solid #666;*/
 }
 
@@ -67,6 +67,15 @@ div.musound-edit .z-panel-content legend {
     display: none;
 }
 
+
+div.musound-autocomplete-wrap {
+    position: absolute;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    left: 260px;
+    top: 10px;
+}
 
 div.musound-autocomplete,
 div.musound-autocomplete-withimage {
@@ -148,4 +157,16 @@ div.musound-view form.musound-quicknav fieldset h3 {
 div.musound-view form.musound-quicknav fieldset #num {
     width: 50px;
     text-align: right;
+}
+
+
+#wrapper2 .ttw-music-player {
+    background: #333;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    border-radius: 10px;
+}
+
+.rating, .duration {
+    display: none !important;	
 }
