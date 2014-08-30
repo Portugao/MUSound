@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-22 14:57+0000\n"
+"POT-Creation-Date: 2014-08-30 16:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,9 +104,9 @@ msgstr ""
 #: workflows/function.standard_permissioncheck.php:78
 #: workflows/function.standard_permissioncheck.php:84
 #: workflows/function.none_permissioncheck.php:75
-#: Resources/templates/album/view.tpl:198
-#: templates/admin/collection/view.tpl:108 templates/admin/track/view.tpl:165
-#: templates/admin/album/view.tpl:175 templates/collection/view.tpl:123
+#: Resources/templates/collection/view.tpl:130
+#: Resources/templates/track/view.tpl:180
+#: Resources/templates/album/view.tpl:198 templates/collection/view.tpl:123
 #: templates/track/view.tpl:180 templates/album/view.tpl:198
 msgid "Submit"
 msgstr ""
@@ -159,13 +159,9 @@ msgstr ""
 #: lib/MUSound/Entity/Base/Track.php:1181
 #: lib/MUSound/Entity/Base/Collection.php:880
 #: lib/MUSound/Entity/Base/Collection.php:881
-#: Resources/templates/album/view.tpl:196
-#: templates/admin/collection/view.tpl:106
-#: templates/admin/collection/delete.tpl:7
-#: templates/admin/collection/delete.tpl:20 templates/admin/track/view.tpl:163
-#: templates/admin/track/delete.tpl:7 templates/admin/track/delete.tpl:20
-#: templates/admin/album/view.tpl:173 templates/admin/album/delete.tpl:7
-#: templates/admin/album/delete.tpl:20 templates/collection/view.tpl:121
+#: Resources/templates/collection/view.tpl:128
+#: Resources/templates/track/view.tpl:178
+#: Resources/templates/album/view.tpl:196 templates/collection/view.tpl:121
 #: templates/collection/delete.tpl:12 templates/collection/delete.tpl:28
 #: templates/track/view.tpl:178 templates/track/delete.tpl:12
 #: templates/track/delete.tpl:28 templates/album/view.tpl:196
@@ -178,9 +174,9 @@ msgstr ""
 #: workflows/function.standard_permissioncheck.php:99
 #: workflows/function.standard_permissioncheck.php:105
 #: workflows/function.none_permissioncheck.php:80
-#: Resources/templates/album/view.tpl:196
-#: templates/admin/collection/view.tpl:106 templates/admin/track/view.tpl:163
-#: templates/admin/album/view.tpl:173 templates/collection/view.tpl:121
+#: Resources/templates/collection/view.tpl:128
+#: Resources/templates/track/view.tpl:178
+#: Resources/templates/album/view.tpl:196 templates/collection/view.tpl:121
 #: templates/track/view.tpl:178 templates/album/view.tpl:196
 msgid "Delete content permanently."
 msgstr ""
@@ -194,38 +190,32 @@ msgid "Reject content and require improvements."
 msgstr ""
 
 #: workflows/function.standard_permissioncheck.php:92
-#: Resources/templates/album/view.tpl:193 templates/admin/album/view.tpl:170
-#: templates/album/view.tpl:193
+#: Resources/templates/album/view.tpl:193 templates/album/view.tpl:193
 msgid "Approve"
 msgstr ""
 
 #: workflows/function.standard_permissioncheck.php:92
-#: Resources/templates/album/view.tpl:193 templates/admin/album/view.tpl:170
-#: templates/album/view.tpl:193
+#: Resources/templates/album/view.tpl:193 templates/album/view.tpl:193
 msgid "Update content and approve for immediate publishing."
 msgstr ""
 
 #: workflows/function.standard_permissioncheck.php:98
-#: Resources/templates/album/view.tpl:194 templates/admin/album/view.tpl:171
-#: templates/album/view.tpl:194
+#: Resources/templates/album/view.tpl:194 templates/album/view.tpl:194
 msgid "Unpublish"
 msgstr ""
 
 #: workflows/function.standard_permissioncheck.php:98
-#: Resources/templates/album/view.tpl:194 templates/admin/album/view.tpl:171
-#: templates/album/view.tpl:194
+#: Resources/templates/album/view.tpl:194 templates/album/view.tpl:194
 msgid "Hide content temporarily."
 msgstr ""
 
 #: workflows/function.standard_permissioncheck.php:104
-#: Resources/templates/album/view.tpl:195 templates/admin/album/view.tpl:172
-#: templates/album/view.tpl:195
+#: Resources/templates/album/view.tpl:195 templates/album/view.tpl:195
 msgid "Publish"
 msgstr ""
 
 #: workflows/function.standard_permissioncheck.php:104
-#: Resources/templates/album/view.tpl:195 templates/admin/album/view.tpl:172
-#: templates/album/view.tpl:195
+#: Resources/templates/album/view.tpl:195 templates/album/view.tpl:195
 msgid "Make content available again."
 msgstr ""
 
@@ -265,14 +255,9 @@ msgstr ""
 #: lib/MUSound/Api/Base/User.php:42 lib/MUSound/Api/Base/Admin.php:42
 #: lib/MUSound/Api/User.php:48 lib/MUSound/Api/Admin.php:48
 #: templates/external/collection/find.tpl:25
-#: templates/external/track/find.tpl:25
-#: templates/admin/collection/display.tpl:14
-#: templates/admin/track/view_quickNav.tpl:15
-#: templates/collection/display.tpl:25 templates/collection/display.tpl:27
-#: templates/user/collection/display.tpl:11
-#: templates/user/track/view_quickNav.tpl:15
-#: templates/track/view_quickNav.tpl:15 templates/search/options.tpl:5
-#: templates/block/itemlist_modify.tpl:5
+#: templates/external/track/find.tpl:25 templates/collection/display.tpl:25
+#: templates/collection/display.tpl:27 templates/track/view_quickNav.tpl:15
+#: templates/search/options.tpl:5 templates/block/itemlist_modify.tpl:5
 msgid "Albums"
 msgstr ""
 
@@ -282,10 +267,8 @@ msgstr ""
 #: lib/MUSound/Api/Admin.php:54 Resources/templates/external/album/find.tpl:25
 #: Resources/templates/album/display.tpl:21
 #: templates/external/collection/find.tpl:26
-#: templates/external/album/find.tpl:25 templates/admin/album/display.tpl:14
-#: templates/user/album/display.tpl:17 templates/search/options.tpl:9
-#: templates/album/display.tpl:25 templates/album/display.tpl:27
-#: templates/block/itemlist_modify.tpl:6
+#: templates/external/album/find.tpl:25 templates/search/options.tpl:9
+#: templates/album/display.tpl:21 templates/block/itemlist_modify.tpl:6
 msgid "Tracks"
 msgstr ""
 
@@ -295,9 +278,8 @@ msgstr ""
 #: lib/MUSound/Api/User.php:42 lib/MUSound/Api/Admin.php:42
 #: Resources/templates/external/album/find.tpl:26
 #: templates/external/track/find.tpl:26 templates/external/album/find.tpl:26
-#: templates/admin/album/view_quickNav.tpl:39
-#: templates/user/album/view_quickNav.tpl:39 templates/search/options.tpl:13
-#: templates/album/view_quickNav.tpl:39 templates/block/itemlist_modify.tpl:7
+#: templates/search/options.tpl:13 templates/album/view_quickNav.tpl:39
+#: templates/block/itemlist_modify.tpl:7
 msgid "Collections"
 msgstr ""
 
@@ -625,20 +607,14 @@ msgstr ""
 #: lib/MUSound/Form/Plugin/Base/RelationSelectorAutoComplete.php:149
 #: Resources/templates/external/album/find.tpl:137
 #: Resources/templates/admin/config.tpl:111
-#: Resources/templates/user/track/edit.tpl:142
-#: Resources/templates/user/album/edit.tpl:130
 #: Resources/templates/track/edit.tpl:152
 #: Resources/templates/album/edit.tpl:140
 #: templates/external/collection/find.tpl:107
 #: templates/external/track/find.tpl:110 templates/external/album/find.tpl:137
-#: templates/admin/config.tpl:111 templates/admin/collection/edit.tpl:85
-#: templates/admin/collection/delete.tpl:22 templates/admin/track/edit.tpl:148
-#: templates/admin/track/delete.tpl:22 templates/admin/album/edit.tpl:136
-#: templates/admin/album/delete.tpl:22 templates/collection/edit.tpl:100
-#: templates/collection/delete.tpl:30 templates/user/collection/edit.tpl:79
-#: templates/user/track/edit.tpl:142 templates/user/album/edit.tpl:130
-#: templates/track/edit.tpl:152 templates/track/delete.tpl:30
-#: templates/album/edit.tpl:140 templates/album/delete.tpl:30
+#: templates/admin/config.tpl:111 templates/collection/edit.tpl:100
+#: templates/collection/delete.tpl:30 templates/track/edit.tpl:152
+#: templates/track/delete.tpl:30 templates/album/edit.tpl:140
+#: templates/album/delete.tpl:30
 msgid "Cancel"
 msgstr ""
 
@@ -671,15 +647,7 @@ msgstr ""
 #: lib/MUSound/ContentType/Base/ItemList.php:409
 #: Resources/templates/external/album/find.tpl:40
 #: templates/external/album/find.tpl:40 templates/external/album/select.tpl:15
-#: templates/admin/collection/view_quickNav.tpl:13
-#: templates/admin/track/view_quickNav.tpl:13
-#: templates/admin/album/view_quickNav.tpl:13
-#: templates/admin/album/view_quickNav.tpl:17
 #: templates/collection/view_quickNav.tpl:13
-#: templates/user/collection/view_quickNav.tpl:13
-#: templates/user/track/view_quickNav.tpl:13
-#: templates/user/album/view_quickNav.tpl:13
-#: templates/user/album/view_quickNav.tpl:17
 #: templates/track/view_quickNav.tpl:13 templates/album/view_quickNav.tpl:13
 #: templates/album/view_quickNav.tpl:18 templates/block/itemlist_modify.tpl:13
 msgid "All"
@@ -1015,10 +983,7 @@ msgstr ""
 #: lib/MUSound/Entity/Base/Track.php:1200
 #: lib/MUSound/Entity/Base/Collection.php:856
 #: lib/MUSound/Entity/Base/Collection.php:921
-#: templates/admin/collection/display.tpl:8
-#: templates/admin/track/display.tpl:8 templates/admin/album/display.tpl:8
-#: templates/collection/display.tpl:13 templates/track/display.tpl:13
-#: templates/album/display.tpl:13
+#: templates/collection/display.tpl:13
 msgid "Details"
 msgstr ""
 
@@ -1076,14 +1041,9 @@ msgstr ""
 #: lib/MUSound/Entity/Base/Album.php:1231
 #: lib/MUSound/Entity/Base/Album.php:1290
 #: lib/MUSound/Entity/Base/Album.php:1291
-#: Resources/templates/user/track/view.tpl:10
-#: Resources/templates/user/track/edit.tpl:9
-#: Resources/templates/track/edit.tpl:14
-#: Resources/templates/album/display.tpl:30 templates/admin/track/view.tpl:13
-#: templates/admin/track/edit.tpl:10 templates/admin/album/display.tpl:23
-#: templates/user/track/view.tpl:10 templates/user/track/edit.tpl:9
-#: templates/user/album/display.tpl:26 templates/track/view.tpl:21
-#: templates/track/edit.tpl:14 templates/album/display.tpl:41
+#: Resources/templates/track/view.tpl:21 Resources/templates/track/edit.tpl:14
+#: Resources/templates/album/display.tpl:30 templates/track/view.tpl:21
+#: templates/track/edit.tpl:14 templates/album/display.tpl:30
 msgid "Create track"
 msgstr ""
 
@@ -1091,13 +1051,8 @@ msgstr ""
 #: lib/MUSound/Entity/Base/Collection.php:911
 #: lib/MUSound/Entity/Base/Collection.php:967
 #: lib/MUSound/Entity/Base/Collection.php:968
-#: Resources/templates/user/album/view.tpl:10
-#: Resources/templates/user/album/edit.tpl:9
 #: Resources/templates/album/view.tpl:21 Resources/templates/album/edit.tpl:14
-#: templates/admin/collection/display.tpl:23 templates/admin/album/view.tpl:13
-#: templates/admin/album/edit.tpl:10 templates/collection/display.tpl:41
-#: templates/user/collection/display.tpl:20 templates/user/album/view.tpl:10
-#: templates/user/album/edit.tpl:9 templates/album/view.tpl:21
+#: templates/collection/display.tpl:41 templates/album/view.tpl:21
 #: templates/album/edit.tpl:14
 msgid "Create album"
 msgstr ""
@@ -1154,23 +1109,19 @@ msgstr ""
 
 #: lib/MUSound/Api/Base/User.php:43 lib/MUSound/Api/Base/Admin.php:43
 #: lib/MUSound/Api/User.php:49 lib/MUSound/Api/Admin.php:49
-#: Resources/templates/user/album/view.tpl:4
-#: Resources/templates/album/view.tpl:8 templates/admin/album/view.tpl:4
-#: templates/user/album/view.tpl:4 templates/album/view.tpl:8
+#: Resources/templates/album/view.tpl:8 templates/album/view.tpl:8
 msgid "Album list"
 msgstr ""
 
 #: lib/MUSound/Api/Base/User.php:49 lib/MUSound/Api/Base/Admin.php:49
-#: lib/MUSound/Api/Admin.php:55 Resources/templates/user/track/view.tpl:4
-#: templates/admin/track/view.tpl:4 templates/user/track/view.tpl:4
+#: lib/MUSound/Api/Admin.php:55 Resources/templates/track/view.tpl:8
 #: templates/track/view.tpl:8
 msgid "Track list"
 msgstr ""
 
 #: lib/MUSound/Api/Base/User.php:55 lib/MUSound/Api/Base/Admin.php:55
 #: lib/MUSound/Api/User.php:43 lib/MUSound/Api/Admin.php:43
-#: templates/admin/collection/view.tpl:4 templates/collection/view.tpl:8
-#: templates/user/collection/view.tpl:4
+#: Resources/templates/collection/view.tpl:8 templates/collection/view.tpl:8
 msgid "Collection list"
 msgstr ""
 
@@ -1228,33 +1179,24 @@ msgstr ""
 msgid "Error: Invalid editor context given for external controller action."
 msgstr ""
 
+#: lib/MUSound/Controller/Track.php:40
+msgid "Sorry. You have no permission to have a view to tracks."
+msgstr ""
+
 #: Resources/templates/external/album/display.tpl:33
-#: Resources/templates/user/track/display.tpl:28
-#: Resources/templates/user/track/display.tpl:39
-#: Resources/templates/user/track/view.tpl:84
-#: Resources/templates/user/track/view.tpl:95
-#: Resources/templates/user/track/edit.tpl:55
-#: Resources/templates/user/track/edit.tpl:83
-#: Resources/templates/user/album/view.tpl:96
-#: Resources/templates/user/album/edit.tpl:55
+#: Resources/templates/track/display.tpl:28
+#: Resources/templates/track/display.tpl:39
+#: Resources/templates/track/view.tpl:111
+#: Resources/templates/track/view.tpl:122
 #: Resources/templates/track/edit.tpl:65 Resources/templates/track/edit.tpl:93
 #: Resources/templates/album/display.tpl:50
 #: Resources/templates/album/view.tpl:130
 #: Resources/templates/album/edit.tpl:65
 #: templates/external/album/display.tpl:33 templates/external/album/info.tpl:9
-#: templates/admin/track/display.tpl:25 templates/admin/track/display.tpl:36
-#: templates/admin/track/view.tpl:98 templates/admin/track/view.tpl:109
-#: templates/admin/track/edit.tpl:61 templates/admin/track/edit.tpl:89
-#: templates/admin/album/display.tpl:45 templates/admin/album/view.tpl:110
-#: templates/admin/album/edit.tpl:61 templates/user/track/display.tpl:28
-#: templates/user/track/display.tpl:39 templates/user/track/view.tpl:84
-#: templates/user/track/view.tpl:95 templates/user/track/edit.tpl:55
-#: templates/user/track/edit.tpl:83 templates/user/album/display.tpl:46
-#: templates/user/album/view.tpl:96 templates/user/album/edit.tpl:55
-#: templates/track/display.tpl:35 templates/track/display.tpl:46
+#: templates/track/display.tpl:28 templates/track/display.tpl:39
 #: templates/track/view.tpl:111 templates/track/view.tpl:122
 #: templates/track/edit.tpl:65 templates/track/edit.tpl:93
-#: templates/album/display.tpl:63 templates/album/view.tpl:130
+#: templates/album/display.tpl:50 templates/album/view.tpl:130
 #: templates/album/edit.tpl:65
 msgid "Download"
 msgstr ""
@@ -1290,11 +1232,9 @@ msgstr ""
 #: Resources/templates/external/album/find.tpl:45
 #: templates/external/album/find.tpl:45 templates/external/album/select.tpl:20
 #: templates/admin/include_categories_edit.tpl:11
-#: templates/admin/album/view_quickNav.tpl:21
 #: templates/contenttype/itemlist_edit.tpl:22
 #: templates/helper/include_categories_edit.tpl:11
 #: templates/user/include_categories_edit.tpl:11
-#: templates/user/album/view_quickNav.tpl:21
 #: templates/album/view_quickNav.tpl:21 templates/block/itemlist_modify.tpl:18
 msgid "Category"
 msgstr ""
@@ -1304,8 +1244,6 @@ msgstr ""
 #: templates/admin/include_categories_edit.tpl:3
 #: templates/admin/include_categories_edit.tpl:8
 #: templates/admin/include_categories_edit.tpl:14
-#: templates/admin/album/view_quickNav.tpl:26
-#: templates/admin/album/view.rss.tpl:41
 #: templates/admin/include_categories_display.tpl:4
 #: templates/admin/include_categories_display.tpl:7
 #: templates/contenttype/itemlist_edit.tpl:25
@@ -1317,8 +1255,6 @@ msgstr ""
 #: templates/user/include_categories_edit.tpl:3
 #: templates/user/include_categories_edit.tpl:8
 #: templates/user/include_categories_edit.tpl:14
-#: templates/user/album/view_quickNav.tpl:26
-#: templates/user/album/view.rss.tpl:41
 #: templates/user/include_categories_display.tpl:4
 #: templates/user/include_categories_display.tpl:7
 #: templates/album/view_quickNav.tpl:26 templates/album/view.rss.tpl:45
@@ -1355,24 +1291,13 @@ msgid "Player"
 msgstr ""
 
 #: Resources/templates/external/album/find.tpl:75
-#: Resources/templates/user/track/display.tpl:44
-#: Resources/templates/user/track/view.tpl:60
+#: Resources/templates/track/display.tpl:44
+#: Resources/templates/track/view.tpl:82
 #: Resources/templates/album/display.tpl:14
 #: templates/external/album/find.tpl:75 templates/external/album/select.tpl:39
-#: templates/admin/collection/view.csv.tpl:4
-#: templates/admin/track/display.tpl:41 templates/admin/track/view.tpl:71
-#: templates/admin/track/view.csv.tpl:4 templates/admin/album/display.tpl:4
-#: templates/admin/album/include_selectEditOne.tpl:9
-#: templates/admin/album/include_selectEditOne.tpl:14
-#: templates/collection/view.csv.tpl:4
-#: templates/user/collection/view.csv.tpl:4
-#: templates/user/track/display.tpl:44 templates/user/track/view.tpl:60
-#: templates/user/track/view.csv.tpl:4 templates/user/album/display.tpl:10
-#: templates/user/album/include_selectEditOne.tpl:9
-#: templates/user/album/include_selectEditOne.tpl:14
-#: templates/track/display.tpl:51 templates/track/view.tpl:82
-#: templates/track/view.csv.tpl:4 templates/album/display.tpl:8
-#: templates/album/include_selectEditOne.tpl:9
+#: templates/collection/view.csv.tpl:4 templates/track/display.tpl:44
+#: templates/track/view.tpl:82 templates/track/view.csv.tpl:4
+#: templates/album/display.tpl:14 templates/album/include_selectEditOne.tpl:9
 #: templates/album/include_selectEditOne.tpl:14
 msgid "Album"
 msgstr ""
@@ -1393,13 +1318,7 @@ msgstr ""
 #: templates/external/collection/select.tpl:25
 #: templates/external/track/find.tpl:68 templates/external/track/select.tpl:25
 #: templates/external/album/find.tpl:94 templates/external/album/select.tpl:50
-#: templates/admin/collection/view_quickNav.tpl:28
-#: templates/admin/track/view_quickNav.tpl:39
-#: templates/admin/album/view_quickNav.tpl:63
 #: templates/collection/view_quickNav.tpl:28
-#: templates/user/collection/view_quickNav.tpl:28
-#: templates/user/track/view_quickNav.tpl:39
-#: templates/user/album/view_quickNav.tpl:63
 #: templates/track/view_quickNav.tpl:39 templates/album/view_quickNav.tpl:63
 msgid "Sort by"
 msgstr ""
@@ -1409,13 +1328,7 @@ msgstr ""
 #: templates/external/collection/select.tpl:27
 #: templates/external/track/find.tpl:70 templates/external/track/select.tpl:27
 #: templates/external/album/find.tpl:96 templates/external/album/select.tpl:52
-#: templates/admin/collection/view_quickNav.tpl:31
-#: templates/admin/track/view_quickNav.tpl:42
-#: templates/admin/album/view_quickNav.tpl:66
 #: templates/collection/view_quickNav.tpl:31
-#: templates/user/collection/view_quickNav.tpl:31
-#: templates/user/track/view_quickNav.tpl:42
-#: templates/user/album/view_quickNav.tpl:66
 #: templates/track/view_quickNav.tpl:42 templates/album/view_quickNav.tpl:66
 msgid "Id"
 msgstr ""
@@ -1425,27 +1338,9 @@ msgstr ""
 #: templates/external/collection/select.tpl:28
 #: templates/external/track/find.tpl:71 templates/external/track/select.tpl:28
 #: templates/external/album/find.tpl:97 templates/external/album/select.tpl:53
-#: templates/admin/collection/view_quickNav.tpl:15
-#: templates/admin/collection/view_quickNav.tpl:32
-#: templates/admin/collection/view.csv.tpl:3
-#: templates/admin/track/view_quickNav.tpl:26
-#: templates/admin/track/view_quickNav.tpl:43
-#: templates/admin/track/view.csv.tpl:3
-#: templates/admin/album/view_quickNav.tpl:50
-#: templates/admin/album/view_quickNav.tpl:67
-#: templates/admin/album/view.csv.tpl:3
 #: templates/collection/view_quickNav.tpl:15
 #: templates/collection/view_quickNav.tpl:32
-#: templates/collection/view.csv.tpl:3
-#: templates/user/collection/view_quickNav.tpl:15
-#: templates/user/collection/view_quickNav.tpl:32
-#: templates/user/collection/view.csv.tpl:3
-#: templates/user/track/view_quickNav.tpl:26
-#: templates/user/track/view_quickNav.tpl:43
-#: templates/user/track/view.csv.tpl:3
-#: templates/user/album/view_quickNav.tpl:50
-#: templates/user/album/view_quickNav.tpl:67
-#: templates/user/album/view.csv.tpl:3 templates/track/view_quickNav.tpl:26
+#: templates/collection/view.csv.tpl:3 templates/track/view_quickNav.tpl:26
 #: templates/track/view_quickNav.tpl:43 templates/track/view.csv.tpl:3
 #: templates/album/view_quickNav.tpl:50 templates/album/view_quickNav.tpl:67
 #: templates/album/view.csv.tpl:3
@@ -1453,169 +1348,83 @@ msgid "Workflow state"
 msgstr ""
 
 #: Resources/templates/external/album/find.tpl:98
-#: Resources/templates/user/track/view.tpl:45
-#: Resources/templates/user/track/edit.tpl:25
-#: Resources/templates/user/album/view.tpl:51
-#: Resources/templates/user/album/edit.tpl:25
-#: Resources/templates/track/edit.tpl:35
+#: Resources/templates/collection/view.tpl:64
+#: Resources/templates/track/view.tpl:67 Resources/templates/track/edit.tpl:35
 #: Resources/templates/album/display.tpl:40
 #: Resources/templates/album/view.tpl:76 Resources/templates/album/edit.tpl:35
 #: templates/external/collection/find.tpl:72
 #: templates/external/collection/select.tpl:29
 #: templates/external/track/find.tpl:72 templates/external/track/select.tpl:29
 #: templates/external/album/find.tpl:98 templates/external/album/select.tpl:54
-#: templates/admin/collection/display.tpl:31
-#: templates/admin/collection/view_quickNav.tpl:33
-#: templates/admin/collection/view.tpl:52
-#: templates/admin/collection/edit.tpl:31
-#: templates/admin/collection/view.csv.tpl:3
-#: templates/admin/track/display.tpl:13
-#: templates/admin/track/view_quickNav.tpl:44
-#: templates/admin/track/view.tpl:56 templates/admin/track/edit.tpl:31
-#: templates/admin/track/view.csv.tpl:3 templates/admin/album/display.tpl:33
-#: templates/admin/album/view_quickNav.tpl:68
-#: templates/admin/album/view.tpl:62 templates/admin/album/edit.tpl:31
-#: templates/admin/album/view.csv.tpl:3 templates/collection/display.tpl:49
+#: templates/collection/display.tpl:49
 #: templates/collection/view_quickNav.tpl:33 templates/collection/view.tpl:63
 #: templates/collection/edit.tpl:45 templates/collection/view.csv.tpl:3
-#: templates/user/collection/display.tpl:28
-#: templates/user/collection/view_quickNav.tpl:33
-#: templates/user/collection/view.tpl:41 templates/user/collection/edit.tpl:25
-#: templates/user/collection/view.csv.tpl:3
-#: templates/user/track/view_quickNav.tpl:44 templates/user/track/view.tpl:45
-#: templates/user/track/edit.tpl:25 templates/user/track/view.csv.tpl:3
-#: templates/user/album/display.tpl:36
-#: templates/user/album/view_quickNav.tpl:68 templates/user/album/view.tpl:51
-#: templates/user/album/edit.tpl:25 templates/user/album/view.csv.tpl:3
-#: templates/track/display.tpl:23 templates/track/view_quickNav.tpl:44
-#: templates/track/view.tpl:67 templates/track/edit.tpl:35
-#: templates/track/view.csv.tpl:3 templates/album/display.tpl:51
-#: templates/album/view_quickNav.tpl:68 templates/album/view.tpl:76
-#: templates/album/edit.tpl:35 templates/album/view.csv.tpl:3
+#: templates/track/view_quickNav.tpl:44 templates/track/view.tpl:67
+#: templates/track/edit.tpl:35 templates/track/view.csv.tpl:3
+#: templates/album/display.tpl:40 templates/album/view_quickNav.tpl:68
+#: templates/album/view.tpl:76 templates/album/edit.tpl:35
+#: templates/album/view.csv.tpl:3
 msgid "Title"
 msgstr ""
 
 #: Resources/templates/external/album/find.tpl:99
-#: Resources/templates/user/track/display.tpl:18
-#: Resources/templates/user/track/view.tpl:48
-#: Resources/templates/user/track/edit.tpl:31
-#: Resources/templates/user/album/view.tpl:54
-#: Resources/templates/user/album/edit.tpl:31
-#: Resources/templates/track/edit.tpl:41
+#: Resources/templates/collection/view.tpl:67
+#: Resources/templates/track/display.tpl:18
+#: Resources/templates/track/view.tpl:70 Resources/templates/track/edit.tpl:41
 #: Resources/templates/album/display.tpl:42
 #: Resources/templates/album/view.tpl:80 Resources/templates/album/edit.tpl:41
 #: templates/external/collection/find.tpl:73
 #: templates/external/collection/select.tpl:30
 #: templates/external/track/find.tpl:73 templates/external/track/select.tpl:30
 #: templates/external/album/find.tpl:99 templates/external/album/select.tpl:55
-#: templates/admin/collection/display.tpl:33
-#: templates/admin/collection/view_quickNav.tpl:34
-#: templates/admin/collection/view.tpl:55
-#: templates/admin/collection/edit.tpl:37
-#: templates/admin/collection/view.csv.tpl:3
-#: templates/admin/track/display.tpl:15
-#: templates/admin/track/view_quickNav.tpl:45
-#: templates/admin/track/view.tpl:59 templates/admin/track/edit.tpl:37
-#: templates/admin/track/view.csv.tpl:3 templates/admin/album/display.tpl:35
-#: templates/admin/album/view_quickNav.tpl:69
-#: templates/admin/album/view.tpl:65 templates/admin/album/edit.tpl:37
-#: templates/admin/album/view.csv.tpl:3 templates/collection/display.tpl:51
+#: templates/collection/display.tpl:51
 #: templates/collection/view_quickNav.tpl:34 templates/collection/view.tpl:66
 #: templates/collection/edit.tpl:51 templates/collection/view.csv.tpl:3
-#: templates/user/collection/display.tpl:30
-#: templates/user/collection/view_quickNav.tpl:34
-#: templates/user/collection/view.tpl:44 templates/user/collection/edit.tpl:31
-#: templates/user/collection/view.csv.tpl:3
-#: templates/user/track/display.tpl:18
-#: templates/user/track/view_quickNav.tpl:45 templates/user/track/view.tpl:48
-#: templates/user/track/edit.tpl:31 templates/user/track/view.csv.tpl:3
-#: templates/user/album/display.tpl:38
-#: templates/user/album/view_quickNav.tpl:69 templates/user/album/view.tpl:54
-#: templates/user/album/edit.tpl:31 templates/user/album/view.csv.tpl:3
-#: templates/track/display.tpl:25 templates/track/view_quickNav.tpl:45
+#: templates/track/display.tpl:18 templates/track/view_quickNav.tpl:45
 #: templates/track/view.tpl:70 templates/track/edit.tpl:41
-#: templates/track/view.csv.tpl:3 templates/album/display.tpl:53
+#: templates/track/view.csv.tpl:3 templates/album/display.tpl:42
 #: templates/album/view_quickNav.tpl:69 templates/album/view.tpl:80
 #: templates/album/edit.tpl:41 templates/album/view.csv.tpl:3
 msgid "Description"
 msgstr ""
 
 #: Resources/templates/external/album/find.tpl:100
-#: Resources/templates/user/track/display.tpl:20
-#: Resources/templates/user/track/view.tpl:51
-#: Resources/templates/user/track/edit.tpl:36
-#: Resources/templates/user/album/view.tpl:57
-#: Resources/templates/user/album/edit.tpl:36
-#: Resources/templates/track/edit.tpl:46 Resources/templates/album/view.tpl:83
-#: Resources/templates/album/edit.tpl:46 templates/external/track/find.tpl:74
-#: templates/external/track/select.tpl:31
+#: Resources/templates/track/display.tpl:20
+#: Resources/templates/track/view.tpl:73 Resources/templates/track/edit.tpl:46
+#: Resources/templates/album/view.tpl:83 Resources/templates/album/edit.tpl:46
+#: templates/external/track/find.tpl:74 templates/external/track/select.tpl:31
 #: templates/external/album/find.tpl:100
-#: templates/external/album/select.tpl:56 templates/admin/track/display.tpl:17
-#: templates/admin/track/view_quickNav.tpl:46
-#: templates/admin/track/view.tpl:62 templates/admin/track/edit.tpl:42
-#: templates/admin/track/view.csv.tpl:3 templates/admin/album/display.tpl:37
-#: templates/admin/album/view_quickNav.tpl:70
-#: templates/admin/album/view.tpl:68 templates/admin/album/edit.tpl:42
-#: templates/admin/album/view.csv.tpl:3 templates/user/track/display.tpl:20
-#: templates/user/track/view_quickNav.tpl:46 templates/user/track/view.tpl:51
-#: templates/user/track/edit.tpl:36 templates/user/track/view.csv.tpl:3
-#: templates/user/album/view_quickNav.tpl:70 templates/user/album/view.tpl:57
-#: templates/user/album/edit.tpl:36 templates/user/album/view.csv.tpl:3
-#: templates/track/display.tpl:27 templates/track/view_quickNav.tpl:46
-#: templates/track/view.tpl:73 templates/track/edit.tpl:46
-#: templates/track/view.csv.tpl:3 templates/album/display.tpl:55
+#: templates/external/album/select.tpl:56 templates/track/display.tpl:20
+#: templates/track/view_quickNav.tpl:46 templates/track/view.tpl:73
+#: templates/track/edit.tpl:46 templates/track/view.csv.tpl:3
 #: templates/album/view_quickNav.tpl:70 templates/album/view.tpl:83
 #: templates/album/edit.tpl:46 templates/album/view.csv.tpl:3
 msgid "Author"
 msgstr ""
 
 #: Resources/templates/external/album/find.tpl:101
-#: Resources/templates/user/album/view.tpl:60
-#: Resources/templates/user/album/edit.tpl:41
 #: Resources/templates/album/view.tpl:86 Resources/templates/album/edit.tpl:51
 #: templates/external/album/find.tpl:101
-#: templates/external/album/select.tpl:57 templates/admin/album/display.tpl:39
-#: templates/admin/album/view_quickNav.tpl:71
-#: templates/admin/album/view.tpl:71 templates/admin/album/edit.tpl:47
-#: templates/admin/album/view.csv.tpl:3
-#: templates/user/album/view_quickNav.tpl:71 templates/user/album/view.tpl:60
-#: templates/user/album/edit.tpl:41 templates/user/album/view.csv.tpl:3
-#: templates/album/display.tpl:57 templates/album/view_quickNav.tpl:71
+#: templates/external/album/select.tpl:57 templates/album/view_quickNav.tpl:71
 #: templates/album/view.tpl:86 templates/album/edit.tpl:51
 #: templates/album/view.csv.tpl:3
 msgid "Upload cover"
 msgstr ""
 
 #: Resources/templates/external/album/find.tpl:102
-#: Resources/templates/user/album/view.tpl:63
-#: Resources/templates/user/album/edit.tpl:69
 #: Resources/templates/album/display.tpl:56
 #: Resources/templates/album/view.tpl:89 Resources/templates/album/edit.tpl:79
 #: templates/external/album/find.tpl:102
-#: templates/external/album/select.tpl:58 templates/admin/album/display.tpl:50
-#: templates/admin/album/view_quickNav.tpl:72
-#: templates/admin/album/view.tpl:74 templates/admin/album/edit.tpl:75
-#: templates/admin/album/view.csv.tpl:3 templates/user/album/display.tpl:52
-#: templates/user/album/view_quickNav.tpl:72 templates/user/album/view.tpl:63
-#: templates/user/album/edit.tpl:69 templates/user/album/view.csv.tpl:3
-#: templates/album/display.tpl:68 templates/album/view_quickNav.tpl:72
-#: templates/album/view.tpl:89 templates/album/edit.tpl:79
-#: templates/album/view.csv.tpl:3
+#: templates/external/album/select.tpl:58 templates/album/display.tpl:56
+#: templates/album/view_quickNav.tpl:72 templates/album/view.tpl:89
+#: templates/album/edit.tpl:79 templates/album/view.csv.tpl:3
 msgid "Published date"
 msgstr ""
 
 #: Resources/templates/external/album/find.tpl:103
-#: Resources/templates/user/album/view.tpl:66
-#: Resources/templates/user/album/edit.tpl:80
 #: Resources/templates/album/view.tpl:92 Resources/templates/album/edit.tpl:90
 #: templates/external/album/find.tpl:103
-#: templates/external/album/select.tpl:59 templates/admin/album/display.tpl:52
-#: templates/admin/album/view_quickNav.tpl:73
-#: templates/admin/album/view.tpl:77 templates/admin/album/edit.tpl:86
-#: templates/admin/album/view.csv.tpl:3
-#: templates/user/album/view_quickNav.tpl:73 templates/user/album/view.tpl:66
-#: templates/user/album/edit.tpl:80 templates/user/album/view.csv.tpl:3
-#: templates/album/display.tpl:70 templates/album/view_quickNav.tpl:73
+#: templates/external/album/select.tpl:59 templates/album/view_quickNav.tpl:73
 #: templates/album/view.tpl:92 templates/album/edit.tpl:90
 #: templates/album/view.csv.tpl:3
 msgid "Published text"
@@ -1627,13 +1436,7 @@ msgstr ""
 #: templates/external/track/find.tpl:77 templates/external/track/select.tpl:34
 #: templates/external/album/find.tpl:104
 #: templates/external/album/select.tpl:60
-#: templates/admin/collection/view_quickNav.tpl:35
-#: templates/admin/track/view_quickNav.tpl:49
-#: templates/admin/album/view_quickNav.tpl:74
 #: templates/collection/view_quickNav.tpl:35
-#: templates/user/collection/view_quickNav.tpl:35
-#: templates/user/track/view_quickNav.tpl:49
-#: templates/user/album/view_quickNav.tpl:74
 #: templates/track/view_quickNav.tpl:49 templates/album/view_quickNav.tpl:74
 msgid "Creation date"
 msgstr ""
@@ -1644,13 +1447,7 @@ msgstr ""
 #: templates/external/track/find.tpl:78 templates/external/track/select.tpl:35
 #: templates/external/album/find.tpl:105
 #: templates/external/album/select.tpl:61
-#: templates/admin/collection/view_quickNav.tpl:36
-#: templates/admin/track/view_quickNav.tpl:50
-#: templates/admin/album/view_quickNav.tpl:75
 #: templates/collection/view_quickNav.tpl:36
-#: templates/user/collection/view_quickNav.tpl:36
-#: templates/user/track/view_quickNav.tpl:50
-#: templates/user/album/view_quickNav.tpl:75
 #: templates/track/view_quickNav.tpl:50 templates/album/view_quickNav.tpl:75
 msgid "Creator"
 msgstr ""
@@ -1661,13 +1458,7 @@ msgstr ""
 #: templates/external/track/find.tpl:79 templates/external/track/select.tpl:36
 #: templates/external/album/find.tpl:106
 #: templates/external/album/select.tpl:62
-#: templates/admin/collection/view_quickNav.tpl:37
-#: templates/admin/track/view_quickNav.tpl:51
-#: templates/admin/album/view_quickNav.tpl:76
 #: templates/collection/view_quickNav.tpl:37
-#: templates/user/collection/view_quickNav.tpl:37
-#: templates/user/track/view_quickNav.tpl:51
-#: templates/user/album/view_quickNav.tpl:76
 #: templates/track/view_quickNav.tpl:51 templates/album/view_quickNav.tpl:76
 msgid "Update date"
 msgstr ""
@@ -1678,13 +1469,7 @@ msgstr ""
 #: templates/external/track/find.tpl:82 templates/external/track/select.tpl:39
 #: templates/external/album/find.tpl:109
 #: templates/external/album/select.tpl:65
-#: templates/admin/collection/view_quickNav.tpl:40
-#: templates/admin/track/view_quickNav.tpl:54
-#: templates/admin/album/view_quickNav.tpl:79
 #: templates/collection/view_quickNav.tpl:40
-#: templates/user/collection/view_quickNav.tpl:40
-#: templates/user/track/view_quickNav.tpl:54
-#: templates/user/album/view_quickNav.tpl:79
 #: templates/track/view_quickNav.tpl:54 templates/album/view_quickNav.tpl:79
 msgid "ascending"
 msgstr ""
@@ -1695,13 +1480,7 @@ msgstr ""
 #: templates/external/track/find.tpl:83 templates/external/track/select.tpl:40
 #: templates/external/album/find.tpl:110
 #: templates/external/album/select.tpl:66
-#: templates/admin/collection/view_quickNav.tpl:41
-#: templates/admin/track/view_quickNav.tpl:55
-#: templates/admin/album/view_quickNav.tpl:80
 #: templates/collection/view_quickNav.tpl:41
-#: templates/user/collection/view_quickNav.tpl:41
-#: templates/user/track/view_quickNav.tpl:55
-#: templates/user/album/view_quickNav.tpl:80
 #: templates/track/view_quickNav.tpl:55 templates/album/view_quickNav.tpl:80
 msgid "descending"
 msgstr ""
@@ -1709,13 +1488,7 @@ msgstr ""
 #: Resources/templates/external/album/find.tpl:115
 #: templates/external/collection/find.tpl:85
 #: templates/external/track/find.tpl:88 templates/external/album/find.tpl:115
-#: templates/admin/collection/view_quickNav.tpl:48
-#: templates/admin/track/view_quickNav.tpl:62
-#: templates/admin/album/view_quickNav.tpl:87
 #: templates/collection/view_quickNav.tpl:48
-#: templates/user/collection/view_quickNav.tpl:48
-#: templates/user/track/view_quickNav.tpl:62
-#: templates/user/album/view_quickNav.tpl:87
 #: templates/track/view_quickNav.tpl:62 templates/album/view_quickNav.tpl:87
 msgid "Page size"
 msgstr ""
@@ -1809,9 +1582,7 @@ msgid "Enter the max size zip. Only digits are allowed."
 msgstr ""
 
 #: Resources/templates/admin/config.tpl:46
-#: Resources/templates/user/track/edit.tpl:94
 #: Resources/templates/track/edit.tpl:104 templates/admin/config.tpl:46
-#: templates/admin/track/edit.tpl:100 templates/user/track/edit.tpl:94
 #: templates/track/edit.tpl:104
 msgid "Not supported at the moment."
 msgstr ""
@@ -1896,452 +1667,295 @@ msgstr ""
 msgid "Update configuration"
 msgstr ""
 
-#: Resources/templates/user/track/display.tpl:10
-#: templates/external/track/find.tpl:49 templates/external/track/select.tpl:14
-#: templates/admin/track/display.tpl:4 templates/admin/album/view.csv.tpl:5
-#: templates/user/track/display.tpl:10 templates/user/album/view.csv.tpl:5
-#: templates/track/display.tpl:8 templates/album/view.csv.tpl:5
-msgid "Track"
+#: Resources/templates/collection/view.tpl:21 templates/collection/view.tpl:21
+#: templates/collection/edit.tpl:16
+msgid "Create collection"
 msgstr ""
 
-#: Resources/templates/user/track/display.tpl:13
-#: Resources/templates/user/track/view.tpl:62
-#: Resources/templates/user/track/view.tpl:121
-#: Resources/templates/user/album/view.tpl:71
-#: Resources/templates/user/album/view.tpl:128
+#: Resources/templates/collection/view.tpl:31
+#: Resources/templates/track/view.tpl:31 Resources/templates/album/view.tpl:31
+#: templates/collection/view.tpl:31 templates/track/view.tpl:31
+#: templates/album/view.tpl:31
+msgid "Back to paginated view"
+msgstr ""
+
+#: Resources/templates/collection/view.tpl:35
+#: Resources/templates/track/view.tpl:35 Resources/templates/album/view.tpl:35
+#: templates/collection/view.tpl:35 templates/track/view.tpl:35
+#: templates/album/view.tpl:35
+msgid "Show all entries"
+msgstr ""
+
+#: Resources/templates/collection/view.tpl:70
+msgid "Amount of albums"
+msgstr ""
+
+#: Resources/templates/collection/view.tpl:72
+#: Resources/templates/collection/view.tpl:95
+#: Resources/templates/track/display.tpl:13
+#: Resources/templates/track/view.tpl:84
+#: Resources/templates/track/view.tpl:145
 #: Resources/templates/album/display.tpl:17
 #: Resources/templates/album/view.tpl:98
-#: Resources/templates/album/view.tpl:160
-#: templates/admin/collection/display.tpl:9
-#: templates/admin/collection/view.tpl:57
-#: templates/admin/collection/view.tpl:78 templates/admin/track/display.tpl:9
-#: templates/admin/track/view.tpl:73 templates/admin/track/view.tpl:135
-#: templates/admin/album/display.tpl:9 templates/admin/album/view.tpl:82
-#: templates/admin/album/view.tpl:142 templates/collection/display.tpl:14
+#: Resources/templates/album/view.tpl:160 templates/collection/display.tpl:14
 #: templates/collection/display.tpl:18 templates/collection/view.tpl:68
-#: templates/collection/view.tpl:88 templates/user/collection/display.tpl:7
-#: templates/user/collection/view.tpl:46 templates/user/collection/view.tpl:64
-#: templates/user/track/display.tpl:13 templates/user/track/view.tpl:62
-#: templates/user/track/view.tpl:121 templates/user/album/display.tpl:13
-#: templates/user/album/view.tpl:71 templates/user/album/view.tpl:128
-#: templates/track/display.tpl:14 templates/track/display.tpl:18
+#: templates/collection/view.tpl:88 templates/track/display.tpl:13
 #: templates/track/view.tpl:84 templates/track/view.tpl:145
-#: templates/album/display.tpl:14 templates/album/display.tpl:18
-#: templates/album/view.tpl:98 templates/album/view.tpl:160
+#: templates/album/display.tpl:17 templates/album/view.tpl:98
+#: templates/album/view.tpl:160
 msgid "Actions"
 msgstr ""
 
-#: Resources/templates/user/track/display.tpl:33
-#: Resources/templates/user/track/view.tpl:57
-#: Resources/templates/user/track/edit.tpl:69
-#: Resources/templates/track/edit.tpl:79 templates/external/track/find.tpl:76
-#: templates/external/track/select.tpl:33 templates/admin/track/display.tpl:30
-#: templates/admin/track/view_quickNav.tpl:48
-#: templates/admin/track/view.tpl:68 templates/admin/track/edit.tpl:75
-#: templates/admin/track/view.csv.tpl:3 templates/user/track/display.tpl:33
-#: templates/user/track/view_quickNav.tpl:48 templates/user/track/view.tpl:57
-#: templates/user/track/edit.tpl:69 templates/user/track/view.csv.tpl:3
-#: templates/track/display.tpl:40 templates/track/view_quickNav.tpl:48
+#: Resources/templates/collection/view.tpl:85
+#: Resources/templates/track/view.tpl:97
+#: Resources/templates/album/view.tpl:115 templates/collection/view.tpl:81
+#: templates/track/view.tpl:97 templates/album/view.tpl:115
+msgid "View detail page"
+msgstr ""
+
+#: Resources/templates/collection/view.tpl:91
+#, php-format
+msgid "%s Album"
+msgid_plural "%s Albums"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Resources/templates/collection/view.tpl:112
+#: templates/collection/view.tpl:105
+#: templates/mailz/itemlist_collection_text.tpl:7
+#: templates/mailz/itemlist_collection_html.tpl:11
+msgid "No collections found."
+msgstr ""
+
+#: Resources/templates/collection/view.tpl:125
+#: templates/collection/view.tpl:118
+msgid "With selected collections"
+msgstr ""
+
+#: Resources/templates/collection/view.tpl:127
+#: Resources/templates/track/view.tpl:177
+#: Resources/templates/album/view.tpl:192 templates/collection/view.tpl:120
+#: templates/track/view.tpl:177 templates/album/view.tpl:192
+msgid "Choose action"
+msgstr ""
+
+#: Resources/templates/track/display.tpl:10
+#: templates/external/track/find.tpl:49 templates/external/track/select.tpl:14
+#: templates/track/display.tpl:10 templates/album/view.csv.tpl:5
+msgid "Track"
+msgstr ""
+
+#: Resources/templates/track/display.tpl:33
+#: Resources/templates/track/view.tpl:79 Resources/templates/track/edit.tpl:79
+#: templates/external/track/find.tpl:76 templates/external/track/select.tpl:33
+#: templates/track/display.tpl:33 templates/track/view_quickNav.tpl:48
 #: templates/track/view.tpl:79 templates/track/edit.tpl:79
 #: templates/track/view.csv.tpl:3
 msgid "Upload zip"
 msgstr ""
 
-#: Resources/templates/user/track/display.tpl:51
-#: Resources/templates/user/track/view.tpl:105
-#: Resources/templates/user/album/view.tpl:112
+#: Resources/templates/track/display.tpl:51
 #: Resources/templates/track/include_displayItemListMany.tpl:17
+#: Resources/templates/track/view.tpl:132
 #: Resources/templates/album/display.tpl:72
 #: Resources/templates/album/view.tpl:147
-#: templates/admin/collection/include_displayItemListMany.tpl:16
-#: templates/admin/collection/include_displayItemListOne.tpl:13
-#: templates/admin/track/display.tpl:48
-#: templates/admin/track/include_displayItemListMany.tpl:16
-#: templates/admin/track/view.tpl:119
-#: templates/admin/track/include_displayItemListOne.tpl:13
-#: templates/admin/album/display.tpl:61
-#: templates/admin/album/include_displayItemListMany.tpl:16
-#: templates/admin/album/view.tpl:126
-#: templates/admin/album/include_displayItemListOne.tpl:13
 #: templates/collection/include_displayItemListMany.tpl:25
 #: templates/collection/include_displayItemListOne.tpl:21
-#: templates/user/collection/include_displayItemListMany.tpl:16
-#: templates/user/collection/include_displayItemListOne.tpl:13
-#: templates/user/track/display.tpl:51
-#: templates/user/track/include_displayItemListMany.tpl:17
-#: templates/user/track/view.tpl:105
-#: templates/user/track/include_displayItemListOne.tpl:13
-#: templates/user/album/display.tpl:68
-#: templates/user/album/include_displayItemListMany.tpl:16
-#: templates/user/album/view.tpl:112
-#: templates/user/album/include_displayItemListOne.tpl:13
-#: templates/track/display.tpl:58
-#: templates/track/include_displayItemListMany.tpl:25
+#: templates/track/display.tpl:51
+#: templates/track/include_displayItemListMany.tpl:17
 #: templates/track/view.tpl:132
 #: templates/track/include_displayItemListOne.tpl:21
-#: templates/album/display.tpl:79
+#: templates/album/display.tpl:72
 #: templates/album/include_displayItemListMany.tpl:25
 #: templates/album/view.tpl:147
 #: templates/album/include_displayItemListOne.tpl:21
 msgid "Open quick view window"
 msgstr ""
 
-#: Resources/templates/user/track/display.tpl:51
-#: Resources/templates/user/track/view.tpl:105
-#: Resources/templates/user/album/view.tpl:112
+#: Resources/templates/track/display.tpl:51
 #: Resources/templates/track/include_displayItemListMany.tpl:17
+#: Resources/templates/track/view.tpl:132
 #: Resources/templates/album/display.tpl:72
 #: Resources/templates/album/view.tpl:147
-#: templates/admin/collection/include_displayItemListMany.tpl:16
-#: templates/admin/collection/include_displayItemListOne.tpl:13
-#: templates/admin/track/display.tpl:48
-#: templates/admin/track/include_displayItemListMany.tpl:16
-#: templates/admin/track/view.tpl:119
-#: templates/admin/track/include_displayItemListOne.tpl:13
-#: templates/admin/album/display.tpl:61
-#: templates/admin/album/include_displayItemListMany.tpl:16
-#: templates/admin/album/view.tpl:126
-#: templates/admin/album/include_displayItemListOne.tpl:13
 #: templates/collection/include_displayItemListMany.tpl:25
 #: templates/collection/include_displayItemListOne.tpl:21
-#: templates/user/collection/include_displayItemListMany.tpl:16
-#: templates/user/collection/include_displayItemListOne.tpl:13
-#: templates/user/track/display.tpl:51
-#: templates/user/track/include_displayItemListMany.tpl:17
-#: templates/user/track/view.tpl:105
-#: templates/user/track/include_displayItemListOne.tpl:13
-#: templates/user/album/display.tpl:68
-#: templates/user/album/include_displayItemListMany.tpl:16
-#: templates/user/album/view.tpl:112
-#: templates/user/album/include_displayItemListOne.tpl:13
-#: templates/track/display.tpl:58
-#: templates/track/include_displayItemListMany.tpl:25
+#: templates/track/display.tpl:51
+#: templates/track/include_displayItemListMany.tpl:17
 #: templates/track/view.tpl:132
 #: templates/track/include_displayItemListOne.tpl:21
-#: templates/album/display.tpl:79
+#: templates/album/display.tpl:72
 #: templates/album/include_displayItemListMany.tpl:25
 #: templates/album/view.tpl:147
 #: templates/album/include_displayItemListOne.tpl:21
 msgid "Quick view"
 msgstr ""
 
-#: Resources/templates/user/track/display.tpl:62
-#: Resources/templates/user/track/view.tpl:113
-#: Resources/templates/user/album/view.tpl:120
+#: Resources/templates/track/display.tpl:62
+#: Resources/templates/track/view.tpl:140
 #: Resources/templates/album/display.tpl:83
-#: Resources/templates/album/view.tpl:155 templates/admin/track/display.tpl:59
-#: templates/admin/track/view.tpl:127 templates/admin/album/display.tpl:72
-#: templates/admin/album/view.tpl:134 templates/user/track/display.tpl:62
-#: templates/user/track/view.tpl:113 templates/user/album/display.tpl:79
-#: templates/user/album/view.tpl:120 templates/track/display.tpl:69
-#: templates/track/view.tpl:140 templates/album/display.tpl:90
+#: Resources/templates/album/view.tpl:155 templates/track/display.tpl:62
+#: templates/track/view.tpl:140 templates/album/display.tpl:83
 #: templates/album/view.tpl:155
 msgid "Not set."
 msgstr ""
 
-#: Resources/templates/user/track/view.tpl:20
-#: Resources/templates/user/album/view.tpl:20
-#: Resources/templates/album/view.tpl:31
-#: templates/admin/collection/view.tpl:23 templates/admin/track/view.tpl:23
-#: templates/admin/album/view.tpl:23 templates/collection/view.tpl:31
-#: templates/user/collection/view.tpl:20 templates/user/track/view.tpl:20
-#: templates/user/album/view.tpl:20 templates/track/view.tpl:31
-#: templates/album/view.tpl:31
-msgid "Back to paginated view"
-msgstr ""
-
-#: Resources/templates/user/track/view.tpl:26
-#: Resources/templates/user/album/view.tpl:26
-#: Resources/templates/album/view.tpl:35
-#: templates/admin/collection/view.tpl:29 templates/admin/track/view.tpl:29
-#: templates/admin/album/view.tpl:29 templates/collection/view.tpl:35
-#: templates/user/collection/view.tpl:26 templates/user/track/view.tpl:26
-#: templates/user/album/view.tpl:26 templates/track/view.tpl:35
-#: templates/album/view.tpl:35
-msgid "Show all entries"
-msgstr ""
-
-#: Resources/templates/user/track/view.tpl:54
-#: Resources/templates/user/track/edit.tpl:41
-#: Resources/templates/track/edit.tpl:51 templates/external/track/find.tpl:75
-#: templates/external/track/select.tpl:32 templates/admin/track/display.tpl:19
-#: templates/admin/track/view_quickNav.tpl:47
-#: templates/admin/track/view.tpl:65 templates/admin/track/edit.tpl:47
-#: templates/admin/track/view.csv.tpl:3
-#: templates/user/track/view_quickNav.tpl:47 templates/user/track/view.tpl:54
-#: templates/user/track/edit.tpl:41 templates/user/track/view.csv.tpl:3
-#: templates/track/display.tpl:29 templates/track/view_quickNav.tpl:47
-#: templates/track/view.tpl:76 templates/track/edit.tpl:51
-#: templates/track/view.csv.tpl:3
+#: Resources/templates/track/view.tpl:76 Resources/templates/track/edit.tpl:51
+#: templates/external/track/find.tpl:75 templates/external/track/select.tpl:32
+#: templates/track/view_quickNav.tpl:47 templates/track/view.tpl:76
+#: templates/track/edit.tpl:51 templates/track/view.csv.tpl:3
 msgid "Upload track"
 msgstr ""
 
-#: Resources/templates/user/track/view.tpl:70
-#: Resources/templates/user/album/view.tpl:82
-#: Resources/templates/album/view.tpl:115
-#: templates/admin/collection/view.tpl:68 templates/admin/track/view.tpl:84
-#: templates/admin/album/view.tpl:96 templates/collection/view.tpl:81
-#: templates/user/collection/view.tpl:54 templates/user/track/view.tpl:70
-#: templates/user/album/view.tpl:82 templates/track/view.tpl:97
-#: templates/album/view.tpl:115
-msgid "View detail page"
-msgstr ""
-
-#: Resources/templates/user/track/view.tpl:134
-#: templates/admin/track/view.tpl:148 templates/user/track/view.tpl:134
-#: templates/track/view.tpl:162 templates/mailz/itemlist_track_text.tpl:7
+#: Resources/templates/track/view.tpl:162 templates/track/view.tpl:162
+#: templates/mailz/itemlist_track_text.tpl:7
 #: templates/mailz/itemlist_track_html.tpl:11
 msgid "No tracks found."
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:7
-#: Resources/templates/user/track/edit.tpl:11
+#: Resources/templates/track/view.tpl:175 templates/track/view.tpl:175
+msgid "With selected tracks"
+msgstr ""
+
 #: Resources/templates/track/edit.tpl:11 Resources/templates/track/edit.tpl:17
-#: templates/admin/track/edit.tpl:7 templates/admin/track/edit.tpl:13
-#: templates/user/track/edit.tpl:7 templates/user/track/edit.tpl:11
 #: templates/track/edit.tpl:11 templates/track/edit.tpl:17
 msgid "Edit track"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:22
-#: Resources/templates/user/album/edit.tpl:22
 #: Resources/templates/track/edit.tpl:32 Resources/templates/album/edit.tpl:32
-#: templates/admin/collection/edit.tpl:28 templates/admin/track/edit.tpl:28
-#: templates/admin/album/edit.tpl:28 templates/collection/edit.tpl:42
-#: templates/user/collection/edit.tpl:22 templates/user/track/edit.tpl:22
-#: templates/user/album/edit.tpl:22 templates/track/edit.tpl:32
+#: templates/collection/edit.tpl:42 templates/track/edit.tpl:32
 #: templates/album/edit.tpl:32
 msgid "Content"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:26
-#: Resources/templates/track/edit.tpl:36 templates/admin/track/edit.tpl:32
-#: templates/user/track/edit.tpl:26 templates/track/edit.tpl:36
+#: Resources/templates/track/edit.tpl:36 templates/track/edit.tpl:36
 msgid "Enter the title of the track"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:32
-#: Resources/templates/track/edit.tpl:42 templates/admin/track/edit.tpl:38
-#: templates/user/track/edit.tpl:32 templates/track/edit.tpl:42
+#: Resources/templates/track/edit.tpl:42 templates/track/edit.tpl:42
 msgid "Enter the description of the track"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:37
-#: Resources/templates/track/edit.tpl:47 templates/admin/track/edit.tpl:43
-#: templates/user/track/edit.tpl:37 templates/track/edit.tpl:47
+#: Resources/templates/track/edit.tpl:47 templates/track/edit.tpl:47
 msgid "Enter the author of the track"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:43
-#: Resources/templates/user/track/edit.tpl:71
-#: Resources/templates/user/album/edit.tpl:43
-#: Resources/templates/user/album/edit.tpl:76
 #: Resources/templates/track/edit.tpl:53 Resources/templates/track/edit.tpl:81
 #: Resources/templates/album/edit.tpl:53 Resources/templates/album/edit.tpl:86
-#: templates/admin/track/edit.tpl:49 templates/admin/track/edit.tpl:77
-#: templates/admin/album/edit.tpl:49 templates/admin/album/edit.tpl:82
-#: templates/user/track/edit.tpl:43 templates/user/track/edit.tpl:71
-#: templates/user/album/edit.tpl:43 templates/user/album/edit.tpl:76
 #: templates/track/edit.tpl:53 templates/track/edit.tpl:81
 #: templates/album/edit.tpl:53 templates/album/edit.tpl:86
 msgid "Reset to empty value"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:45
-#: Resources/templates/user/track/edit.tpl:73
-#: Resources/templates/user/album/edit.tpl:45
 #: Resources/templates/track/edit.tpl:55 Resources/templates/track/edit.tpl:83
-#: Resources/templates/album/edit.tpl:55 templates/admin/track/edit.tpl:51
-#: templates/admin/track/edit.tpl:79 templates/admin/album/edit.tpl:51
-#: templates/user/track/edit.tpl:45 templates/user/track/edit.tpl:73
-#: templates/user/album/edit.tpl:45 templates/track/edit.tpl:55
+#: Resources/templates/album/edit.tpl:55 templates/track/edit.tpl:55
 #: templates/track/edit.tpl:83 templates/album/edit.tpl:55
 msgid "Allowed file extensions:"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:46
-#: Resources/templates/user/track/edit.tpl:74
-#: Resources/templates/user/album/edit.tpl:46
 #: Resources/templates/track/edit.tpl:56 Resources/templates/track/edit.tpl:84
-#: Resources/templates/album/edit.tpl:56 templates/admin/track/edit.tpl:52
-#: templates/admin/track/edit.tpl:80 templates/admin/album/edit.tpl:52
-#: templates/user/track/edit.tpl:46 templates/user/track/edit.tpl:74
-#: templates/user/album/edit.tpl:46 templates/track/edit.tpl:56
+#: Resources/templates/album/edit.tpl:56 templates/track/edit.tpl:56
 #: templates/track/edit.tpl:84 templates/album/edit.tpl:56
 msgid "Allowed file size:"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:50
-#: Resources/templates/user/track/edit.tpl:78
-#: Resources/templates/user/album/edit.tpl:50
 #: Resources/templates/track/edit.tpl:60 Resources/templates/track/edit.tpl:88
-#: Resources/templates/album/edit.tpl:60 templates/admin/track/edit.tpl:56
-#: templates/admin/track/edit.tpl:84 templates/admin/album/edit.tpl:56
-#: templates/user/track/edit.tpl:50 templates/user/track/edit.tpl:78
-#: templates/user/album/edit.tpl:50 templates/track/edit.tpl:60
+#: Resources/templates/album/edit.tpl:60 templates/track/edit.tpl:60
 #: templates/track/edit.tpl:88 templates/album/edit.tpl:60
 msgid "Current file"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:60
-#: Resources/templates/track/edit.tpl:70 templates/admin/track/edit.tpl:66
-#: templates/user/track/edit.tpl:60 templates/track/edit.tpl:70
+#: Resources/templates/track/edit.tpl:70 templates/track/edit.tpl:70
 msgid "Delete upload track ?"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:61
-#: Resources/templates/user/track/edit.tpl:89
-#: Resources/templates/user/album/edit.tpl:61
 #: Resources/templates/track/edit.tpl:71 Resources/templates/track/edit.tpl:99
-#: Resources/templates/album/edit.tpl:71 templates/admin/track/edit.tpl:67
-#: templates/admin/track/edit.tpl:95 templates/admin/album/edit.tpl:67
-#: templates/user/track/edit.tpl:61 templates/user/track/edit.tpl:89
-#: templates/user/album/edit.tpl:61 templates/track/edit.tpl:71
+#: Resources/templates/album/edit.tpl:71 templates/track/edit.tpl:71
 #: templates/track/edit.tpl:99 templates/album/edit.tpl:71
 msgid "Delete existing file"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:88
-#: Resources/templates/track/edit.tpl:98 templates/admin/track/edit.tpl:94
-#: templates/user/track/edit.tpl:88 templates/track/edit.tpl:98
+#: Resources/templates/track/edit.tpl:98 templates/track/edit.tpl:98
 msgid "Delete upload zip ?"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:121
-#: Resources/templates/user/album/edit.tpl:109
 #: Resources/templates/track/edit.tpl:131
-#: Resources/templates/album/edit.tpl:119
-#: templates/admin/collection/edit.tpl:64 templates/admin/track/edit.tpl:127
-#: templates/admin/album/edit.tpl:115 templates/collection/edit.tpl:79
-#: templates/user/collection/edit.tpl:58 templates/user/track/edit.tpl:121
-#: templates/user/album/edit.tpl:109 templates/track/edit.tpl:131
-#: templates/album/edit.tpl:119
+#: Resources/templates/album/edit.tpl:119 templates/collection/edit.tpl:79
+#: templates/track/edit.tpl:131 templates/album/edit.tpl:119
 msgid "Return control"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:123
-#: Resources/templates/user/album/edit.tpl:111
 #: Resources/templates/track/edit.tpl:133
-#: Resources/templates/album/edit.tpl:121
-#: templates/admin/collection/edit.tpl:66 templates/admin/track/edit.tpl:129
-#: templates/admin/album/edit.tpl:117 templates/collection/edit.tpl:81
-#: templates/user/collection/edit.tpl:60 templates/user/track/edit.tpl:123
-#: templates/user/album/edit.tpl:111 templates/track/edit.tpl:133
-#: templates/album/edit.tpl:121
+#: Resources/templates/album/edit.tpl:121 templates/collection/edit.tpl:81
+#: templates/track/edit.tpl:133 templates/album/edit.tpl:121
 msgid "Create another item after save"
 msgstr ""
 
-#: Resources/templates/user/track/edit.tpl:136
-#: Resources/templates/track/edit.tpl:146 templates/admin/track/edit.tpl:142
-#: templates/user/track/edit.tpl:136 templates/track/edit.tpl:146
+#: Resources/templates/track/edit.tpl:146 templates/track/edit.tpl:146
 msgid "Really delete this track?"
 msgstr ""
 
-#: Resources/templates/user/album/view.tpl:48
-#: Resources/templates/album/view.tpl:72 templates/admin/album/display.tpl:31
-#: templates/admin/album/view.tpl:59 templates/user/album/view.tpl:48
-#: templates/album/display.tpl:49 templates/album/view.tpl:72
-msgid "State"
+#: Resources/templates/album/display.tpl:44 templates/album/display.tpl:44
+msgid "Cover"
 msgstr ""
 
-#: Resources/templates/user/album/view.tpl:69
 #: Resources/templates/album/display.tpl:65
 #: Resources/templates/album/view.tpl:96
 #: templates/external/collection/find.tpl:49
 #: templates/external/collection/select.tpl:14
-#: templates/admin/collection/display.tpl:4
-#: templates/admin/collection/include_selectEditOne.tpl:9
-#: templates/admin/collection/include_selectEditOne.tpl:14
-#: templates/admin/album/display.tpl:54 templates/admin/album/view.tpl:80
-#: templates/admin/album/view.csv.tpl:4 templates/collection/display.tpl:8
+#: templates/collection/display.tpl:8
 #: templates/collection/include_selectEditOne.tpl:9
 #: templates/collection/include_selectEditOne.tpl:14
-#: templates/user/collection/display.tpl:4
-#: templates/user/collection/include_selectEditOne.tpl:9
-#: templates/user/collection/include_selectEditOne.tpl:14
-#: templates/user/album/display.tpl:61 templates/user/album/view.tpl:69
-#: templates/user/album/view.csv.tpl:4 templates/album/display.tpl:72
-#: templates/album/view.tpl:96 templates/album/view.csv.tpl:4
+#: templates/album/display.tpl:65 templates/album/view.tpl:96
+#: templates/album/view.csv.tpl:4
 msgid "Collection"
 msgstr ""
 
-#: Resources/templates/user/album/view.tpl:141
-#: Resources/templates/album/view.tpl:177 templates/admin/album/view.tpl:155
-#: templates/user/album/view.tpl:141 templates/album/view.tpl:177
+#: Resources/templates/album/view.tpl:72 templates/album/view.tpl:72
+msgid "State"
+msgstr ""
+
+#: Resources/templates/album/view.tpl:177 templates/album/view.tpl:177
 #: templates/mailz/itemlist_album_text.tpl:7
 #: templates/mailz/itemlist_album_html.tpl:11
 msgid "No albums found."
 msgstr ""
 
-#: Resources/templates/user/album/edit.tpl:7
-#: Resources/templates/user/album/edit.tpl:11
+#: Resources/templates/album/view.tpl:190 templates/album/view.tpl:190
+msgid "With selected albums"
+msgstr ""
+
 #: Resources/templates/album/edit.tpl:11 Resources/templates/album/edit.tpl:17
-#: templates/admin/album/edit.tpl:7 templates/admin/album/edit.tpl:13
-#: templates/user/album/edit.tpl:7 templates/user/album/edit.tpl:11
 #: templates/album/edit.tpl:11 templates/album/edit.tpl:17
 msgid "Edit album"
 msgstr ""
 
-#: Resources/templates/user/album/edit.tpl:26
-#: Resources/templates/album/edit.tpl:36 templates/admin/album/edit.tpl:32
-#: templates/user/album/edit.tpl:26 templates/album/edit.tpl:36
+#: Resources/templates/album/edit.tpl:36 templates/album/edit.tpl:36
 msgid "Enter the title of the album"
 msgstr ""
 
-#: Resources/templates/user/album/edit.tpl:32
-#: Resources/templates/album/edit.tpl:42 templates/admin/album/edit.tpl:38
-#: templates/user/album/edit.tpl:32 templates/album/edit.tpl:42
+#: Resources/templates/album/edit.tpl:42 templates/album/edit.tpl:42
 msgid "Enter the description of the album"
 msgstr ""
 
-#: Resources/templates/user/album/edit.tpl:37
-#: Resources/templates/album/edit.tpl:47 templates/admin/album/edit.tpl:43
-#: templates/user/album/edit.tpl:37 templates/album/edit.tpl:47
+#: Resources/templates/album/edit.tpl:47 templates/album/edit.tpl:47
 msgid "Enter the author of the album"
 msgstr ""
 
-#: Resources/templates/user/album/edit.tpl:60
-#: Resources/templates/album/edit.tpl:70 templates/admin/album/edit.tpl:66
-#: templates/user/album/edit.tpl:60 templates/album/edit.tpl:70
+#: Resources/templates/album/edit.tpl:70 templates/album/edit.tpl:70
 msgid "Delete upload cover ?"
 msgstr ""
 
-#: Resources/templates/user/album/edit.tpl:71
-#: Resources/templates/user/album/edit.tpl:73
 #: Resources/templates/album/edit.tpl:81 Resources/templates/album/edit.tpl:83
-#: templates/admin/album/edit.tpl:77 templates/admin/album/edit.tpl:79
-#: templates/user/album/edit.tpl:71 templates/user/album/edit.tpl:73
 #: templates/album/edit.tpl:81 templates/album/edit.tpl:83
 msgid "Enter the published date of the album"
 msgstr ""
 
-#: Resources/templates/user/album/edit.tpl:81
-#: Resources/templates/album/edit.tpl:91 templates/admin/album/edit.tpl:87
-#: templates/user/album/edit.tpl:81 templates/album/edit.tpl:91
+#: Resources/templates/album/edit.tpl:91 templates/album/edit.tpl:91
 msgid "Enter the published text of the album"
 msgstr ""
 
-#: Resources/templates/user/album/edit.tpl:124
-#: Resources/templates/album/edit.tpl:134 templates/admin/album/edit.tpl:130
-#: templates/user/album/edit.tpl:124 templates/album/edit.tpl:134
+#: Resources/templates/album/edit.tpl:134 templates/album/edit.tpl:134
 msgid "Really delete this album?"
-msgstr ""
-
-#: Resources/templates/album/display.tpl:44
-#: templates/user/album/display.tpl:40
-msgid "Cover"
-msgstr ""
-
-#: Resources/templates/album/view.tpl:190 templates/admin/album/view.tpl:167
-#: templates/album/view.tpl:190
-msgid "With selected albums"
-msgstr ""
-
-#: Resources/templates/album/view.tpl:192
-#: templates/admin/collection/view.tpl:105 templates/admin/track/view.tpl:162
-#: templates/admin/album/view.tpl:169 templates/collection/view.tpl:120
-#: templates/track/view.tpl:177 templates/album/view.tpl:192
-msgid "Choose action"
 msgstr ""
 
 #: templates/emailnotifyalbumCreator.tpl:1
@@ -2513,184 +2127,6 @@ msgstr ""
 msgid "Updated on %s"
 msgstr ""
 
-#: templates/admin/collection/view_quickNav.tpl:6
-#: templates/admin/track/view_quickNav.tpl:6
-#: templates/admin/album/view_quickNav.tpl:6
-#: templates/collection/view_quickNav.tpl:6
-#: templates/user/collection/view_quickNav.tpl:6
-#: templates/user/track/view_quickNav.tpl:6
-#: templates/user/album/view_quickNav.tpl:6
-#: templates/track/view_quickNav.tpl:6 templates/album/view_quickNav.tpl:6
-msgid "Quick navigation"
-msgstr ""
-
-#: templates/admin/collection/view_quickNav.tpl:24
-#: templates/admin/track/view_quickNav.tpl:35
-#: templates/admin/album/view_quickNav.tpl:59
-#: templates/collection/view_quickNav.tpl:24
-#: templates/user/collection/view_quickNav.tpl:24
-#: templates/user/track/view_quickNav.tpl:35
-#: templates/user/album/view_quickNav.tpl:59
-#: templates/track/view_quickNav.tpl:35 templates/album/view_quickNav.tpl:59
-msgid "Search"
-msgstr ""
-
-#: templates/admin/collection/view_quickNav.tpl:59
-#: templates/admin/track/view_quickNav.tpl:73
-#: templates/admin/album/view_quickNav.tpl:98
-#: templates/collection/view_quickNav.tpl:59
-#: templates/user/collection/view_quickNav.tpl:59
-#: templates/user/track/view_quickNav.tpl:73
-#: templates/user/album/view_quickNav.tpl:98
-#: templates/track/view_quickNav.tpl:73 templates/album/view_quickNav.tpl:98
-msgid "OK"
-msgstr ""
-
-#: templates/admin/collection/view.tpl:13
-#: templates/admin/collection/edit.tpl:10 templates/collection/view.tpl:21
-#: templates/collection/edit.tpl:16 templates/user/collection/view.tpl:10
-#: templates/user/collection/edit.tpl:9
-msgid "Create collection"
-msgstr ""
-
-#: templates/admin/collection/view.tpl:91 templates/collection/view.tpl:105
-#: templates/user/collection/view.tpl:77
-#: templates/mailz/itemlist_collection_text.tpl:7
-#: templates/mailz/itemlist_collection_html.tpl:11
-msgid "No collections found."
-msgstr ""
-
-#: templates/admin/collection/view.tpl:103 templates/collection/view.tpl:118
-msgid "With selected collections"
-msgstr ""
-
-#: templates/admin/collection/view.atom.tpl:4
-#: templates/admin/collection/view.rss.tpl:11
-#: templates/collection/view.atom.tpl:8 templates/collection/view.rss.tpl:15
-#: templates/user/collection/view.atom.tpl:4
-#: templates/user/collection/view.rss.tpl:11
-msgid "Latest collections"
-msgstr ""
-
-#: templates/admin/collection/view.atom.tpl:5
-#: templates/admin/collection/view.rss.tpl:12
-#: templates/collection/view.atom.tpl:9 templates/collection/view.rss.tpl:16
-#: templates/user/collection/view.atom.tpl:5
-#: templates/user/collection/view.rss.tpl:12
-msgid "A direct feed showing the list of collections"
-msgstr ""
-
-#: templates/admin/collection/edit.tpl:7
-#: templates/admin/collection/edit.tpl:13 templates/collection/edit.tpl:11
-#: templates/collection/edit.tpl:21 templates/user/collection/edit.tpl:7
-#: templates/user/collection/edit.tpl:11
-msgid "Edit collection"
-msgstr ""
-
-#: templates/admin/collection/edit.tpl:32 templates/collection/edit.tpl:46
-#: templates/user/collection/edit.tpl:26
-msgid "Enter the title of the collection"
-msgstr ""
-
-#: templates/admin/collection/edit.tpl:38 templates/collection/edit.tpl:52
-#: templates/user/collection/edit.tpl:32
-msgid "Enter the description of the collection"
-msgstr ""
-
-#: templates/admin/collection/edit.tpl:79 templates/collection/edit.tpl:94
-#: templates/user/collection/edit.tpl:73
-msgid "Really delete this collection?"
-msgstr ""
-
-#: templates/admin/collection/delete.tpl:4 templates/collection/delete.tpl:8
-msgid "Delete collection"
-msgstr ""
-
-#: templates/admin/collection/delete.tpl:11 templates/collection/delete.tpl:19
-msgid "Do you really want to delete this collection ?"
-msgstr ""
-
-#: templates/admin/collection/delete.tpl:18
-#: templates/admin/track/delete.tpl:18 templates/admin/album/delete.tpl:18
-#: templates/collection/delete.tpl:26 templates/track/delete.tpl:26
-#: templates/album/delete.tpl:26
-msgid "Confirmation prompt"
-msgstr ""
-
-#: templates/admin/collection/include_selectEditOne.tpl:17
-#: templates/collection/include_selectEditOne.tpl:17
-#: templates/user/collection/include_selectEditOne.tpl:17
-msgid "Choose collection"
-msgstr ""
-
-#: templates/admin/collection/include_selectEditOne.tpl:18
-#: templates/admin/collection/include_selectEditOne.tpl:24
-#: templates/collection/include_selectEditOne.tpl:18
-#: templates/collection/include_selectEditOne.tpl:24
-#: templates/user/collection/include_selectEditOne.tpl:18
-#: templates/user/collection/include_selectEditOne.tpl:24
-msgid "Choose the collection"
-msgstr ""
-
-#: templates/admin/track/view.tpl:160 templates/track/view.tpl:175
-msgid "With selected tracks"
-msgstr ""
-
-#: templates/admin/track/view.atom.tpl:4 templates/admin/track/view.rss.tpl:11
-#: templates/user/track/view.atom.tpl:4 templates/user/track/view.rss.tpl:11
-#: templates/track/view.atom.tpl:8 templates/track/view.rss.tpl:15
-msgid "Latest tracks"
-msgstr ""
-
-#: templates/admin/track/view.atom.tpl:5 templates/admin/track/view.rss.tpl:12
-#: templates/user/track/view.atom.tpl:5 templates/user/track/view.rss.tpl:12
-#: templates/track/view.atom.tpl:9 templates/track/view.rss.tpl:16
-msgid "A direct feed showing the list of tracks"
-msgstr ""
-
-#: templates/admin/track/delete.tpl:4 templates/track/delete.tpl:8
-msgid "Delete track"
-msgstr ""
-
-#: templates/admin/track/delete.tpl:11 templates/track/delete.tpl:19
-msgid "Do you really want to delete this track ?"
-msgstr ""
-
-#: templates/admin/album/view.atom.tpl:4 templates/admin/album/view.rss.tpl:11
-#: templates/user/album/view.atom.tpl:4 templates/user/album/view.rss.tpl:11
-#: templates/album/view.atom.tpl:8 templates/album/view.rss.tpl:15
-msgid "Latest albums"
-msgstr ""
-
-#: templates/admin/album/view.atom.tpl:5 templates/admin/album/view.rss.tpl:12
-#: templates/user/album/view.atom.tpl:5 templates/user/album/view.rss.tpl:12
-#: templates/album/view.atom.tpl:9 templates/album/view.rss.tpl:16
-msgid "A direct feed showing the list of albums"
-msgstr ""
-
-#: templates/admin/album/delete.tpl:4 templates/album/delete.tpl:8
-msgid "Delete album"
-msgstr ""
-
-#: templates/admin/album/delete.tpl:11 templates/album/delete.tpl:19
-msgid "Do you really want to delete this album ?"
-msgstr ""
-
-#: templates/admin/album/include_selectEditOne.tpl:17
-#: templates/user/album/include_selectEditOne.tpl:17
-#: templates/album/include_selectEditOne.tpl:17
-msgid "Choose album"
-msgstr ""
-
-#: templates/admin/album/include_selectEditOne.tpl:18
-#: templates/admin/album/include_selectEditOne.tpl:24
-#: templates/user/album/include_selectEditOne.tpl:18
-#: templates/user/album/include_selectEditOne.tpl:24
-#: templates/album/include_selectEditOne.tpl:18
-#: templates/album/include_selectEditOne.tpl:24
-msgid "Choose the album"
-msgstr ""
-
 #: templates/admin/include_standardfields_display.tpl:11
 #: templates/helper/include_standardfields_display.tpl:11
 #: templates/user/include_standardfields_display.tpl:11
@@ -2764,16 +2200,118 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
+#: templates/collection/view_quickNav.tpl:6
+#: templates/track/view_quickNav.tpl:6 templates/album/view_quickNav.tpl:6
+msgid "Quick navigation"
+msgstr ""
+
+#: templates/collection/view_quickNav.tpl:24
+#: templates/track/view_quickNav.tpl:35 templates/album/view_quickNav.tpl:59
+msgid "Search"
+msgstr ""
+
+#: templates/collection/view_quickNav.tpl:59
+#: templates/track/view_quickNav.tpl:73 templates/album/view_quickNav.tpl:98
+msgid "OK"
+msgstr ""
+
 #: templates/collection/main.tpl:7
 msgid "Welcome to the collection section of the M u sound application."
+msgstr ""
+
+#: templates/collection/view.atom.tpl:8 templates/collection/view.rss.tpl:15
+msgid "Latest collections"
+msgstr ""
+
+#: templates/collection/view.atom.tpl:9 templates/collection/view.rss.tpl:16
+msgid "A direct feed showing the list of collections"
+msgstr ""
+
+#: templates/collection/edit.tpl:11 templates/collection/edit.tpl:21
+msgid "Edit collection"
+msgstr ""
+
+#: templates/collection/edit.tpl:46
+msgid "Enter the title of the collection"
+msgstr ""
+
+#: templates/collection/edit.tpl:52
+msgid "Enter the description of the collection"
+msgstr ""
+
+#: templates/collection/edit.tpl:94
+msgid "Really delete this collection?"
+msgstr ""
+
+#: templates/collection/delete.tpl:8
+msgid "Delete collection"
+msgstr ""
+
+#: templates/collection/delete.tpl:19
+msgid "Do you really want to delete this collection ?"
+msgstr ""
+
+#: templates/collection/delete.tpl:26 templates/track/delete.tpl:26
+#: templates/album/delete.tpl:26
+msgid "Confirmation prompt"
+msgstr ""
+
+#: templates/collection/include_selectEditOne.tpl:17
+msgid "Choose collection"
+msgstr ""
+
+#: templates/collection/include_selectEditOne.tpl:18
+#: templates/collection/include_selectEditOne.tpl:24
+msgid "Choose the collection"
 msgstr ""
 
 #: templates/track/main.tpl:7
 msgid "Welcome to the track section of the M u sound application."
 msgstr ""
 
+#: templates/track/view.atom.tpl:8 templates/track/view.rss.tpl:15
+msgid "Latest tracks"
+msgstr ""
+
+#: templates/track/view.atom.tpl:9 templates/track/view.rss.tpl:16
+msgid "A direct feed showing the list of tracks"
+msgstr ""
+
+#: templates/track/delete.tpl:8
+msgid "Delete track"
+msgstr ""
+
+#: templates/track/delete.tpl:19
+msgid "Do you really want to delete this track ?"
+msgstr ""
+
 #: templates/album/main.tpl:7
 msgid "Welcome to the album section of the M u sound application."
+msgstr ""
+
+#: templates/album/view.atom.tpl:8 templates/album/view.rss.tpl:15
+msgid "Latest albums"
+msgstr ""
+
+#: templates/album/view.atom.tpl:9 templates/album/view.rss.tpl:16
+msgid "A direct feed showing the list of albums"
+msgstr ""
+
+#: templates/album/delete.tpl:8
+msgid "Delete album"
+msgstr ""
+
+#: templates/album/delete.tpl:19
+msgid "Do you really want to delete this album ?"
+msgstr ""
+
+#: templates/album/include_selectEditOne.tpl:17
+msgid "Choose album"
+msgstr ""
+
+#: templates/album/include_selectEditOne.tpl:18
+#: templates/album/include_selectEditOne.tpl:24
+msgid "Choose the album"
 msgstr ""
 
 #: templates/block/itemlist_modify.tpl:9
