@@ -76,7 +76,7 @@ class MUSound_Block_Base_Moderation extends Zikula_Controller_AbstractBlock
         $this->view->setCaching(Zikula_View::CACHE_DISABLED);
         $template = $this->getDisplayTemplate($vars);
     
-        $workflowHelper = new appName?_Util_Workflow($this->serviceManager);
+        $workflowHelper = new MUSound_Util_Workflow($this->serviceManager);
         $amounts = $workflowHelper->collectAmountOfModerationItems();
     
         // assign block vars and fetched data
