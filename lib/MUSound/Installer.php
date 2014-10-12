@@ -16,7 +16,7 @@
  */
 class MUSound_Installer extends MUSound_Base_Installer
 {
-        /**
+     /**
      * Register persistent event handlers.
      * These are listeners for external events of the core and other modules.
      */
