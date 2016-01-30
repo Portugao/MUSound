@@ -23,7 +23,6 @@ class MUSound_UploadHandler extends MUSound_Base_UploadHandler
     public function __construct()
     {
         parent::__construct();
-        $this->allowedFileSizes['album'] = ModUtil::getVar('VerySimpleDownload', 'maxSizeCover', 102400);
         $this->allowedFileSizes = array('album' => array('uploadCover' => ModUtil::getVar('MUSound', 'maxSizeCover', 102400)), 'track' => array('uploadTrack' => ModUtil::getVar('MUSound', 'maxSizeTrack', 102400), 'uploadZip' => 1024000));
 
     }
