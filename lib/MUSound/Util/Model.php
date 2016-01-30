@@ -16,5 +16,18 @@
  */
 class MUSound_Util_Model extends MUSound_Util_Base_Model
 {
-    // feel free to add your own convenience methods here
+    /**
+     *
+     This method is for getting a repository for albums
+     *
+     */
+
+    public static function getAlbumRepository() 
+    {
+        $serviceManager = ServiceUtil::getManager();
+        $entityManager = $serviceManager->getService('doctrine.entitymanager');
+        $repository = $entityManager->getRepository('MUSound_Entity_Album');
+
+        return $repository;
+    }
 }

@@ -124,6 +124,111 @@ class MUSound_Listener_ModuleDispatch extends MUSound_Listener_Base_ModuleDispat
         
         // the currently handled request
         // $request = $event->getRequest();
+        
+        $isAvailable = ModUtil::available('MUSound');
+        
+        $modargs = $event->getArgs();
+        
+        if (in_array($modargs['modname'], array('Blocks', 'Admin', 'MUSound'))) {
+        	// nothing to do for module blocks, admin and musound
+        	return;
+        }
+        
+        if ($modargs['type'] == 'admin') {
+        	// admin call, thus nothing to do
+        	return;
+        }
+        
+        // check if MUSound is activated for any modules
+        $modules = MUSound_Api_User::checkModules();
+        if (!is_array($modules) || count($modules) < 1) {
+        	// no active modules, thus nothing to do
+        	return;
+        }
+        
+        // we are not interested in api functions
+        if ($modargs['api'] == 1) {
+        	return;
+        }
+        
+        $controllers = array('display');
+        
+        if($modargs['modname'] == 'Content' || $modargs['modname'] == 'News') {
+        	$controllers[] = 'view';
+        }
+        
+        if ($modargs['modname'] == 'Content') {
+        	$controllers[] = 'pagelist';
+        }
+        if ($modargs['modname'] == 'Clip') {
+        	$controllers[] = 'list';
+        }
+        
+        if (!in_array($modargs['modfunc'][1], $controllers)) {
+        	// unallowed controller, thus nothing to do
+        	return;
+        }
+        
+        
+        $request = new Zikula_Request_Http();
+        $module = $request->query->filter('module', 'MUSound', FILTER_SANITIZE_STRING);
+        
+        if (($modargs['modname'] == $module && in_array($modargs['modname'], $modules) || $module == 'MUSound') && $isAvailable === true) {
+        
+        	function replacePatternMUSound($treffer)
+        	{
+        		$albumId = $treffer[2];
+        		$albumrepository = MUSound_Util_Model::getAlbumRepository();
+        		$album = $albumrepository->selectById($albumId);
+        		if (is_object($album)) {
+
+
+        				return "<div id='wrapper2'></div>
+  
+<script type='text/javascript'>
+/* <![CDATA[ */
+    var MU = jQuery.noConflict();
+    jQuery(document).ready(function(){
+
+    var myPlaylist = [
+    {{foreach name=albumtracks item=track from=$album.tracks}}
+        {
+            oga:'',
+            mp3:'{{$track->uploadTrackFullPathUrl}}',
+            title:'{{$track->title}}',
+            artist:'{{if $track->author ne ''}}{{$track->author}}{{else}}{{$track->album->author}}{{/if}}',
+            cover:'{{if $track->album->uploadCoverFullPathUrl}}{{$track->album->uploadCoverFullPathUrl}}{{else}}/modules/MUSound/images/NoCover.jpg{{/if}}'
+        }{{if $smarty.foreach.albumtracks.last ne true}},{{/if}}
+    {{/foreach}}
+    ];
+            var description = '{{$track->album->description}}';
+
+            MU('#wrapper2').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                    swfPath:'/modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+      
+
+    
+    });
+/* ]]> */
+</script>";
+        	} else {
+        				return '';
+        			}
+        	}
+        	$data = $event->getData();
+        
+        	$pattern = '(MUSOUNDALBUM)\[([0-9]*)\]';
+        	$newData = preg_replace_callback("/$pattern/", 'replacePatternMUSound', $data);
+        	$event->setData($newData);
+        		
+        } else {
+        	// nothing to do
+        }
     }
     
     /**
