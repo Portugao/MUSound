@@ -109,7 +109,7 @@
             </tr>
         {foreachelse}
             <tr class="z-{if $lct eq 'admin'}admin{else}data{/if}tableempty">
-              <td class="z-left" colspan="{if $lct eq 'admin'}4{else}3{/if}">
+              <td class="z-left" colspan="{if $lct eq 'admin'}{else}4{/if}">
             {gt text='No collections found.'}
               </td>
             </tr>
