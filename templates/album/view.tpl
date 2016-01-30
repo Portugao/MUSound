@@ -45,6 +45,7 @@
     {/if}
         <table class="z-datatable">
             <colgroup>
+            	<col id="cUploadCover" />
                 {if $lct eq 'admin'}
                     <col id="cSelect" />       
                     <col id="cWorkflowState" />
@@ -63,6 +64,9 @@
             <thead>
             <tr>
                 {assign var='catIdListMainString' value=','|implode:$catIdList.Main}
+                <th id="hUploadCover" scope="col" class="z-left">
+                    {sortlink __linktext='Upload cover' currentsort=$sort modname='MUSound' type=$lct func='view' sort='uploadCover' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
+                </th>
                 {if $lct eq 'admin'}
                     <th id="hSelect" scope="col" align="center" valign="middle">
                         <input type="checkbox" id="toggleAlbums" />
@@ -82,9 +86,6 @@
                 <th id="hAuthor" scope="col" class="z-left">
                     {sortlink __linktext='Author' currentsort=$sort modname='MUSound' type=$lct func='view' sort='author' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
                 </th>
-                <th id="hUploadCover" scope="col" class="z-left">
-                    {sortlink __linktext='Upload cover' currentsort=$sort modname='MUSound' type=$lct func='view' sort='uploadCover' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
-                </th>
                 <th id="hPublishedDate" scope="col" class="z-left">
                     {sortlink __linktext='Published date' currentsort=$sort modname='MUSound' type=$lct func='view' sort='publishedDate' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
                 </th>
@@ -102,6 +103,17 @@
         
         {foreach item='album' from=$items}
             <tr class="{cycle values='z-odd, z-even'}">
+                <td headers="hUploadCover" class="z-left">
+                    {if $album.uploadCover ne ''}
+                      <a href="{$album.uploadCoverFullPathURL}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}"{if $album.uploadCoverMeta.isImage} rel="imageviewer[album]"{/if}>
+                      {if $album.uploadCoverMeta.isImage}
+                          {thumb image=$album.uploadCoverFullPath objectid="album-`$album.id`" preset=$albumThumbPresetUploadCover tag=true img_alt=$album->getTitleFromDisplayPattern()}
+                      {else}
+                          {gt text='Download'} ({$album.uploadCoverMeta.size|musoundGetFileSize:$album.uploadCoverFullPath:false:false})
+                      {/if}
+                      </a>
+                    {else}<a href="{modurl modname='MUSound' type='user' func='display' ot='album' id=$album.id}"><img _title="No cover" width="50px" src="/modules/MUSound/images/NoCover.jpg" /></a>{/if}
+                </td>
                 {if $lct eq 'admin'}
                     <td headers="hselect" align="center" valign="top">
                         <input type="checkbox" name="items[]" value="{$album.id}" class="albums-checkbox" />
@@ -120,17 +132,6 @@
                 </td>
                 <td headers="hAuthor" class="z-left">
                     {$album.author}
-                </td>
-                <td headers="hUploadCover" class="z-left">
-                    {if $album.uploadCover ne ''}
-                      <a href="{$album.uploadCoverFullPathURL}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}"{if $album.uploadCoverMeta.isImage} rel="imageviewer[album]"{/if}>
-                      {if $album.uploadCoverMeta.isImage}
-                          {thumb image=$album.uploadCoverFullPath objectid="album-`$album.id`" preset=$albumThumbPresetUploadCover tag=true img_alt=$album->getTitleFromDisplayPattern()}
-                      {else}
-                          {gt text='Download'} ({$album.uploadCoverMeta.size|musoundGetFileSize:$album.uploadCoverFullPath:false:false})
-                      {/if}
-                      </a>
-                    {else}&nbsp;{/if}
                 </td>
                 <td headers="hPublishedDate" class="z-left">
                     {$album.publishedDate|dateformat:'datetimebrief'}
