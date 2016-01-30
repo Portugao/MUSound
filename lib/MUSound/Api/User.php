@@ -57,4 +57,16 @@ class MUSound_Api_User extends MUSound_Api_Base_User
 
         return $links;
     }
+    
+    /**
+     * Returns the supported modules set in the configuration.
+     *
+     * @return array $modules
+     */
+    public static function checkModules()
+    {
+    	$modules = ModUtil::getVar('MUSound', 'supportedModules');
+    	$modules = explode(',', $modules);
+    	return $modules;
+    }
 }
