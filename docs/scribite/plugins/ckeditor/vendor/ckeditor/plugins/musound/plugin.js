@@ -1,4 +1,4 @@
-CKEDITOR.plugins.add('MUSound', {
+CKEDITOR.plugins.add('musound', {
     requires: 'popup',
     lang: 'en,nl,de',
     init: function (editor) {
@@ -10,10 +10,10 @@ CKEDITOR.plugins.add('MUSound', {
             }
         });
         editor.ui.addButton('musound', {
-            label: editor.lang.MUSound.title,
+            label: editor.lang.musound.title,
             command: 'insertMUSound',
          // icon: this.path + 'images/ed_musound.png'
-            icon: '/images/icons/extrasmall/favorites.png'
+            icon: '/modules/MUSound/images/musound.png'
         });
     }
 });

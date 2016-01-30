@@ -1,4 +1,4 @@
-CKEDITOR.plugins.setLang('MUSound', 'en', {
+CKEDITOR.plugins.setLang('musound', 'en', {
     title: 'Insert MUSound object',
     alt: 'Insert MUSound object'
 });
