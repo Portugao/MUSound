@@ -96,6 +96,10 @@ function getPasteSnippet(mode, itemId)
     itemTitle = $F('title' + itemId);
     itemDescription = $F('desc' + itemId);
     pasteMode = $F('mUSoundPasteAs');
+    
+    if (pasteMode === '3') {
+    	return 'MUSOUNDALBUM[' + itemId + ']';
+    }
 
     if (pasteMode === '2' || pasteMode !== '1') {
         return itemId;
