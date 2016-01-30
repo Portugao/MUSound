@@ -55,6 +55,10 @@
                         <span class="z-formnote z-warningmsg">{gt text='Only mp3 supported at the moment.'}</span>
                         
                 </div>
+                <div class="z-formrow">
+                    {formlabel for='supportedModules' __text='Supported modules' cssClass=''}
+                        {formtextinput id='supportedModules' group='config' maxLength=255 __title='Enter the supported modules (comma separated).'}
+                </div>
             </fieldset>
            {* {/formtabbedpanel}
             {gt text='Thumbnails view' assign='tabTitle'}
