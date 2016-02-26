@@ -52,12 +52,15 @@
                 <div class="z-formrow">
                     {formlabel for='allowedExtensionTrack' __text='Allowed extension track' cssClass=''}
                         {formtextinput disabled="disabled" id='allowedExtensionTrack' group='config' maxLength=255 __title='Enter the allowed extension track.'}
-                        <span class="z-formnote z-warningmsg">{gt text='Only mp3 supported at the moment.'}</span>
-                        
+                        <span class="z-formnote z-warningmsg">{gt text='Only mp3 supported at the moment.'}</span>                
                 </div>
                 <div class="z-formrow">
                     {formlabel for='supportedModules' __text='Supported modules' cssClass=''}
                         {formtextinput id='supportedModules' group='config' maxLength=255 __title='Enter the supported modules (comma separated).'}
+                </div>
+                <div class="z-formrow">
+  				    {formlabel for='useStandard' __text='Use ttw-music-player? Standard audio.js.' cssClass=''}
+                        {formcheckbox id='useStandard' group='config'}
                 </div>
             </fieldset>
            {* {/formtabbedpanel}

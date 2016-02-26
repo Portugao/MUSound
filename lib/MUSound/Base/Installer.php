@@ -63,6 +63,7 @@ class MUSound_Base_Installer extends Zikula_AbstractInstaller
         $this->setVar('frontendHeight', 300);
         $this->setVar('moderationGroupForAlbums', 2);
         $this->setVar('supportedModuls', '');
+        $this->setVar('useStandard', false);
     
         $categoryRegistryIdsPerEntity = array();
     

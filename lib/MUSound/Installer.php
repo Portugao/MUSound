@@ -32,6 +32,7 @@ class MUSound_Installer extends MUSound_Base_Installer
 		 	
 		 case '1.0.0':
 			$this->setVar('supportedModuls', '');
+			$this->setVar('useStandard', false);
 			
 		 // update the database schema
 		 try {
