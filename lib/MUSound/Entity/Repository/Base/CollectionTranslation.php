@@ -4,7 +4,7 @@
  *
  * @copyright Michael Ueberschaer (MU)
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
- * @package MUPolls
+ * @package MUSound
  * @author Michael Ueberschaer <kontakt@webdesign-in-bremen.com>.
  * @link http://webdesign-in-bremen.com
  * @link http://zikula.org
@@ -16,7 +16,7 @@ use Gedmo\Translatable\Entity\Repository\TranslationRepository;
 /**
  * Repository class used to implement own convenience methods for performing certain DQL queries.
  *
- * This is the base repository class for option translation entities.
+ * This is the base repository class for collection translation entities.
  */
 class MUSound_Entity_Repository_Base_CollectionTranslation extends TranslationRepository
 {

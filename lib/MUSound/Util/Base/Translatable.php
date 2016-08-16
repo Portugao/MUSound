@@ -1,10 +1,10 @@
 <?php
 /**
- * MUPolls.
+ * MUSound.
  *
  * @copyright Michael Ueberschaer (MU)
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
- * @package MUPolls
+ * @package MUSound
  * @author Michael Ueberschaer <kontakt@webdesign-in-bremen.com>.
  * @link http://webdesign-in-bremen.com
  * @link http://zikula.org
@@ -21,24 +21,36 @@ class MUSound_Util_Base_Translatable extends Zikula_AbstractBase
      * These are required to be determined to recognize
      * that they have to be selected from according translation tables.
      *
-     * @param string $objectType The currently treated object type.
+     * @param string $objectType The currently treated object type
      *
-     * @return array list of translatable fields.
+     * @return array list of translatable fields
      */
     public function getTranslatableFields($objectType)
     {
         $fields = array();
         switch ($objectType) {
-            case 'option':
+            case 'album':
                 $fields = array(
                     array(
                         'name' => 'title',
                         'default' => $this->__('Title')
+                    ),array(
+                        'name' => 'description',
+                        'default' => $this->__('Description')
                     )
                     
                 );
                 break;
-            case 'poll':
+            case 'track':
+                $fields = array(
+                    array(
+                        'name' => 'description',
+                        'default' => $this->__('Description')
+                    )
+                    
+                );
+                break;
+            case 'collection':
                 $fields = array(
                     array(
                         'name' => 'title',
@@ -58,9 +70,9 @@ class MUSound_Util_Base_Translatable extends Zikula_AbstractBase
     /**
      * Return list of supported languages on the current system.
      *
-     * @param string $objectType The currently treated object type.
+     * @param string $objectType The currently treated object type
      *
-     * @return array list of language codes.
+     * @return array list of language codes
      */
     public function getSupportedLanguages($objectType)
     {
@@ -72,10 +84,10 @@ class MUSound_Util_Base_Translatable extends Zikula_AbstractBase
      * This ensures easy compatibility to the Forms plugins where it
      * it is not possible yet to define sub arrays in the group attribute.
      *
-     * @param string              $objectType The currently treated object type.
-     * @param Zikula_EntityAccess $entity     The entity being edited.
+     * @param string              $objectType The currently treated object type
+     * @param Zikula_EntityAccess $entity     The entity being edited
      *
-     * @return array collected translations having the language codes as keys.
+     * @return array collected translations having the language codes as keys
      */
     public function prepareEntityForEditing($objectType, $entity)
     {
@@ -101,7 +113,7 @@ class MUSound_Util_Base_Translatable extends Zikula_AbstractBase
         $entityManager = $this->serviceManager->getService('doctrine.entitymanager');
     
         // get translations
-        $entityClass = 'MUPolls_Entity_' . ucfirst($objectType) . 'Translation';
+        $entityClass = 'MUSound_Entity_' . ucfirst($objectType) . 'Translation';
         $repository = $entityManager->getRepository($entityClass);
         $entityTranslations = $repository->findTranslations($entity);
     
@@ -128,10 +140,10 @@ class MUSound_Util_Base_Translatable extends Zikula_AbstractBase
      * This ensures easy compatibility to the Forms plugins where it
      * it is not possible yet to define sub arrays in the group attribute.
      *
-     * @param string $objectType The currently treated object type.
-     * @param array  $formData   Form data containing translations.
+     * @param string $objectType The currently treated object type
+     * @param array  $formData   Form data containing translations
      *
-     * @return array collected translations having the language codes as keys.
+     * @return array collected translations having the language codes as keys
      */
     public function processEntityAfterEditing($objectType, $formData)
     {
