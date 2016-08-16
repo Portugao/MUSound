@@ -8,10 +8,6 @@
             <title>Initial</title>
             <description>Pseudo-state for content which is just created and not persisted yet.</description>
         </state>
-        <state id="deferred">
-            <title>Deferred</title>
-            <description>Content has not been submitted yet or has been waiting, but was rejected.</description>
-        </state>
         <state id="waiting">
             <title>Waiting</title>
             <description>Content has been submitted and waits for approval.</description>
@@ -19,10 +15,6 @@
         <state id="approved">
             <title>Approved</title>
             <description>Content has been approved and is available online.</description>
-        </state>
-        <state id="suspended">
-            <title>Suspended</title>
-            <description>Content has been approved, but is temporarily offline.</description>
         </state>
         <state id="deleted">
             <title>Deleted</title>
@@ -33,15 +25,6 @@
     <!-- available permissions: overview, read, comment, moderate, edit, add, delete, admin -->
     <actions>
         <!-- From state: Initial -->
-        <action id="defer">
-            <title>Defer</title>
-            <description>Defer content for later submission.</description>
-            <permission>comment</permission>
-            <nextState>deferred</nextState>
-        
-            <operation>update</operation>
-        </action>
-        
         <action id="submit">
             <title>Submit</title>
             <description>Submit content for acceptance by a moderator.</description>
@@ -60,42 +43,12 @@
             <operation>update</operation>
         </action>
         
-        <!-- From state: Deferred -->
-        <action id="submit">
-            <title>Submit</title>
-            <description>Submit content for acceptance by a moderator.</description>
-            <permission>comment</permission>
-            <state>deferred</state>
-            <nextState>waiting</nextState>
-        
-            <operation>update</operation>
-        </action>
-        
-        <action id="update">
-            <title>Update</title>
-            <description>Update content.</description>
-            <permission>edit</permission>
-            <state>deferred</state>
-        
-            <operation>update</operation>
-        </action>
-        
         <!-- From state: Waiting -->
         <action id="update">
             <title>Update</title>
             <description>Update content.</description>
             <permission>edit</permission>
             <state>waiting</state>
-        
-            <operation>update</operation>
-        </action>
-        
-        <action id="reject">
-            <title>Reject</title>
-            <description>Reject content and require improvements.</description>
-            <permission>edit</permission>
-            <state>waiting</state>
-            <nextState>deferred</nextState>
         
             <operation>update</operation>
         </action>
@@ -120,49 +73,9 @@
             <operation>update</operation>
         </action>
         
-        <action id="unpublish">
-            <title>Unpublish</title>
-            <description>Hide content temporarily.</description>
-            <permission>edit</permission>
-            <state>approved</state>
-            <nextState>suspended</nextState>
-        
-            <operation>update</operation>
-        </action>
-        
-        <!-- From state: Suspended -->
-        <action id="update">
-            <title>Update</title>
-            <description>Update content.</description>
-            <permission>edit</permission>
-            <state>suspended</state>
-        
-            <operation>update</operation>
-        </action>
-        
-        <action id="publish">
-            <title>Publish</title>
-            <description>Make content available again.</description>
-            <permission>edit</permission>
-            <state>suspended</state>
-            <nextState>approved</nextState>
-        
-            <operation>update</operation>
-        </action>
-        
         <!-- From state: Deleted -->
     
         <!-- Actions for destroying objects -->
-        <action id="delete">
-            <title>Delete</title>
-            <description>Delete content permanently.</description>
-            <permission>delete</permission>
-            <state>deferred</state>
-        
-            <operation>delete</operation>
-            <operation recipientType="creator" action="delete">notify</operation>
-        </action>
-        
         <action id="delete">
             <title>Delete</title>
             <description>Delete content permanently.</description>
@@ -178,16 +91,6 @@
             <description>Delete content permanently.</description>
             <permission>delete</permission>
             <state>approved</state>
-        
-            <operation>delete</operation>
-            <operation recipientType="creator" action="delete">notify</operation>
-        </action>
-        
-        <action id="delete">
-            <title>Delete</title>
-            <description>Delete content permanently.</description>
-            <permission>delete</permission>
-            <state>suspended</state>
         
             <operation>delete</operation>
             <operation recipientType="creator" action="delete">notify</operation>
