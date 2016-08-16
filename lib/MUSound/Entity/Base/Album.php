@@ -75,6 +75,7 @@
         protected $title = '';
         
         /**
+         * @Gedmo\Translatable
          * @ORM\Column(type="text", length=3000)
          * @var text $description.
          */
@@ -133,6 +134,15 @@
          * @var MUSound_Entity_AlbumCategory
          */
         protected $categories = null;
+        
+        /**
+         * Field for storing the locale of this entity.
+         * Overrides the locale set in translationListener (as pointed out in https://github.com/l3pp4rd/DoctrineExtensions/issues/130#issuecomment-1790206 ).
+         *
+         * @Gedmo\Locale
+         * @var string $locale.
+         */
+        protected $locale;
         
         /**
          * @ORM\Column(type="integer")
@@ -597,6 +607,28 @@
         public function setCategories($categories)
         {
             $this->categories = $categories;
+        }
+        
+        /**
+         * Gets the locale.
+         *
+         * @return string
+         */
+        public function getLocale()
+        {
+        	return $this->locale;
+        }
+        
+        /**
+         * Sets the locale.
+         *
+         * @param string $locale.
+         *
+         * @return void
+         */
+        public function setLocale($locale)
+        {
+        	$this->locale = $locale;
         }
         
         /**

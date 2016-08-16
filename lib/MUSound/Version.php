@@ -26,7 +26,7 @@ class MUSound_Version extends MUSound_Base_Version
         $meta = parent::getMetaData();
         
         // the current module version
-        $meta['version']              = '1.0.0';
+        $meta['version']              = '1.1.0';
         // the displayed name of the module
         $meta['displayname']          = $this->__('MUSound');
         // the module description

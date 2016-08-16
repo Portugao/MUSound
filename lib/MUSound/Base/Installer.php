@@ -190,8 +190,11 @@ class MUSound_Base_Installer extends Zikula_AbstractInstaller
         $classNames = array();
         $classNames[] = 'MUSound_Entity_Album';
         $classNames[] = 'MUSound_Entity_AlbumCategory';
+        $classNames[] = 'MUSound_Entity_AlbumTranslation';
         $classNames[] = 'MUSound_Entity_Track';
+        $classNames[] = 'MUSound_Entity_TrackTranslation';
         $classNames[] = 'MUSound_Entity_Collection';
+        $classNames[] = 'MUSound_Entity_CollectionTranslation';
     
         return $classNames;
     }

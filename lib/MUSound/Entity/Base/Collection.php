@@ -69,16 +69,27 @@
         protected $workflowState = 'initial';
         
         /**
+         * @Gedmo\Translatable
          * @ORM\Column(length=255)
          * @var string $title.
          */
         protected $title = '';
         
         /**
+         * @Gedmo\Translatable
          * @ORM\Column(type="text", length=2000)
          * @var text $description.
          */
         protected $description = '';
+        
+        /**
+         * Field for storing the locale of this entity.
+         * Overrides the locale set in translationListener (as pointed out in https://github.com/l3pp4rd/DoctrineExtensions/issues/130#issuecomment-1790206 ).
+         *
+         * @Gedmo\Locale
+         * @var string $locale.
+         */
+        protected $locale;
         
         
         /**
@@ -340,6 +351,28 @@
             if ($description != $this->description) {
                 $this->description = $description;
             }
+        }
+        
+        /**
+         * Gets the locale.
+         *
+         * @return string
+         */
+        public function getLocale()
+        {
+        	return $this->locale;
+        }
+        
+        /**
+         * Sets the locale.
+         *
+         * @param string $locale.
+         *
+         * @return void
+         */
+        public function setLocale($locale)
+        {
+        	$this->locale = $locale;
         }
         
         /**

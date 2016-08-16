@@ -74,6 +74,7 @@
         protected $title = '';
         
         /**
+         * @Gedmo\Translatable
          * @ORM\Column(type="text", length=2000)
          * @var text $description.
          */
@@ -139,6 +140,21 @@
          * @var string $uploadZipFullPathUrl.
          */
         protected $uploadZipFullPathUrl = '';
+        
+        /**
+         * @ORM\Column(type="bigint")
+         * @var integer $pos.
+         */
+        protected $pos = 0;
+        
+        /**
+         * Field for storing the locale of this entity.
+         * Overrides the locale set in translationListener (as pointed out in https://github.com/l3pp4rd/DoctrineExtensions/issues/130#issuecomment-1790206 ).
+         *
+         * @Gedmo\Locale
+         * @var string $locale.
+         */
+        protected $locale;
         
         /**
          * @ORM\Column(type="integer")
@@ -614,6 +630,52 @@
             if ($uploadZipMeta != $this->uploadZipMeta) {
                 $this->uploadZipMeta = $uploadZipMeta;
             }
+        }
+        
+        /**
+         * Get pos.
+         *
+         * @return integer
+         */
+        public function getPos()
+        {
+        	return $this->pos;
+        }
+        
+        /**
+         * Set pos.
+         *
+         * @param integer $pos.
+         *
+         * @return void
+         */
+        public function setPos($pos)
+        {
+        	if ($pos != $this->pos) {
+        		$this->pos = $pos;
+        	}
+        }
+        
+        /**
+         * Gets the locale.
+         *
+         * @return string
+         */
+        public function getLocale()
+        {
+        	return $this->locale;
+        }
+        
+        /**
+         * Sets the locale.
+         *
+         * @param string $locale.
+         *
+         * @return void
+         */
+        public function setLocale($locale)
+        {
+        	$this->locale = $locale;
         }
         
         /**

@@ -175,7 +175,55 @@ class MUSound_Listener_ModuleDispatch extends MUSound_Listener_Base_ModuleDispat
         
         if (($modargs['modname'] == $module && in_array($modargs['modname'], $modules) || $module == 'MUSound') && $isAvailable === true) {
         
-        	function replacePatternMUSound($treffer)
+        	/*function replacePatternMUSound($treffer)
+        	{
+        		$albumId = $treffer[2];
+        		$albumrepository = MUSound_Util_Model::getAlbumRepository();
+        		$album = $albumrepository->selectById($albumId);
+        		if (is_object($album)) {
+
+
+        				return "<div id='wrapper2'></div>
+  
+<script type='text/javascript'>
+/* <![CDATA[ */
+    /*var MU = jQuery.noConflict();
+    jQuery(document).ready(function(){
+
+    var myPlaylist = [
+    {{foreach name=albumtracks item=track from=$album.tracks}}
+        {
+            oga:'',
+            mp3:'{{$track->uploadTrackFullPathUrl}}',
+            title:'{{$track->title}}',
+            artist:'{{if $track->author ne ''}}{{$track->author}}{{else}}{{$track->album->author}}{{/if}}',
+            cover:'{{if $track->album->uploadCoverFullPathUrl}}{{$track->album->uploadCoverFullPathUrl}}{{else}}/modules/MUSound/images/NoCover.jpg{{/if}}'
+        }{{if $smarty.foreach.albumtracks.last ne true}},{{/if}}
+    {{/foreach}}
+    ];
+            var description = '{{$track->album->description}}';
+
+            MU('#wrapper2').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                    swfPath:'/modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+      
+
+    
+    });
+/* ]]> */
+//</script>";
+        	/*} else {
+        				return '';
+        			}
+        	}*/
+        	$data = $event->getData();
+        
+        	$pattern = '(MUSOUNDALBUM)\[([0-9]*)\]';
+        	$newData = preg_replace_callback("/$pattern/",         	function ($treffer)
         	{
         		$albumId = $treffer[2];
         		$albumrepository = MUSound_Util_Model::getAlbumRepository();
@@ -219,11 +267,7 @@ class MUSound_Listener_ModuleDispatch extends MUSound_Listener_Base_ModuleDispat
         	} else {
         				return '';
         			}
-        	}
-        	$data = $event->getData();
-        
-        	$pattern = '(MUSOUNDALBUM)\[([0-9]*)\]';
-        	$newData = preg_replace_callback("/$pattern/", 'replacePatternMUSound', $data);
+        	}, $data);
         	$event->setData($newData);
         		
         } else {
