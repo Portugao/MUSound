@@ -65,7 +65,7 @@
             <tr>
                 {assign var='catIdListMainString' value=','|implode:$catIdList.Main}
                 <th id="hUploadCover" scope="col" class="z-left">
-                    {sortlink __linktext='Upload cover' currentsort=$sort modname='MUSound' type=$lct func='view' sort='uploadCover' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
+                    {sortlink __linktext='Cover' currentsort=$sort modname='MUSound' type=$lct func='view' sort='uploadCover' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='album'}
                 </th>
                 {if $lct eq 'admin'}
                     <th id="hSelect" scope="col" align="center" valign="middle">
