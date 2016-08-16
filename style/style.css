@@ -177,8 +177,7 @@ div.musound-view form.musound-quicknav fieldset #num {
 }
 
 .musound-album-description {
-	float: left;
-	width:45%;
+	width:98%;
 	margin: 10px 0 10px 10px;
 }
 
@@ -287,6 +286,15 @@ div.musound-view form.musound-quicknav fieldset #num {
 }
 
 @media screen and (max-device-width: 480px) {
+	
+		.musound-album-cover {
+		float: none;
+	}
+	
+	.musound-album-cover a img {
+		width: 100%;
+		height: auto;
+	}
     #wrapper { 
     	position: relative; 
     	left: -3%; 
