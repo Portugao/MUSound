@@ -13,7 +13,7 @@ CKEDITOR.plugins.add('musound', {
             label: editor.lang.musound.title,
             command: 'insertMUSound',
          // icon: this.path + 'images/ed_musound.png'
-            icon: '/modules/MUSound/images/musound.png'
+            icon: '/images/icons/extrasmall/favorites.png'
         });
     }
 });

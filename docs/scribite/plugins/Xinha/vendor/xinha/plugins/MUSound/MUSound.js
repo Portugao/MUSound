@@ -19,7 +19,7 @@ function MUSound(editor) {
         id       : 'MUSound',
         tooltip  : 'Insert MUSound object',
      // image    : _editor_url + 'plugins/MUSound/img/ed_MUSound.gif',
-        image    : '/modules/MUSound/images/musound.png',
+        image    : '/images/icons/extrasmall/favorites.png',
         textMode : false,
         action   : function (editor) {
             var url = Zikula.Config.baseURL + 'index.php'/*Zikula.Config.entrypoint*/ + '?module=MUSound&type=external&func=finder&editor=xinha';
@@ -31,10 +31,10 @@ function MUSound(editor) {
 
 MUSound._pluginInfo = {
     name          : 'MUSound for xinha',
-    version       : '1.0.0',
+    version       : '1.1.0',
     developer     : 'Michael Ueberschaer',
     developer_url : 'http://webdesign-in-bremen.com',
-    sponsor       : 'ModuleStudio 0.6.2',
+    sponsor       : 'ModuleStudio 0.7.0',
     sponsor_url   : 'http://modulestudio.de',
     license       : 'htmlArea'
 };

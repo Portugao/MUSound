@@ -1,5 +1,4 @@
-INSTALLATION INSTRUCTIONS
-=========================
+# INSTALLATION INSTRUCTIONS
 
 1) Copy MUSound to your modules folder.
 2) Initialize and activate MUSound in the modules administration.

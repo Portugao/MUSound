@@ -1,3 +1,3 @@
 tinyMCE.addI18n('de.musound', {
-    desc : 'MUSound-Objekt einf?gen'
+    desc : 'MUSound-Objekt einfügen'
 });

@@ -1,4 +1,4 @@
 CKEDITOR.plugins.setLang('musound', 'de', {
-    title : 'MUSound-Objekt einfÃ¼gen',
-    alt: 'MUSound-Objekt einfÃ¼gen'
+    title : 'MUSound-Objekt einfügen',
+    alt: 'MUSound-Objekt einfügen'
 });
