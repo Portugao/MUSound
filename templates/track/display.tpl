@@ -95,9 +95,10 @@
     {/if}
 </div>
 {include file='user/footer.tpl'}
-            <script type="text/javascript">
-            /* <![CDATA[ */
-                      var myPlaylist = [
+{if $coredata.MUSound.useStandard eq true}
+    <script type="text/javascript">
+    /* <![CDATA[ */
+        var myPlaylist = [
 
         {
             mp3:'{{$track.uploadTrackFullPathUrl}}',
@@ -123,3 +124,4 @@
 
             /* ]]> */
             </script>
+{/if}
