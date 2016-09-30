@@ -31,6 +31,7 @@
         <option value="author"{if $sort eq 'author'} selected="selected"{/if}>{gt text='Author'}</option>
         <option value="uploadTrack"{if $sort eq 'uploadTrack'} selected="selected"{/if}>{gt text='Upload track'}</option>
         <option value="uploadZip"{if $sort eq 'uploadZip'} selected="selected"{/if}>{gt text='Upload zip'}</option>
+        <option value="pos"{if $sort eq 'pos'} selected="selected"{/if}>{gt text='Pos'}</option>
         <option value="createdDate"{if $sort eq 'createdDate'} selected="selected"{/if}>{gt text='Creation date'}</option>
         <option value="createdUserId"{if $sort eq 'createdUserId'} selected="selected"{/if}>{gt text='Creator'}</option>
         <option value="updatedDate"{if $sort eq 'updatedDate'} selected="selected"{/if}>{gt text='Update date'}</option>
@@ -43,7 +44,7 @@
 </p>
 <p>
     <label for="{$baseID}SearchTerm"{$leftSide}>{gt text='Search for'}:</label>
-    <input type="text" id="{$baseID}SearchTerm" name="searchterm"{$rightSide} />
+    <input type="text" id="{$baseID}SearchTerm" name="q"{$rightSide} />
     <input type="button" id="mUSoundSearchGo" name="gosearch" value="{gt text='Filter'}" />
     <br{$break} />
 </p>
@@ -53,7 +54,7 @@
 <script type="text/javascript">
 /* <![CDATA[ */
     document.observe('dom:loaded', function() {
-        musound.itemSelector.onLoad('{{$baseID}}', {{$selectedId|default:0}});
+        mUSound.itemSelector.onLoad('{{$baseID}}', {{$selectedId|default:0}});
     });
 /* ]]> */
 </script>

@@ -75,14 +75,14 @@
     {formlabel for='mUSoundFilter' text=$filterLabel}
         {formtextinput id='mUSoundFilter' dataField='filter' group='data' mandatory=false maxLength=255}
         <span class="z-sub z-formnote">
-            ({gt text='Syntax examples'}: <kbd>name:like:foobar</kbd> {gt text='or'} <kbd>status:ne:3</kbd>)
+            ({gt text='Syntax examples' domain='module_musound'}: <kbd>name:like:foobar</kbd> {gt text='or'} <kbd>status:ne:3</kbd>)
         </span>
 </div>
 
 {pageaddvar name='javascript' value='prototype'}
 <script type="text/javascript">
 /* <![CDATA[ */
-    function musoundToggleCustomTemplate() {
+    function mUMUSoundToggleCustomTemplate() {
         if ($F('mUSoundTemplate') == 'custom') {
             $('customTemplateArea').removeClassName('z-hide');
         } else {
@@ -91,9 +91,9 @@
     }
 
     document.observe('dom:loaded', function() {
-        musoundToggleCustomTemplate();
+        mUMUSoundToggleCustomTemplate();
         $('mUSoundTemplate').observe('change', function(e) {
-            musoundToggleCustomTemplate();
+            mUMUSoundToggleCustomTemplate();
         });
     });
 /* ]]> */

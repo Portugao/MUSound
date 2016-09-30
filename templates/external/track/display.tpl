@@ -3,16 +3,16 @@
 {pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='jquery-ui'}
 {/if}
-
 <div id="track{$track.id}" class="musound-external-track">
 {if $displayMode eq 'link'}
     <p class="musound-external-link">
-    <a href="{modurl modname='MUSound' type='user' func='display' ot='track' id=$track.id}" title="{$track->getTitleFromDisplayPattern()|replace:"\"":""}">
+    <a href="{modurl modname='MUSound' type='user' func='display' ot='track'  id=$track.id}" title="{$track->getTitleFromDisplayPattern()|replace:"\"":""}">
     {$track->getTitleFromDisplayPattern()|notifyfilters:'musound.filter_hooks.tracks.filter'}
     </a>
     </p>
 {/if}
 {checkpermissionblock component='MUSound::' instance='::' level='ACCESS_EDIT'}
+    {* for normal users without edit permission show only the actual file per default *}
     {if $displayMode eq 'embed'}
         <p class="musound-external-title">
             <strong>{$track->getTitleFromDisplayPattern()|notifyfilters:'musound.filter_hooks.tracks.filter'}</strong>
@@ -42,7 +42,7 @@
 {/if}
 </div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
   /* <![CDATA[ */
 	            
   audiojs.events.ready(function() {

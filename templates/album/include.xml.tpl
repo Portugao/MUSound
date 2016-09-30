@@ -1,17 +1,17 @@
 {* purpose of this template: albums xml inclusion template *}
-<album id="{$item.id}" createdon="{$item.createdDate|dateformat}" updatedon="{$item.updatedDate|dateformat}">
-    <id>{$item.id}</id>
-    <title><![CDATA[{$item.title}]]></title>
-    <description><![CDATA[{$item.description}]]></description>
-    <author><![CDATA[{$item.author}]]></author>
-    <uploadCover{if $item.uploadCover ne ''} extension="{$item.uploadCoverMeta.extension}" size="{$item.uploadCoverMeta.size}" isImage="{if $item.uploadCoverMeta.isImage}true{else}false{/if}"{if $item.uploadCoverMeta.isImage} width="{$item.uploadCoverMeta.width}" height="{$item.uploadCoverMeta.height}" format="{$item.uploadCoverMeta.format}"{/if}{/if}>{$item.uploadCover}</uploadCover>
-    <publishedDate>{$item.publishedDate|dateformat:'datetimebrief'}</publishedDate>
-    <publishedText><![CDATA[{$item.publishedText}]]></publishedText>
-    <workflowState>{$item.workflowState|musoundObjectState:false|lower}</workflowState>
-    <collection>{if isset($item.Collection) && $item.Collection ne null}{$item.Collection->getTitleFromDisplayPattern()|default:''}{/if}</collection>
+<album id="{$album.id}" createdon="{$album.createdDate|dateformat}" updatedon="{$album.updatedDate|dateformat}">
+    <id>{$album.id}</id>
+    <title><![CDATA[{$album.title}]]></title>
+    <description><![CDATA[{$album.description}]]></description>
+    <author><![CDATA[{$album.author}]]></author>
+    <uploadCover{if $album.uploadCover ne ''} extension="{$album.uploadCoverMeta.extension}" size="{$album.uploadCoverMeta.size}" isImage="{if $album.uploadCoverMeta.isImage}true{else}false{/if}"{if $album.uploadCoverMeta.isImage} width="{$album.uploadCoverMeta.width}" height="{$album.uploadCoverMeta.height}" format="{$album.uploadCoverMeta.format}"{/if}{/if}>{$album.uploadCover}</uploadCover>
+    <publishedDate>{$album.publishedDate|dateformat:'datetimebrief'}</publishedDate>
+    <publishedText><![CDATA[{$album.publishedText}]]></publishedText>
+    <workflowState>{$album.workflowState|musoundObjectState:false|lower}</workflowState>
+    <collection>{if isset($album.collection) && $album.collection ne null}{$album.collection->getTitleFromDisplayPattern()|default:''}{/if}</collection>
     <track>
-    {if isset($item.Track) && $item.Track ne null}
-        {foreach name='relationLoop' item='relatedItem' from=$item.Track}
+    {if isset($album.track) && $album.track ne null}
+        {foreach name='relationLoop' item='relatedItem' from=$album.track}
         <track>{$relatedItem->getTitleFromDisplayPattern()|default:''}</track>
         {/foreach}
     {/if}

@@ -5,18 +5,16 @@
 {/if}
 {musoundTemplateHeaders contentType='application/atom+xml'}<?xml version="1.0" encoding="{charset assign='charset'}{if $charset eq 'ISO-8859-15'}ISO-8859-1{else}{$charset}{/if}" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-{gt text='Latest albums' assign='channelTitle'}
-{gt text='A direct feed showing the list of albums' assign='channelDesc'}
-    <title type="text">{$channelTitle}</title>
-    <subtitle type="text">{$channelDesc} - {$modvars.ZConfig.slogan}</subtitle>
+    <title type="text">{gt text='Latest albums'}</title>
+    <subtitle type="text">{gt text='A direct feed showing the list of albums'} - {$modvars.ZConfig.slogan}</subtitle>
     <author>
         <name>{$modvars.ZConfig.sitename}</name>
     </author>
-{assign var='numItems' value=$items|@count}
-{if $numItems}
-{capture assign='uniqueID'}tag:{$baseurl|replace:'http://':''|replace:'/':''},{$items[0].createdDate|dateformat|default:$smarty.now|dateformat:'%Y-%m-%d'}:{modurl modname='MUSound' type=$lct func='display' ot='album'  id=$items[0].id}{/capture}
+{assign var='amountOfItems' value=$items|@count}
+{if $amountOfItems gt 0}
+{capture assign='uniqueID'}tag:{$baseurl|replace:'http://':''|replace:'/':''},{$items[0].createdDate|dateformat:'%Y-%m-%d'}:{modurl modname='MUSound' type=$lct func='display' ot='album' id=$items[0].id}{/capture}
     <id>{$uniqueID}</id>
-    <updated>{$items[0].updatedDate|default:$smarty.now|dateformat:'%Y-%m-%dT%H:%M:%SZ'}</updated>
+    <updated>{$items[0].updatedDate|dateformat:'%Y-%m-%dT%H:%M:%SZ'}</updated>
 {/if}
 <link rel="alternate" type="text/html" hreflang="{lang}" href="{modurl modname='MUSound' type=$lct func='main' fqurl=true}" />
 <link rel="self" type="application/atom+xml" href="{php}echo substr(\System::getBaseUrl(), 0, strlen(\System::getBaseUrl())-1);{/php}{getcurrenturi}" />
@@ -25,8 +23,8 @@
 {foreach item='album' from=$items}
     <entry>
         <title type="html">{$album->getTitleFromDisplayPattern()|notifyfilters:'musound.filterhook.albums'}</title>
-        <link rel="alternate" type="text/html" href="{modurl modname='MUSound' type=$lct func='display' ot='album'  id=$album.id fqurl=true}" />
-        {capture assign='uniqueID'}tag:{$baseurl|replace:'http://':''|replace:'/':''},{$album.createdDate|dateformat|default:$smarty.now|dateformat:'%Y-%m-%d'}:{modurl modname='MUSound' type=$lct func='display' ot='album'  id=$album.id}{/capture}
+        <link rel="alternate" type="text/html" href="{modurl modname='MUSound' type=$lct func='display' ot='album' id=$album.id fqurl=true}" />
+        {capture assign='uniqueID'}tag:{$baseurl|replace:'http://':''|replace:'/':''},{$album.createdDate|dateformat:'%Y-%m-%d'}:{modurl modname='MUSound' type=$lct func='display' ot='album' id=$album.id}{/capture}
         <id>{$uniqueID}</id>
         {if isset($album.updatedDate) && $album.updatedDate ne null}
             <updated>{$album.updatedDate|dateformat:'%Y-%m-%dT%H:%M:%SZ'}</updated>

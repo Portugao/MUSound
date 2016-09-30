@@ -69,7 +69,7 @@
 </p>
 <p>
     <label for="{$baseID}SearchTerm"{$leftSide}>{gt text='Search for'}:</label>
-    <input type="text" id="{$baseID}SearchTerm" name="searchterm"{$rightSide} />
+    <input type="text" id="{$baseID}SearchTerm" name="q"{$rightSide} />
     <input type="button" id="mUSoundSearchGo" name="gosearch" value="{gt text='Filter'}" />
     <br{$break} />
 </p>
@@ -79,7 +79,7 @@
 <script type="text/javascript">
 /* <![CDATA[ */
     document.observe('dom:loaded', function() {
-        musound.itemSelector.onLoad('{{$baseID}}', {{$selectedId|default:0}});
+        mUSound.itemSelector.onLoad('{{$baseID}}', {{$selectedId|default:0}});
     });
 /* ]]> */
 </script>
