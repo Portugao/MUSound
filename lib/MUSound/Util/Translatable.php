@@ -1,10 +1,10 @@
 <?php
 /**
- * MUPolls.
+ * MUSound.
  *
  * @copyright Michael Ueberschaer (MU)
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
- * @package MUPolls
+ * @package MUSound
  * @author Michael Ueberschaer <kontakt@webdesign-in-bremen.com>.
  * @link http://webdesign-in-bremen.com
  * @link http://zikula.org
@@ -14,7 +14,7 @@
 /**
  * Utility implementation class for translatable helper methods.
  */
-class MUSound_Util_Translatable extends MUSound_Util_Base_Translatable
+class MUSound_Util_Translatable extends MUSound_Util_Base_AbstractTranslatable
 {
     // feel free to add your own convenience methods here
 }
