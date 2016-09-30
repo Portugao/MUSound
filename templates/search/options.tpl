@@ -1,5 +1,5 @@
 {* Purpose of this template: Display search options *}
-<input type="hidden" id="mUSoundActive" name="active[MUSound]" value="1" checked="checked" />
+<input type="hidden" id="mUSoundActive" name="active[MUSound]" value="1" />
 <div>
     <input type="checkbox" id="active_mUSoundAlbums" name="mUSoundSearchTypes[]" value="album"{if $active_album} checked="checked"{/if} />
     <label for="active_mUSoundAlbums">{gt text='Albums' domain='module_musound'}</label>

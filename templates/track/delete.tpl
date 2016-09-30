@@ -33,10 +33,10 @@
 
             {notifydisplayhooks eventname='musound.ui_hooks.tracks.form_delete' id="`$track.id`" assign='hooks'}
             {foreach key='providerArea' item='hook' from=$hooks}
-            <fieldset>
-                <legend>{$hookName}</legend>
-                {$hook}
-            </fieldset>
+                <fieldset>
+                    {*<legend>{$hookName}</legend>*}
+                    {$hook}
+                </fieldset>
             {/foreach}
         </div>
     </form>

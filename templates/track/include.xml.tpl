@@ -1,11 +1,12 @@
 {* purpose of this template: tracks xml inclusion template *}
-<track id="{$item.id}" createdon="{$item.createdDate|dateformat}" updatedon="{$item.updatedDate|dateformat}">
-    <id>{$item.id}</id>
-    <title><![CDATA[{$item.title}]]></title>
-    <description><![CDATA[{$item.description}]]></description>
-    <author><![CDATA[{$item.author}]]></author>
-    <uploadTrack{if $item.uploadTrack ne ''} extension="{$item.uploadTrackMeta.extension}" size="{$item.uploadTrackMeta.size}" isImage="{if $item.uploadTrackMeta.isImage}true{else}false{/if}"{if $item.uploadTrackMeta.isImage} width="{$item.uploadTrackMeta.width}" height="{$item.uploadTrackMeta.height}" format="{$item.uploadTrackMeta.format}"{/if}{/if}>{$item.uploadTrack}</uploadTrack>
-    <uploadZip{if $item.uploadZip ne ''} extension="{$item.uploadZipMeta.extension}" size="{$item.uploadZipMeta.size}" isImage="{if $item.uploadZipMeta.isImage}true{else}false{/if}"{if $item.uploadZipMeta.isImage} width="{$item.uploadZipMeta.width}" height="{$item.uploadZipMeta.height}" format="{$item.uploadZipMeta.format}"{/if}{/if}>{$item.uploadZip}</uploadZip>
-    <workflowState>{$item.workflowState|musoundObjectState:false|lower}</workflowState>
-    <album>{if isset($item.Album) && $item.Album ne null}{$item.Album->getTitleFromDisplayPattern()|default:''}{/if}</album>
+<track id="{$track.id}" createdon="{$track.createdDate|dateformat}" updatedon="{$track.updatedDate|dateformat}">
+    <id>{$track.id}</id>
+    <title><![CDATA[{$track.title}]]></title>
+    <description><![CDATA[{$track.description}]]></description>
+    <author><![CDATA[{$track.author}]]></author>
+    <uploadTrack{if $track.uploadTrack ne ''} extension="{$track.uploadTrackMeta.extension}" size="{$track.uploadTrackMeta.size}" isImage="{if $track.uploadTrackMeta.isImage}true{else}false{/if}"{if $track.uploadTrackMeta.isImage} width="{$track.uploadTrackMeta.width}" height="{$track.uploadTrackMeta.height}" format="{$track.uploadTrackMeta.format}"{/if}{/if}>{$track.uploadTrack}</uploadTrack>
+    <uploadZip{if $track.uploadZip ne ''} extension="{$track.uploadZipMeta.extension}" size="{$track.uploadZipMeta.size}" isImage="{if $track.uploadZipMeta.isImage}true{else}false{/if}"{if $track.uploadZipMeta.isImage} width="{$track.uploadZipMeta.width}" height="{$track.uploadZipMeta.height}" format="{$track.uploadZipMeta.format}"{/if}{/if}>{$track.uploadZip}</uploadZip>
+    <pos>{$track.pos}</pos>
+    <workflowState>{$track.workflowState|musoundObjectState:false|lower}</workflowState>
+    <album>{if isset($track.album) && $track.album ne null}{$track.album->getTitleFromDisplayPattern()|default:''}{/if}</album>
 </track>
