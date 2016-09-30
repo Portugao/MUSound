@@ -1,20 +1,14 @@
 {* Purpose of this template: Display one certain album within an external context *}
-{if $displayMode eq 'embed'}
-{pageaddvar name='javascript' value='jquery'}
-{pageaddvar name='javascript' value='jquery-ui'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/jquery-jplayer/jquery.jplayer.js'}
-{pageaddvar name='javascript' value='modules/MUSound/lib/vendor/musicplayer/ttw-music-player-min.js'}
-{pageaddvar name='stylesheet' value='modules/MUSound/lib/vendor/musicplayer/css/style.css'}
-{/if}
 <div id="album{$album.id}" class="musound-external-album">
 {if $displayMode eq 'link'}
     <p class="musound-external-link">
-    <a href="{modurl modname='MUSound' type='user' func='display' ot='album' id=$album.id}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}">
+    <a href="{modurl modname='MUSound' type='user' func='display' ot='album'  id=$album.id}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}">
     {$album->getTitleFromDisplayPattern()|notifyfilters:'musound.filter_hooks.albums.filter'}
     </a>
     </p>
 {/if}
 {checkpermissionblock component='MUSound::' instance='::' level='ACCESS_EDIT'}
+    {* for normal users without edit permission show only the actual file per default *}
     {if $displayMode eq 'embed'}
         <p class="musound-external-title">
             <strong>{$album->getTitleFromDisplayPattern()|notifyfilters:'musound.filter_hooks.albums.filter'}</strong>
@@ -24,27 +18,19 @@
 
 {if $displayMode eq 'link'}
 {elseif $displayMode eq 'embed'}
-   {* <div class="musound-external-snippet"> *}
-       {* {if $album.uploadCover ne ''}
-          <a href="{$album.uploadCoverFullPathURL}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}"{if $album.uploadCoverMeta.isImage} rel="imageviewer[album]"{/if}>
-          {if $album.uploadCoverMeta.isImage}
-              {thumb image=$album.uploadCoverFullPath objectid="album-`$album.id`" preset=$albumThumbPresetUploadCover tag=true img_alt=$album->getTitleFromDisplayPattern()}
-          {else}
-              {gt text='Download'} ({$album.uploadCoverMeta.size|musoundGetFileSize:$album.uploadCoverFullPath:false:false})
-          {/if}
-          </a>
+    {*<div class="musound-external-snippet">
+        {if $album.uploadCover ne ''}
+        <a href="{$album.uploadCoverFullPathURL}" title="{$album->getTitleFromDisplayPattern()|replace:"\"":""}"{if $album.uploadCoverMeta.isImage} rel="imageviewer[album]"{/if}>
+        {if $album.uploadCoverMeta.isImage}
+            {thumb image=$album.uploadCoverFullPath objectid="album-`$album.id`" preset=$albumThumbPresetUploadCover tag=true img_alt=$album->getTitleFromDisplayPattern()}
+        {else}
+            {gt text='Download'} ({$album.uploadCoverMeta.size|musoundGetFileSize:$album.uploadCoverFullPath:false:false})
+        {/if}
+        </a>
         {else}&nbsp;{/if}
-        <div id="wrapper">
-		<audio preload></audio>
-		<ol>
-		    {foreach item=track from=$album.track}
-		    <li><a href="#" data-src="/{$track.uploadTrackFullPath}">{$track.title} - {$track.author}</a></li>
-		    {/foreach}
-		</ol>
-		
-		</div> *}
-		<div id="wrapper2"></div>
-   {* </div> *}
+    </div>*}
+    
+    <div id="wrapper2"></div>
 
     {* you can distinguish the context like this: *}
     {*if $source eq 'contentType'}
@@ -65,7 +51,6 @@
 {if $displayMode eq 'embed'}
 <script type="text/javascript">  
   //<![CDATA[
-
     jQuery(document).ready(function(){
  
      {{*  jQuery(function() { 
@@ -85,7 +70,6 @@
             first = jQuery('ol a').attr('data-src');
         jQuery('ol li').first().addClass('playing');
         audio.load(first);
-
         // Load in a track on click
         jQuery('ol li').click(function(e) {
           e.preventDefault();
@@ -124,7 +108,6 @@
     {{/foreach}}
     ];
             var description = '{{$track.album.description}}';
-
             jQuery('#wrapper2').ttwMusicPlayer(myPlaylist, {
                 autoPlay:false, 
                 description:description,
