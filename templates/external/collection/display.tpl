@@ -8,6 +8,7 @@
     </p>
 {/if}
 {checkpermissionblock component='MUSound::' instance='::' level='ACCESS_EDIT'}
+    {* for normal users without edit permission show only the actual file per default *}
     {if $displayMode eq 'embed'}
         <p class="musound-external-title">
             <strong>{$collection->getTitleFromDisplayPattern()|notifyfilters:'musound.filter_hooks.collections.filter'}</strong>
