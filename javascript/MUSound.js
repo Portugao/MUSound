@@ -1,8 +1,8 @@
 'use strict';
 
-var musoundContextMenu;
+var mUMUSoundContextMenu;
 
-musoundContextMenu = Class.create(Zikula.UI.ContextMenu, {
+mUMUSoundContextMenu = Class.create(Zikula.UI.ContextMenu, {
     selectMenuItem: function ($super, event, item, item_container) {
         // open in new tab / window when right-clicked
         if (event.isRightClick()) {
@@ -18,14 +18,14 @@ musoundContextMenu = Class.create(Zikula.UI.ContextMenu, {
 /**
  * Initialises the context menu for item actions.
  */
-function musoundInitItemActions(objectType, func, containerId)
+function mUMUSoundInitItemActions(objectType, func, containerId)
 {
     var triggerId, contextMenu, icon;
 
     triggerId = containerId + 'Trigger';
 
     // attach context menu
-    contextMenu = new musoundContextMenu(triggerId, { leftClick: true, animation: false });
+    contextMenu = new mUMUSoundContextMenu(triggerId, { leftClick: true, animation: false });
 
     // process normal links
     $$('#' + containerId + ' a').each(function (elem) {
@@ -86,61 +86,61 @@ function musoundInitItemActions(objectType, func, containerId)
     $(triggerId).removeClassName('z-hide');
 }
 
-function musoundCapitaliseFirstLetter(string)
+function mUMUSoundCapitaliseFirstLetter(string)
 {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    return string.charAt(0).toUpperCase() + string.substring(1);
 }
 
 /**
  * Submits a quick navigation form.
  */
-function musoundSubmitQuickNavForm(objectType)
+function mUMUSoundSubmitQuickNavForm(objectType)
 {
-    $('musound' + musoundCapitaliseFirstLetter(objectType) + 'QuickNavForm').submit();
+    $('musound' + mUMUSoundCapitaliseFirstLetter(objectType) + 'QuickNavForm').submit();
 }
 
 /**
  * Initialise the quick navigation panel in list views.
  */
-function musoundInitQuickNavigation(objectType)
+function mUMUSoundInitQuickNavigation(objectType)
 {
-    if ($('musound' + musoundCapitaliseFirstLetter(objectType) + 'QuickNavForm') == undefined) {
+    if ($('musound' + mUMUSoundCapitaliseFirstLetter(objectType) + 'QuickNavForm') == undefined) {
         return;
     }
 
     if ($('catid') != undefined) {
-        $('catid').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+        $('catid').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
     }
-    if ($('sortby') != undefined) {
-        $('sortby').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+    if ($('sortBy') != undefined) {
+        $('sortBy').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
     }
-    if ($('sortdir') != undefined) {
-        $('sortdir').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+    if ($('sortDir') != undefined) {
+        $('sortDir').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
     }
     if ($('num') != undefined) {
-        $('num').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+        $('num').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
     }
 
     switch (objectType) {
     case 'album':
         if ($('collection') != undefined) {
-            $('collection').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+            $('collection').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
         }
         if ($('workflowState') != undefined) {
-            $('workflowState').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+            $('workflowState').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
         }
         break;
     case 'track':
         if ($('album') != undefined) {
-            $('album').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+            $('album').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
         }
         if ($('workflowState') != undefined) {
-            $('workflowState').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+            $('workflowState').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
         }
         break;
     case 'collection':
         if ($('workflowState') != undefined) {
-            $('workflowState').observe('change', function () { musoundSubmitQuickNavForm(objectType); });
+            $('workflowState').observe('change', function () { mUMUSoundSubmitQuickNavForm(objectType); });
         }
         break;
     default:
@@ -153,7 +153,7 @@ function musoundInitQuickNavigation(objectType)
  * For edit forms we use "iframe: true" to ensure file uploads work without problems.
  * For all other windows we use "iframe: false" because we want the escape key working.
  */
-function musoundInitInlineWindow(containerElem, title)
+function mUMUSoundInitInlineWindow(containerElem, title)
 {
     var newWindow;
 

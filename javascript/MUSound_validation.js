@@ -1,6 +1,6 @@
 'use strict';
 
-function musoundToday(format)
+function mUMUSoundToday(format)
 {
     var timestamp, todayDate, month, day, hours, minutes, seconds;
 
@@ -39,7 +39,7 @@ function musoundToday(format)
 }
 
 // returns YYYY-MM-DD even if date is in DD.MM.YYYY
-function musoundReadDate(val, includeTime)
+function mUMUSoundReadDate(val, includeTime)
 {
     // look if we have YYYY-MM-DD
     if (val.substr(4, 1) === '-' && val.substr(7, 1) === '-') {
@@ -47,7 +47,7 @@ function musoundReadDate(val, includeTime)
     }
 
     // look if we have DD.MM.YYYY
-    if (val.substr(2, 1) === '.' && val.substr(4, 1) === '.') {
+    if (val.substr(2, 1) === '.' && val.substr(5, 1) === '.') {
         var newVal = val.substr(6, 4) + '-' + val.substr(3, 2) + '-' + val.substr(0, 2);
         if (includeTime === true) {
             newVal += ' ' + val.substr(11, 5);
@@ -56,7 +56,7 @@ function musoundReadDate(val, includeTime)
     }
 }
 
-function musoundValidateNoSpace(val)
+function mUMUSoundValidateNoSpace(val)
 {
     var valStr;
     valStr = new String(val);
@@ -64,7 +64,7 @@ function musoundValidateNoSpace(val)
     return (valStr.indexOf(' ') === -1);
 }
 
-function musoundValidateUploadExtension(val, elem)
+function mUMUSoundValidateUploadExtension(val, elem)
 {
     var fileExtension, allowedExtensions;
     if (val === '') {
@@ -81,14 +81,14 @@ function musoundValidateUploadExtension(val, elem)
 /**
  * Adds special validation rules.
  */
-function musoundAddCommonValidationRules(objectType, id)
+function mUMUSoundAddCommonValidationRules(objectType, currentEntityId)
 {
     Validation.addAllThese([
         ['validate-nospace', Zikula.__('No spaces', 'module_musound_js'), function(val, elem) {
-            return musoundValidateNoSpace(val);
+            return mUMUSoundValidateNoSpace(val);
         }],
         ['validate-upload', Zikula.__('Please select a valid file extension.', 'module_musound_js'), function(val, elem) {
-            return musoundValidateUploadExtension(val, elem);
+            return mUMUSoundValidateUploadExtension(val, elem);
         }],
     ]);
 }
