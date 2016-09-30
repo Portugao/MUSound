@@ -12,9 +12,9 @@
  */
 
 /**
- * This class provides object meta data for the Tag module.
+ * Utility implementation class for hook related helper methods.
  */
-class MUSound_TaggedObjectMeta_MUSound extends MUSound_TaggedObjectMeta_Base_AbstractMUSound
+class MUSound_Util_Hook extends MUSound_Util_Base_AbstractHook
 {
-    // feel free to extend the tag support here
+    // feel free to add your own convenience methods here
 }
