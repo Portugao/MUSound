@@ -28,14 +28,14 @@
             {/if}
             
             {if isset($collection.album) && $collection.album ne null}
-                {include file='album/include_displayItemListMany.tpl' items=$collection.album}
+                {include file='album/includeDisplayItemListMany.tpl' items=$collection.album}
             {/if}
             
             {assign var='permLevel' value='ACCESS_EDIT'}
             {if $lct eq 'admin'}
                 {assign var='permLevel' value='ACCESS_ADMIN'}
             {/if}
-            {checkpermission component='MUSound:Collection:' instance="`$collection.id`::" level=$permLevel assign='mayManage'}
+            {checkpermission component='MUSound:Collection:' instance='`$collection.id`::' level=$permLevel assign='mayManage'}
             {if $mayManage || (isset($uid) && isset($collection.createdUserId) && $collection.createdUserId eq $uid)}
             <p class="managelink">
                 {gt text='Create album' assign='createTitle'}
@@ -52,13 +52,15 @@
         <dd>{$collection.description}</dd>
         
     </dl>
-    {include file='helper/include_standardfields_display.tpl' obj=$collection}
+    {include file='helper/includeStandardFieldsDisplay.tpl' obj=$collection}
 
     {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
         {* include display hooks *}
         {notifydisplayhooks eventname='musound.ui_hooks.collections.display_view' id=$collection.id urlobject=$currentUrlObject assign='hooks'}
         {foreach name='hookLoop' key='providerArea' item='hook' from=$hooks}
-            {$hook}
+            {if $providerArea ne 'provider.scribite.ui_hooks.editor'}{* fix for #664 *}
+                {$hook}
+            {/if}
         {/foreach}
         {if count($collection._actions) gt 0}
             <p id="itemActions{$collection.id}">
@@ -66,11 +68,10 @@
                     <a href="{$option.url.type|musoundActionUrl:$option.url.func:$option.url.arguments}" title="{$option.linkTitle|safetext}" class="z-icon-es-{$option.icon}">{$option.linkText|safetext}</a>
                 {/foreach}
             </p>
-        
             <script type="text/javascript">
             /* <![CDATA[ */
                 document.observe('dom:loaded', function() {
-                    musoundInitItemActions('collection', 'display', 'itemActions{{$collection.id}}');
+                    mUMUSoundInitItemActions('collection', 'display', 'itemActions{{$collection.id}}');
                 });
             /* ]]> */
             </script>

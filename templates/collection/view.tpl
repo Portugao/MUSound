@@ -36,7 +36,7 @@
         <a href="{modurl modname='MUSound' type=$lct func='view' ot='collection' all=1}" title="{$linkTitle}" class="z-icon-es-view">{$linkTitle}</a>
     {/if}
 
-    {include file='collection/view_quickNav.tpl' all=$all own=$own workflowStateFilter=false}{* see template file for available options *}
+    {include file='collection/viewQuickNav.tpl' all=$all own=$own workflowStateFilter=false}{* see template file for available options *}
 
     {if $lct eq 'admin'}
     <form action="{modurl modname='MUSound' type='collection' func='handleSelectedEntries' lct=$lct}" method="post" id="collectionsViewForm" class="z-form">
@@ -50,7 +50,6 @@
                 {/if}
                 <col id="cTitle" />
                 <col id="cDescription" />
-                <col id="cAlbums" />
                 <col id="cItemActions" />
             </colgroup>
             <thead>
@@ -61,13 +60,10 @@
                     </th>
                 {/if}
                 <th id="hTitle" scope="col" class="z-left">
-                    {sortlink __linktext='Title' currentsort=$sort modname='MUSound' type=$lct func='view' sort='title' sortdir=$sdir all=$all own=$own workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='collection'}
+                    {sortlink __linktext='Title' currentsort=$sort modname='MUSound' type=$lct func='view' sort='title' sortdir=$sdir all=$all own=$own workflowState=$workflowState q=$q pageSize=$pageSize ot='collection'}
                 </th>
                 <th id="hDescription" scope="col" class="z-left">
-                    {sortlink __linktext='Description' currentsort=$sort modname='MUSound' type=$lct func='view' sort='description' sortdir=$sdir all=$all own=$own workflowState=$workflowState searchterm=$searchterm pageSize=$pageSize ot='collection'}
-                </th>
-                <th id="hAlbums" scope="col" class="z-left">
-                    {gt text='Amount of albums'}   
+                    {sortlink __linktext='Description' currentsort=$sort modname='MUSound' type=$lct func='view' sort='description' sortdir=$sdir all=$all own=$own workflowState=$workflowState q=$q pageSize=$pageSize ot='collection'}
                 </th>
                 <th id="hItemActions" scope="col" class="z-right z-order-unsorted">{gt text='Actions'}</th>
             </tr>
@@ -77,7 +73,7 @@
         {foreach item='collection' from=$items}
             <tr class="{cycle values='z-odd, z-even'}">
                 {if $lct eq 'admin'}
-                    <td headers="hselect" align="center" valign="top">
+                    <td headers="hSelect" align="center" valign="top">
                         <input type="checkbox" name="items[]" value="{$collection.id}" class="collections-checkbox" />
                     </td>
                 {/if}
@@ -87,20 +83,16 @@
                 <td headers="hDescription" class="z-left">
                     {$collection.description}
                 </td>
-                <td headers="hDescription" class="z-left">
-                    {gt text="%s Album" plural="%s Albums" tag1=$collection.album|@count count=$collection.album|@count}
-                </td>
                 <td id="itemActions{$collection.id}" headers="hItemActions" class="z-right z-nowrap z-w02">
                     {if count($collection._actions) gt 0}
                         {icon id="itemActions`$collection.id`Trigger" type='options' size='extrasmall' __alt='Actions' class='z-pointer z-hide'}
                         {foreach item='option' from=$collection._actions}
                             <a href="{$option.url.type|musoundActionUrl:$option.url.func:$option.url.arguments}" title="{$option.linkTitle|safetext}"{if $option.icon eq 'preview'} target="_blank"{/if}>{icon type=$option.icon size='extrasmall' alt=$option.linkText|safetext}</a>
                         {/foreach}
-                    
                         <script type="text/javascript">
                         /* <![CDATA[ */
                             document.observe('dom:loaded', function() {
-                                musoundInitItemActions('collection', 'view', 'itemActions{{$collection.id}}');
+                                mUMUSoundInitItemActions('collection', 'view', 'itemActions{{$collection.id}}');
                             });
                         /* ]]> */
                         </script>
@@ -109,7 +101,7 @@
             </tr>
         {foreachelse}
             <tr class="z-{if $lct eq 'admin'}admin{else}data{/if}tableempty">
-              <td class="z-left" colspan="{if $lct eq 'admin'}{else}4{/if}">
+                <td class="z-left" colspan="{if $lct eq 'admin'}4{else}3{/if}">
             {gt text='No collections found.'}
               </td>
             </tr>
@@ -119,7 +111,7 @@
         </table>
         
         {if !isset($showAllEntries) || $showAllEntries ne 1}
-            {pager rowcount=$pager.numitems limit=$pager.itemsperpage display='page' modname='MUSound' type=$lct func='view' ot='collection' lct=$lct}
+            {pager rowcount=$pager.numitems limit=$pager.itemsperpage display='page' modname='MUSound' type=$lct func='view' ot='collection'}
         {/if}
     {if $lct eq 'admin'}
             <fieldset>
@@ -135,12 +127,13 @@
     {/if}
 
     
-    {if $lct ne 'admin'}
+    {* here you can activate calling display hooks for the view page if you need it *}
+    {*if $lct ne 'admin'}
         {notifydisplayhooks eventname='musound.ui_hooks.collections.display_view' urlobject=$currentUrlObject assign='hooks'}
         {foreach key='providerArea' item='hook' from=$hooks}
             {$hook}
         {/foreach}
-    {/if}
+    {/if*}
 </div>
 {include file="`$lct`/footer.tpl"}
 
@@ -152,7 +145,7 @@
             if ($('toggleCollections') != undefined) {
                 $('toggleCollections').observe('click', function (e) {
                     Zikula.toggleInput('collectionsViewForm');
-                    e.stop()
+                    e.stop();
                 });
             }
         {{/if}}
