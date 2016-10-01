@@ -47,8 +47,8 @@
             <colgroup>
                 {if $lct eq 'admin'}
                     <col id="cSelect" />
+                    <col id="cWorkflowState" />
                 {/if}
-                <col id="cWorkflowState" />
                 <col id="cTitle" />
                 {if $lct eq 'admin'}
                 <col id="cDescription" />
@@ -67,10 +67,10 @@
                     <th id="hSelect" scope="col" align="center" valign="middle">
                         <input type="checkbox" id="toggleAlbums" />
                     </th>
-                {/if}
-                <th id="hWorkflowState" scope="col" class="z-left">
-                    {sortlink __linktext='State' currentsort=$sort modname='MUSound' type=$lct func='view' sort='workflowState' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState q=$q pageSize=$pageSize ot='album'}
-                </th>
+                    <th id="hWorkflowState" scope="col" class="z-left">
+                        {sortlink __linktext='State' currentsort=$sort modname='MUSound' type=$lct func='view' sort='workflowState' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState q=$q pageSize=$pageSize ot='album'}
+                    </th>
+               {/if}
                 <th id="hTitle" scope="col" class="z-left">
                     {sortlink __linktext='Title' currentsort=$sort modname='MUSound' type=$lct func='view' sort='title' sortdir=$sdir all=$all own=$own catidMain=$catIdListMainString collection=$collection workflowState=$workflowState q=$q pageSize=$pageSize ot='album'}
                 </th>
@@ -104,11 +104,11 @@
                 {if $lct eq 'admin'}
                     <td headers="hSelect" align="center" valign="top">
                         <input type="checkbox" name="items[]" value="{$album.id}" class="albums-checkbox" />
-                    </td>
-                {/if}
+                    </td>     
                 <td headers="hWorkflowState" class="z-left z-nowrap">
                     {$album.workflowState|musoundObjectState}
                 </td>
+                {/if}
                 <td headers="hTitle" class="z-left">
                     <a href="{modurl modname='MUSound' type=$lct func='display' ot='album'  id=$album.id}" title="{gt text='View detail page'}">{$album.title|notifyfilters:'musound.filterhook.albums'}</a>
                 </td>
@@ -135,7 +135,7 @@
                 </td>
                 <td headers="hPublishedText" class="z-left">
                     {$album.publishedText}
-                </td>
+                </td>{/if}
                 <td headers="hCollection" class="z-left">
                     {if isset($album.collection) && $album.collection ne null}
                         <a href="{modurl modname='MUSound' type=$lct func='display' ot='collection'  id=$album.collection.id}">{strip}
@@ -153,7 +153,7 @@
                         {gt text='Not set.'}
                     {/if}
                 </td>
-                {/if}
+                
                 <td id="itemActions{$album.id}" headers="hItemActions" class="z-right z-nowrap z-w02">
                     {if count($album._actions) gt 0}
                         {icon id="itemActions`$album.id`Trigger" type='options' size='extrasmall' __alt='Actions' class='z-pointer z-hide'}
@@ -172,7 +172,7 @@
             </tr>
         {foreachelse}
             <tr class="z-{if $lct eq 'admin'}admin{else}data{/if}tableempty">
-                <td class="z-left" colspan="{if $lct eq 'admin'}10{else}9{/if}">
+                <td class="z-left" colspan="{if $lct eq 'admin'}10{else}3{/if}">
             {gt text='No albums found.'}
               </td>
             </tr>
