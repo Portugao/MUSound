@@ -879,7 +879,7 @@ abstract class MUSound_Entity_Base_AbstractCollection extends Zikula_EntityAcces
         $currentLegacyControllerType = FormUtil::getPassedValue('lct', 'user', 'GETPOST', FILTER_SANITIZE_STRING);
         $currentFunc = FormUtil::getPassedValue('func', 'main', 'GETPOST', FILTER_SANITIZE_STRING);
         $component = 'MUSound:Collection:';
-        $instance = $this->id . '::';
+        $instance = $this['id'] . '::';
         $dom = ZLanguage::getModuleDomain('MUSound');
         if ($currentLegacyControllerType == 'admin') {
             if (in_array($currentFunc, array('main', 'view'))) {
@@ -961,7 +961,7 @@ abstract class MUSound_Entity_Base_AbstractCollection extends Zikula_EntityAcces
             
                 $urlArgs = array(
                     'ot' => 'album',
-                    'collection' => $this->id
+                    'collection' => $this['id']
                 );
                 if ($currentFunc == 'view') {
                     $urlArgs['returnTo'] = 'adminViewCollection';
@@ -1050,7 +1050,7 @@ abstract class MUSound_Entity_Base_AbstractCollection extends Zikula_EntityAcces
             
                 $urlArgs = array(
                     'ot' => 'album',
-                    'collection' => $this->id
+                    'collection' => $this['id']
                 );
                 if ($currentFunc == 'view') {
                     $urlArgs['returnTo'] = 'userViewCollection';

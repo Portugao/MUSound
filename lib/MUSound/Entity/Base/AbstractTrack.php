@@ -100,7 +100,7 @@ abstract class MUSound_Entity_Base_AbstractTrack extends Zikula_EntityAccess
      * @ORM\Column(length=255)
      * @var string $uploadTrack
      */
-    protected $uploadTrack = '';
+    protected $uploadTrack = null;
     
     /**
      * The full path to the upload track.
@@ -127,7 +127,7 @@ abstract class MUSound_Entity_Base_AbstractTrack extends Zikula_EntityAccess
      * @ORM\Column(length=255)
      * @var string $uploadZip
      */
-    protected $uploadZip = '';
+    protected $uploadZip = null;
     
     /**
      * The full path to the upload zip.
@@ -1177,7 +1177,7 @@ abstract class MUSound_Entity_Base_AbstractTrack extends Zikula_EntityAccess
         $currentLegacyControllerType = FormUtil::getPassedValue('lct', 'user', 'GETPOST', FILTER_SANITIZE_STRING);
         $currentFunc = FormUtil::getPassedValue('func', 'main', 'GETPOST', FILTER_SANITIZE_STRING);
         $component = 'MUSound:Track:';
-        $instance = $this->id . '::';
+        $instance = $this['id'] . '::';
         $dom = ZLanguage::getModuleDomain('MUSound');
         if ($currentLegacyControllerType == 'admin') {
             if (in_array($currentFunc, array('main', 'view'))) {

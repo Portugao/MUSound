@@ -101,7 +101,7 @@ abstract class MUSound_Entity_Base_AbstractAlbum extends Zikula_EntityAccess
      * @ORM\Column(length=255)
      * @var string $uploadCover
      */
-    protected $uploadCover = '';
+    protected $uploadCover = null;
     
     /**
      * The full path to the upload cover.
@@ -1168,7 +1168,7 @@ abstract class MUSound_Entity_Base_AbstractAlbum extends Zikula_EntityAccess
         $currentLegacyControllerType = FormUtil::getPassedValue('lct', 'user', 'GETPOST', FILTER_SANITIZE_STRING);
         $currentFunc = FormUtil::getPassedValue('func', 'main', 'GETPOST', FILTER_SANITIZE_STRING);
         $component = 'MUSound:Album:';
-        $instance = $this->id . '::';
+        $instance = $this['id'] . '::';
         $dom = ZLanguage::getModuleDomain('MUSound');
         if ($currentLegacyControllerType == 'admin') {
             if (in_array($currentFunc, array('main', 'view'))) {
@@ -1250,7 +1250,7 @@ abstract class MUSound_Entity_Base_AbstractAlbum extends Zikula_EntityAccess
             
                 $urlArgs = array(
                     'ot' => 'track',
-                    'album' => $this->id
+                    'album' => $this['id']
                 );
                 if ($currentFunc == 'view') {
                     $urlArgs['returnTo'] = 'adminViewAlbum';
@@ -1339,7 +1339,7 @@ abstract class MUSound_Entity_Base_AbstractAlbum extends Zikula_EntityAccess
             
                 $urlArgs = array(
                     'ot' => 'track',
-                    'album' => $this->id
+                    'album' => $this['id']
                 );
                 if ($currentFunc == 'view') {
                     $urlArgs['returnTo'] = 'userViewAlbum';
