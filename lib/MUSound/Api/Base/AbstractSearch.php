@@ -125,7 +125,6 @@ abstract class MUSound_Api_Base_AbstractSearch extends Zikula_AbstractApi
                 continue;
             }
     
-            $idFields = ModUtil::apiFunc($this->name, 'selection', 'getIdFields', array('ot' => $objectType));
             $descriptionField = $repository->getDescriptionFieldName();
     
             $entitiesWithDisplayAction = array('album', 'track', 'collection');
