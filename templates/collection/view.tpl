@@ -81,7 +81,7 @@
                     <a href="{modurl modname='MUSound' type=$lct func='display' ot='collection'  id=$collection.id}" title="{gt text='View detail page'}">{$collection.title|notifyfilters:'musound.filterhook.collections'}</a>
                 </td>
                 <td headers="hDescription" class="z-left">
-                    {$collection.description}
+                    {$collection.description|safehtml}
                 </td>
                 <td id="itemActions{$collection.id}" headers="hItemActions" class="z-right z-nowrap z-w02">
                     {if count($collection._actions) gt 0}

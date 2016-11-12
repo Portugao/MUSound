@@ -49,7 +49,7 @@
         <dt>{gt text='Title'}</dt>
         <dd>{$collection.title}</dd>
         <dt>{gt text='Description'}</dt>
-        <dd>{$collection.description}</dd>
+        <dd>{$collection.description|safehtml}</dd>
         
     </dl>
     {include file='helper/includeStandardFieldsDisplay.tpl' obj=$collection}
