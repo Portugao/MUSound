@@ -266,7 +266,7 @@ abstract class MUSound_ContentType_Base_AbstractItemList extends Content_Abstrac
     
         // get objects from database
         $currentPage = 1;
-        $resultsPerPage = (isset($this->amount) ? $this->amount : 1);
+        $resultsPerPage = isset($this->amount) ? $this->amount : 1;
         list($query, $count) = $repository->getSelectWherePaginatedQuery($qb, $currentPage, $resultsPerPage);
         $entities = $repository->retrieveCollectionResult($query, $orderBy, true);
     
