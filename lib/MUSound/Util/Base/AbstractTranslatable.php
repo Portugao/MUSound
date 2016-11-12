@@ -71,6 +71,16 @@ abstract class MUSound_Util_Base_AbstractTranslatable extends Zikula_AbstractBas
     }
 
     /**
+     * Return the current language code.
+     *
+     * @return string code of current language
+     */
+    public function getCurrentLanguage()
+    {
+        return ZLanguage::getLanguageCode();
+    }
+
+    /**
      * Return list of supported languages on the current system.
      *
      * @param string $objectType The currently treated object type
@@ -84,7 +94,7 @@ abstract class MUSound_Util_Base_AbstractTranslatable extends Zikula_AbstractBas
         }
     
         // if multi language is disabled use only the current language
-        return array(ZLanguage::getLanguageCode());
+        return array($this->getCurrentLanguage());
     }
 
     /**
@@ -126,7 +136,7 @@ abstract class MUSound_Util_Base_AbstractTranslatable extends Zikula_AbstractBas
         $entityTranslations = $repository->findTranslations($entity);
     
         $supportedLanguages = $this->getSupportedLanguages($objectType);
-        $currentLanguage = ZLanguage::getLanguageCode();
+        $currentLanguage = $this->getCurrentLanguage();
         foreach ($supportedLanguages as $language) {
             if ($language == $currentLanguage) {
                 // Translatable extension did already fetch current translation
@@ -171,7 +181,7 @@ abstract class MUSound_Util_Base_AbstractTranslatable extends Zikula_AbstractBas
         if (System::getVar('multilingual') == 1) {
             $useOnlyCurrentLanguage = false;
             $supportedLanguages = $this->getSupportedLanguages($objectType);
-            $currentLanguage = ZLanguage::getLanguageCode();
+            $currentLanguage = $this->getCurrentLanguage();
             foreach ($supportedLanguages as $language) {
                 if ($language == $currentLanguage) {
                     // skip current language as this is not treated as translation on controller level
@@ -186,7 +196,7 @@ abstract class MUSound_Util_Base_AbstractTranslatable extends Zikula_AbstractBas
             }
         }
         if ($useOnlyCurrentLanguage === true) {
-            $language = ZLanguage::getLanguageCode();
+            $language = $this->getCurrentLanguage();
             $translations[$language] = array();
             foreach ($fields as $field) {
                 $translations[$language][$field['name']] = isset($entity[$field['name']]) ? $entity[$field['name']] : '';

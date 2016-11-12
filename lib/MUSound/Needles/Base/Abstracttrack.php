@@ -69,13 +69,13 @@ function MUSound_needleapi_track_base($args)
 
     $entityId = (int)$needleParts[1];
 
-    if (!\SecurityUtil::checkPermission('MUSound:Track:', $entityId . '::', ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('MUSound:Track:', $entityId . '::', ACCESS_READ)) {
         $cache[$nid] = '';
 
         return $cache[$nid];
     }
 
-    $entity = \ModUtil::apiFunc('MUSound', 'selection', 'getEntity', array('ot' => 'track, 'id' => $entityId));
+    $entity = \ModUtil::apiFunc('MUSound', 'selection', 'getEntity', array('ot' => 'track', 'id' => $entityId));
     if (null === $entity) {
         $cache[$nid] = '<em>' . __f('Track with id %s could not be found', array($entityId), $dom) . '</em>';
 

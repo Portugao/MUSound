@@ -69,13 +69,13 @@ function MUSound_needleapi_album_base($args)
 
     $entityId = (int)$needleParts[1];
 
-    if (!\SecurityUtil::checkPermission('MUSound:Album:', $entityId . '::', ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('MUSound:Album:', $entityId . '::', ACCESS_READ)) {
         $cache[$nid] = '';
 
         return $cache[$nid];
     }
 
-    $entity = \ModUtil::apiFunc('MUSound', 'selection', 'getEntity', array('ot' => 'album, 'id' => $entityId));
+    $entity = \ModUtil::apiFunc('MUSound', 'selection', 'getEntity', array('ot' => 'album', 'id' => $entityId));
     if (null === $entity) {
         $cache[$nid] = '<em>' . __f('Album with id %s could not be found', array($entityId), $dom) . '</em>';
 
