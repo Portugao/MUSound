@@ -41,8 +41,6 @@ abstract class MUSound_Controller_Base_AbstractCollection extends Zikula_Abstrac
         System::queryStringSetVar('type', $legacyControllerType);
         $this->request->query->set('type', $legacyControllerType);
     
-        $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
-        
         // parameter specifying which type of objects we are treating
         $objectType = 'collection';
         $utilArgs = array('controller' => 'collection', 'action' => 'main');
@@ -88,8 +86,6 @@ abstract class MUSound_Controller_Base_AbstractCollection extends Zikula_Abstrac
         System::queryStringSetVar('type', $legacyControllerType);
         $this->request->query->set('type', $legacyControllerType);
     
-        $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
-        
         // parameter specifying which type of objects we are treating
         $objectType = 'collection';
         $utilArgs = array('controller' => 'collection', 'action' => 'view');
@@ -228,13 +224,13 @@ abstract class MUSound_Controller_Base_AbstractCollection extends Zikula_Abstrac
         System::queryStringSetVar('type', $legacyControllerType);
         $this->request->query->set('type', $legacyControllerType);
     
-        $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
-        
         // parameter specifying which type of objects we are treating
         $objectType = 'collection';
         $utilArgs = array('controller' => 'collection', 'action' => 'display');
         $permLevel = $legacyControllerType == 'admin' ? ACCESS_ADMIN : ACCESS_READ;
         $this->throwForbiddenUnless(SecurityUtil::checkPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel), LogUtil::getErrorMsgPermission());
+        $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
+        
         $entityClass = $this->name . '_Entity_' . ucfirst($objectType);
         $repository = $this->entityManager->getRepository($entityClass);
         $repository->setControllerArguments(array());
@@ -314,8 +310,6 @@ abstract class MUSound_Controller_Base_AbstractCollection extends Zikula_Abstrac
         System::queryStringSetVar('type', $legacyControllerType);
         $this->request->query->set('type', $legacyControllerType);
     
-        $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
-        
         // parameter specifying which type of objects we are treating
         $objectType = 'collection';
         $utilArgs = array('controller' => 'collection', 'action' => 'edit');
@@ -350,13 +344,13 @@ abstract class MUSound_Controller_Base_AbstractCollection extends Zikula_Abstrac
         System::queryStringSetVar('type', $legacyControllerType);
         $this->request->query->set('type', $legacyControllerType);
     
-        $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
-        
         // parameter specifying which type of objects we are treating
         $objectType = 'collection';
         $utilArgs = array('controller' => 'collection', 'action' => 'delete');
         $permLevel = $legacyControllerType == 'admin' ? ACCESS_ADMIN : ACCESS_DELETE;
         $this->throwForbiddenUnless(SecurityUtil::checkPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel), LogUtil::getErrorMsgPermission());
+        $controllerHelper = new MUSound_Util_Controller($this->serviceManager);
+        
         $idFields = ModUtil::apiFunc($this->name, 'selection', 'getIdFields', array('ot' => $objectType));
         
         // retrieve identifier of the object we wish to delete
