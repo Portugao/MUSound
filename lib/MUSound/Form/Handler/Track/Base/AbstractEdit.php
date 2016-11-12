@@ -75,7 +75,7 @@ abstract class MUSound_Form_Handler_Track_Base_AbstractEdit extends MUSound_Form
         $this->relationPresets['album'] = FormUtil::getPassedValue('album', '', 'GET');
         if (!empty($this->relationPresets['album'])) {
             $relObj = ModUtil::apiFunc('MUSound', 'selection', 'getEntity', array('ot' => 'album', 'id' => $this->relationPresets['album']));
-            if ($relObj != null) {
+            if (null !== $relObj) {
                 $relObj->addTrack($entity);
             }
         }

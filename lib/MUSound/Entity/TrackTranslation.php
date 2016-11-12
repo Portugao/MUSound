@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * This is the concrete translation class for track entities.
  *
- * @ORM\Entity(repositoryClass="MUSound_Entity_Repository_TrackTranslation")
+ * @ORM\Entity(repositoryClass="MUSound_Entity_Repository_TrackTranslationRepository")
  * @ORM\Table(name="musound_track_translation",
  *     indexes={
  *         @ORM\Index(name="translations_lookup_idx", columns={

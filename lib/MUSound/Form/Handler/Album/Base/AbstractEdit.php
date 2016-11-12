@@ -75,7 +75,7 @@ abstract class MUSound_Form_Handler_Album_Base_AbstractEdit extends MUSound_Form
         $this->relationPresets['collection'] = FormUtil::getPassedValue('collection', '', 'GET');
         if (!empty($this->relationPresets['collection'])) {
             $relObj = ModUtil::apiFunc('MUSound', 'selection', 'getEntity', array('ot' => 'collection', 'id' => $this->relationPresets['collection']));
-            if ($relObj != null) {
+            if (null !== $relObj) {
                 $relObj->addAlbum($entity);
             }
         }
