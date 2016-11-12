@@ -101,7 +101,7 @@
                     <a href="{modurl modname='MUSound' type=$lct func='display' ot='track'  id=$track.id}" title="{gt text='View detail page'}">{$track.title|notifyfilters:'musound.filterhook.tracks'}</a>
                 </td>
                 <td headers="hDescription" class="z-left">
-                    {$track.description}
+                    {$track.description|safehtml}
                 </td>
                 <td headers="hAuthor" class="z-left">
                     {$track.author}
