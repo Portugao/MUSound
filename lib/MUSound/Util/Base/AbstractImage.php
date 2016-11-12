@@ -51,9 +51,7 @@ abstract class MUSound_Util_Base_AbstractImage extends Zikula_AbstractBase
             $presetName = $this->name . '_default';
         }
     
-        $preset = $this->getCustomPreset($objectType, $fieldName, $presetName, $context, $args);
-    
-        return $preset;
+        return $this->getCustomPreset($objectType, $fieldName, $presetName, $context, $args);
     }
 
     /**
@@ -92,8 +90,6 @@ abstract class MUSound_Util_Base_AbstractImage extends Zikula_AbstractBase
             }
         }
     
-        $preset = new SystemPlugin_Imagine_Preset($presetName, $presetData);
-    
-        return $preset;
+        return new SystemPlugin_Imagine_Preset($presetName, $presetData);
     }
 }

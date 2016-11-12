@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * This is the concrete translation class for collection entities.
  *
- * @ORM\Entity(repositoryClass="MUSound_Entity_Repository_CollectionTranslation")
+ * @ORM\Entity(repositoryClass="MUSound_Entity_Repository_CollectionTranslationRepository")
  * @ORM\Table(name="musound_collection_translation",
  *     indexes={
  *         @ORM\Index(name="translations_lookup_idx", columns={
