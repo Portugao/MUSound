@@ -18,5 +18,8 @@
  */
 class MUSound_Entity_Repository_Album extends MUSound_Entity_Repository_Base_AbstractAlbum
 {
-    // feel free to add your own methods here, like for example reusable DQL queries
+    /**
+     * @var string The default sorting field/expression
+     */
+    protected $defaultSortingField = 'createdDate';
 }
