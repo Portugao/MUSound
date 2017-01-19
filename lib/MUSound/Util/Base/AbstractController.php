@@ -157,7 +157,7 @@ abstract class MUSound_Util_Base_AbstractController extends Zikula_AbstractBase
     public function formatPermalink($name)
     {
         $name = str_replace(
-            array('?', '?', '?', '?', '?', '?', '?', '.', '?', '"', '/', ':', '?', '?', '?'),
+            array('ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', 'ß', '.', '?', '"', '/', ':', 'é', 'è', 'â'),
             array('ae', 'oe', 'ue', 'Ae', 'Oe', 'Ue', 'ss', '', '', '', '-', '-', 'e', 'e', 'a'),
             $name
         );

@@ -33,7 +33,7 @@
             <h3>{gt text='Tracks'}</h3>
             
             {if isset($album.track) && $album.track ne null}
-                {include file='track/include_displayItemListMany.tpl' items=$album.track}
+                {include file='track/includeDisplayItemListMany.tpl' items=$album.track}
             {/if}
         </div>
     {/if}
