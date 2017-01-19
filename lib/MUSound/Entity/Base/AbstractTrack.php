@@ -124,7 +124,7 @@ abstract class MUSound_Entity_Base_AbstractTrack extends Zikula_EntityAccess
     protected $uploadZipMeta = array();
     
     /**
-     * @ORM\Column(length=255)
+     * @ORM\Column(length=255, nullable=true)
      * @var string $uploadZip
      */
     protected $uploadZip = null;
