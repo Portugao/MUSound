@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Entity extension domain class storing album categories.
  *
  * This is the concrete category class for album entities.
- * @ORM\Entity(repositoryClass="MUSound_Entity_Repository_AlbumCategoryRepository")
+ * @ORM\Entity(repositoryClass="MUSound_Entity_Repository_AlbumCategory")
  * @ORM\Table(name="musound_album_category",
  *     uniqueConstraints={
  *         @ORM\UniqueConstraint(name="cat_unq", columns={"registryId", "categoryId", "entityId"})

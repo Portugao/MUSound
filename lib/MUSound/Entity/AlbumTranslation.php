@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * This is the concrete translation class for album entities.
  *
- * @ORM\Entity(repositoryClass="MUSound_Entity_Repository_AlbumTranslationRepository")
+ * @ORM\Entity(repositoryClass="MUSound_Entity_Repository_AlbumTranslation")
  * @ORM\Table(name="musound_album_translation",
  *     indexes={
  *         @ORM\Index(name="translations_lookup_idx", columns={
