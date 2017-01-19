@@ -621,18 +621,6 @@ abstract class MUSound_Entity_Repository_Base_AbstractTrack extends EntityReposi
      */
     protected function applyDefaultFilters(QueryBuilder $qb, $parameters = array())
     {
-        $currentModule = ModUtil::getName();
-        $currentLegacyControllerType = FormUtil::getPassedValue('lct', 'user', 'GETPOST');
-        if ($currentLegacyControllerType == 'admin' && $currentModule == 'MUSound') {
-            return $qb;
-        }
-    
-        if (!in_array('workflowState', array_keys($parameters)) || empty($parameters['workflowState'])) {
-            // per default we show approved tracks only
-            $onlineStates = array('approved');
-            $qb->andWhere('tbl.workflowState IN (:onlineStates)')
-               ->setParameter('onlineStates', $onlineStates);
-        }
     
         return $qb;
     }
