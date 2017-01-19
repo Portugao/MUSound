@@ -149,7 +149,7 @@
     
     {include file='helper/includeCategoriesEdit.tpl' obj=$album groupName='albumObj'}
     {include file='collection/includeSelectEditOne.tpl' group='album' alias='collection' aliasReverse='album' mandatory=false idPrefix='musoundAlbum_Collection' linkingItem=$album displayMode='choices' allowEditing=true}
-    {include file='track/Many.tpl' group='album' alias='track' aliasReverse='album' mandatory=false idPrefix='musoundAlbum_Track' linkingItem=$album displayMode='choices' allowEditing=true}
+    {*include file='track/Many.tpl' group='album' alias='track' aliasReverse='album' mandatory=false idPrefix='musoundAlbum_Track' linkingItem=$album displayMode='choices' allowEditing=true*}
     {if $mode ne 'create'}
         {include file='helper/includeStandardFieldsEdit.tpl' obj=$album}
     {/if}
