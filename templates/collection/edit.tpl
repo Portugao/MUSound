@@ -98,6 +98,7 @@
         {/if}
     {/formvolatile}
     
+    {include file='album/Many.tpl' group='collection' alias='album' aliasReverse='collection' mandatory=false idPrefix='musoundCollection_Album' linkingItem=$collection displayMode='choices' allowEditing=true}
     {if $mode ne 'create'}
         {include file='helper/includeStandardFieldsEdit.tpl' obj=$collection}
     {/if}
