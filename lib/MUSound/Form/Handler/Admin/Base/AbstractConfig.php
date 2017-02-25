@@ -54,7 +54,22 @@ abstract class MUSound_Form_Handler_Admin_Base_AbstractConfig extends Zikula_For
         // retrieve module vars
         $modVars = $this->getVars();
 
+        // initialise list entries for the 'order of collections' setting
+        
+        $modVars['orderOfCollectionsItems'] = array(array('value' => 'asc', 'text' => 'Ascending'),
+        		array('value' => 'desc', 'text' => 'Descending')
+        );
+        // initialise list entries for the 'order of albums' setting
+        
+        $modVars['orderOfAlbumsItems'] = array(array('value' => 'asc', 'text' => 'Ascending'),
+        		array('value' => 'desc', 'text' => 'Descending')
+        );
         $modVars['moderationGroupForAlbumsItems'] = $userGroupItems;
+        // initialise list entries for the 'thumbnail mode album' setting
+        
+        $modVars['thumbnailModeAlbumItems'] = array(array('value' => 'inset', 'text' => 'Inset'),
+        		array('value' => 'outbound', 'text' => 'Outbound')
+        );
 
         // assign all module vars
         $this->view->assign('config', $modVars);

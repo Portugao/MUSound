@@ -52,11 +52,18 @@ class MUSound_Controller_Collection extends MUSound_Controller_Base_AbstractColl
             $sort = $repository->getDefaultSortingField();
         }
         
+        $order = $this->getVar('orderOfCollections');
+        
         // parameter for used sort order
         $sortdir = $this->request->query->filter('sortdir', '', FILTER_SANITIZE_STRING);
         $sortdir = strtolower($sortdir);
         if ($sortdir != 'asc' && $sortdir != 'desc') {
+        	if ($order != '') {
+        		$sortdir = $order;
+        	} else {
             $sortdir = 'asc';
+        	}
+            
         }
         
         // convenience vars to make code clearer

@@ -33,6 +33,8 @@ class MUSound_Installer extends MUSound_Base_AbstractInstaller
 		 case '1.0.0':
 			$this->setVar('supportedModuls', '');
 			$this->setVar('useStandard', false);
+			$this->setVar('orderOfCollections', '');
+			$this->setVar('orderOfAlbums', '');
 			
 		 // update the database schema
 		 try {

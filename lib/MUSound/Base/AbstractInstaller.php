@@ -48,6 +48,8 @@ abstract class MUSound_Base_AbstractInstaller extends Zikula_AbstractInstaller
         $this->setVar('allowedExtensionTrack', 'mp3');
         $this->setVar('supportedModules', '');
         $this->setVar('useStandard', false);
+        $this->setVar('orderOfCollections', '');
+        $this->setVar('orderOfAlbums', '');
         $this->setVar('backendWidth', 0);
         $this->setVar('backendHeight', 0);
         $this->setVar('frontendWidth', 0);

@@ -61,6 +61,14 @@
                             {formlabel for='useStandard' __text='Use standard' cssClass=''}
                             {formcheckbox id='useStandard' group='config'}
                         </div>
+                        <div class="z-formrow">
+                            {formlabel for='orderOfCollections' __text='Order of collections' cssClass=''}
+                            {formdropdownlist id='orderOfCollections' group='config' __title='Choose the order of collections'}
+                        </div>
+                        <div class="z-formrow">
+                            {formlabel for='orderOfAlbums' __text='Order of albums' cssClass=''}
+                            {formdropdownlist id='orderOfAlbums' group='config' __title='Choose the order of albums'}
+                        </div>
                     </fieldset>
                 {/formtabbedpanel}
                 {gt text='Thumbnails view' assign='tabTitle'}
