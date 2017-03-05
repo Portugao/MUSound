@@ -188,6 +188,7 @@ abstract class MUSound_Entity_Base_AbstractAlbum extends Zikula_EntityAccess
      *
      * @ORM\OneToMany(targetEntity="MUSound_Entity_Track", mappedBy="album", cascade={"persist"})
      * @ORM\JoinTable(name="musound_albumtrack")
+     * @ORM\OrderBy({"pos" = "ASC"})
      * @var \MUSound_Entity_Track[] $track
      */
     protected $track = null;

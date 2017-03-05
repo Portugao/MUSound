@@ -177,6 +177,16 @@ div.musound-view form.musound-quicknav fieldset #num {
 	text-decoration: none;
 }
 
+.movecursor {
+    cursor: move;	
+    margin: 0 0 15px 0;
+}
+
+.movetrack {
+	background: #eee;
+	clear: both;
+}
+
 /*******************AUDIO.JS********************/
 
 

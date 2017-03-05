@@ -135,7 +135,28 @@
 {/if}
 
 {if $authEdit eq true}
+    <form method="post" action="{modurl modname='MUSound' type='track' func='savePosition'}">
+    <ul id="sortable">
 	{foreach name=albumtracks item=track from=$items}
-		<li>{$track.title} <a title="{gt text='Edit'}" href="{modurl modname='MUSound' type='user' func='edit' ot='track' id=$track.id}"> <i class="fa fa-pencil-square-o fa-lg"> </i></a></li>
+		<li class="ui-state-default movecursor">
+		    <div class="movetrack">
+		    {$track.title} <a title="{gt text='Edit'}" href="{modurl modname='MUSound' type='user' func='edit' ot='track' id=$track.id}"> <i class="fa fa-pencil-square-o fa-lg"> </i></a>
+		    <input name="tracks[]" type="hidden" value={$track.id} />
+		    </div>
+		</li>
 	{/foreach}
+	</ul>
+	<br style="clear: both; "/><input type="submit" value='{gt text="Save positions"}' />
+	</form>
+	<script type="text/javascript" charset="utf-8">
+    /* <![CDATA[ */
+
+    var MU = jQuery.noConflict();
+
+        MU(function() {
+            MU( "#sortable" ).sortable();
+        });
+
+    /* ]]> */
+    </script>
 {/if}

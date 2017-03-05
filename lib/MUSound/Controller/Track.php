@@ -176,4 +176,37 @@ class MUSound_Controller_Track extends MUSound_Controller_Base_AbstractTrack
         // fetch and return the appropriate template
         return $viewHelper->processTemplate($this->view, $objectType, 'view', array(), $templateFile);
     }
+    
+    /**
+     *
+     */
+    public function savePosition()
+    {
+    	$request = new Zikula_Request_Http();
+    
+    	$tracks = $request->request->filter('tracks', '');
+    	$trackrepository = MUSound_Util_Model::getTrackRepository();
+    
+    
+    	$serviceManager = ServiceUtil::getManager();
+    	$entityManager = $serviceManager->getService('doctrine.entitymanager');
+    
+    	if (is_array($tracks)) {
+    		$index = 0;
+    		foreach ($tracks as $track) {
+    			$index = $index + 1;
+    
+    			$thistrack = $trackrepository->selectById($track);
+    			$thistrack->setPos($index);
+    			$entityManager->flush();
+    			$thisalbum = $thistrack->getAlbum();
+    			$thisAlbumId = $thisalbum['id'];
+    
+    		}
+    	}
+    	$url = ModUtil::url('MUSound', 'user', 'display', array('ot' => 'album', 'id' => $thisAlbumId));
+    	return System::redirect($url);
+    
+    
+    }
 }

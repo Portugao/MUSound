@@ -29,4 +29,18 @@ class MUSound_Util_Model extends MUSound_Util_Base_AbstractModel
 
         return $repository;
     }
+    
+    /**
+     *
+     This method is for getting a repository for tracks
+     *
+     */
+    public static function getTrackRepository()
+    {
+    	$serviceManager = ServiceUtil::getManager();
+    	$entityManager = $serviceManager->getService('doctrine.entitymanager');
+    	$repository = $entityManager->getRepository('MUSound_Entity_Track');
+    
+    	return $repository;
+    }
 }
