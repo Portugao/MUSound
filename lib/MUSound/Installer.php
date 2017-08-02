@@ -45,6 +45,9 @@ class MUSound_Installer extends MUSound_Base_AbstractInstaller
 		 }
 		 return LogUtil::registerError($this->__f('An error was encountered while updating tables for the %s extension.', array($this->getName())));
 		 }
+		 
+		 case '1.1.0':
+		 	// later upgrade
 		 }
 	
 		// update successful
