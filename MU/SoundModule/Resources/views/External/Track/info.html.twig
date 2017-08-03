@@ -1,0 +1,5 @@
+{# Purpose of this template: Display item information for previewing from other modules #}
+<dl id="track{{ track.getKey() }}">
+<dt>{{ track|musoundmodule_formattedTitle|notifyFilters('sound.filter_hooks.tracks.filter')|safeHtml }}</dt>
+{% if track.description is not empty %}<dd>{{ track.description }}</dd>{% endif %}
+</dl>

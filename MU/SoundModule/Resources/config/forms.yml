@@ -1,0 +1,190 @@
+services:
+    # Form types
+    
+    mu_sound_module.form.type.albumquicknav:
+        class: MU\SoundModule\Form\Type\QuickNavigation\AlbumQuickNavType
+        arguments:
+            - "@translator.default"
+            - "@request_stack"
+            - "@mu_sound_module.entity_display_helper"
+            - "@mu_sound_module.listentries_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.trackquicknav:
+        class: MU\SoundModule\Form\Type\QuickNavigation\TrackQuickNavType
+        arguments:
+            - "@translator.default"
+            - "@request_stack"
+            - "@mu_sound_module.entity_display_helper"
+            - "@mu_sound_module.listentries_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.collectionquicknav:
+        class: MU\SoundModule\Form\Type\QuickNavigation\CollectionQuickNavType
+        arguments:
+            - "@translator.default"
+            - "@mu_sound_module.listentries_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.handler.album:
+        class: MU\SoundModule\Form\Handler\Album\EditHandler
+        arguments:
+            - "@kernel"
+            - "@translator.default"
+            - "@form.factory"
+            - "@request_stack"
+            - "@router"
+            - "@logger"
+            - "@zikula_permissions_module.api.permission"
+            - "@zikula_extensions_module.api.variable"
+            - "@zikula_users_module.current_user"
+            - "@zikula_groups_module.group_application_repository"
+            - "@mu_sound_module.entity_factory"
+            - "@mu_sound_module.controller_helper"
+            - "@mu_sound_module.model_helper"
+            - "@mu_sound_module.workflow_helper"
+            - "@mu_sound_module.hook_helper"
+            - "@mu_sound_module.translatable_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        calls:
+            - [setLockingApi, ["@?zikula_pagelock_module.api.locking"]]
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.album:
+        class: MU\SoundModule\Form\Type\AlbumType
+        arguments:
+            - "@translator.default"
+            - "@mu_sound_module.entity_factory"
+            - "@mu_sound_module.collection_filter_helper"
+            - "@mu_sound_module.entity_display_helper"
+            - "@zikula_extensions_module.api.variable"
+            - "@mu_sound_module.translatable_helper"
+            - "@mu_sound_module.listentries_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.handler.track:
+        class: MU\SoundModule\Form\Handler\Track\EditHandler
+        arguments:
+            - "@kernel"
+            - "@translator.default"
+            - "@form.factory"
+            - "@request_stack"
+            - "@router"
+            - "@logger"
+            - "@zikula_permissions_module.api.permission"
+            - "@zikula_extensions_module.api.variable"
+            - "@zikula_users_module.current_user"
+            - "@zikula_groups_module.group_application_repository"
+            - "@mu_sound_module.entity_factory"
+            - "@mu_sound_module.controller_helper"
+            - "@mu_sound_module.model_helper"
+            - "@mu_sound_module.workflow_helper"
+            - "@mu_sound_module.hook_helper"
+            - "@mu_sound_module.translatable_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        calls:
+            - [setLockingApi, ["@?zikula_pagelock_module.api.locking"]]
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.track:
+        class: MU\SoundModule\Form\Type\TrackType
+        arguments:
+            - "@translator.default"
+            - "@mu_sound_module.entity_factory"
+            - "@mu_sound_module.collection_filter_helper"
+            - "@mu_sound_module.entity_display_helper"
+            - "@zikula_extensions_module.api.variable"
+            - "@mu_sound_module.translatable_helper"
+            - "@mu_sound_module.listentries_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.handler.collection:
+        class: MU\SoundModule\Form\Handler\Collection\EditHandler
+        arguments:
+            - "@kernel"
+            - "@translator.default"
+            - "@form.factory"
+            - "@request_stack"
+            - "@router"
+            - "@logger"
+            - "@zikula_permissions_module.api.permission"
+            - "@zikula_extensions_module.api.variable"
+            - "@zikula_users_module.current_user"
+            - "@zikula_groups_module.group_application_repository"
+            - "@mu_sound_module.entity_factory"
+            - "@mu_sound_module.controller_helper"
+            - "@mu_sound_module.model_helper"
+            - "@mu_sound_module.workflow_helper"
+            - "@mu_sound_module.hook_helper"
+            - "@mu_sound_module.translatable_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        calls:
+            - [setLockingApi, ["@?zikula_pagelock_module.api.locking"]]
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.collection:
+        class: MU\SoundModule\Form\Type\CollectionType
+        arguments:
+            - "@translator.default"
+            - "@mu_sound_module.entity_factory"
+            - "@mu_sound_module.collection_filter_helper"
+            - "@mu_sound_module.entity_display_helper"
+            - "@zikula_extensions_module.api.variable"
+            - "@mu_sound_module.translatable_helper"
+            - "@mu_sound_module.listentries_helper"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.block.itemlist:
+        class: MU\SoundModule\Block\Form\Type\ItemListBlockType
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.albumfinder:
+        class: MU\SoundModule\Form\Type\Finder\AlbumFinderType
+        arguments:
+            - "@translator.default"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.trackfinder:
+        class: MU\SoundModule\Form\Type\Finder\TrackFinderType
+        arguments:
+            - "@translator.default"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.collectionfinder:
+        class: MU\SoundModule\Form\Type\Finder\CollectionFinderType
+        arguments:
+            - "@translator.default"
+            - "@mu_sound_module.feature_activation_helper"
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.config:
+        class: MU\SoundModule\Form\Type\ConfigType
+        arguments:
+            - "@translator.default"
+            - "@=service('zikula_extensions_module.api.variable').getAll('MUSoundModule')"
+            - "@zikula_groups_module.group_repository"
+        tags:
+            - { name: form.type }

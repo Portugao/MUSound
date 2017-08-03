@@ -1,0 +1,9 @@
+{# purpose of this template: albums view xml view #}
+<?xml version="1.0" encoding="{{ pageGetVar('meta.charset') }}" ?>
+<albums>
+{% for album in items %}
+    {{ include('@MUSoundModule/Album/include.xml.twig') }}
+{% else %}
+    <noAlbum />
+{% endfor %}
+</albums>

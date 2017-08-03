@@ -1,0 +1,7 @@
+{# purpose of this template: tracks view json view #}
+[
+{% for track in items %}
+    {% if not loop.first %},{% endif %}
+    {{ track.toArray()|json_encode() }}
+{% endfor %}
+]

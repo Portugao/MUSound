@@ -1,0 +1,16 @@
+{# purpose of this template: collections view csv view #}
+{% spaceless %}"{{ __('Title') }}";"{{ __('Description') }}";"{{ __('Workflow state') }}"
+;"{{ __('Album') }}"
+{% endspaceless %}
+{% for collection in items %}
+{% spaceless %}
+    "{{ collection.title }}";"{{ collection.description|safeHtml }}";"{{ collection.workflowState|musoundmodule_objectState(false)|lower }}"
+    ;"
+    {% if collection.album|default %}
+        {% for relatedItem in collection.album %}
+        {{ relatedItem|musoundmodule_formattedTitle }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    {% endif %}
+    "
+{% endspaceless %}
+{% endfor %}

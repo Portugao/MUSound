@@ -1,0 +1,28 @@
+{# purpose of this template: inclusion template for managing related albums #}
+{% if displayMode is not defined or displayMode is empty %}
+    {% set displayMode = 'choices' %}
+{% endif %}
+{% if tabs|default(false) == true %}
+    <div role="tabpanel" class="tab-pane fade" id="tabAlbums" aria-labelledby="albumsTab">
+        <h3>{{ __('Albums') }}</h3>
+{% else %}
+    <fieldset class="albums">
+{% endif %}
+    <legend>{{ __('Albums') }}</legend>
+    {% if displayMode == 'choices' %}
+        {{ form_row(attribute(form, alias)) }}
+    {% elseif displayMode == 'autocomplete' %}
+        {{ form_row(attribute(form, alias)) }}
+        <div class="musoundmodule-relation-leftside">
+            {{ include(
+                '@MUSoundModule/Album/Admin/includeSelectEditItemListMany.html.twig',
+                attribute(linkingItem, alias) is defined ? {items: attribute(linkingItem, alias)} : {}
+            ) }}
+        </div>
+        <br style="clear: both" />
+    {% endif %}
+{% if tabs|default(false) == true %}
+    </div>
+{% else %}
+    </fieldset>
+{% endif %}

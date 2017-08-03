@@ -1,0 +1,5 @@
+musoundmodule:
+    # define routing support for these controllers
+    resource: "@MUSoundModule/Controller"
+    # enable support for defining routes by annotations
+    type: annotation

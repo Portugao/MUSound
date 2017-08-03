@@ -1,0 +1,116 @@
+{# purpose of this template: albums user display view #}
+{% set baseTemplate = app.request.query.getBoolean('raw', false) ? 'raw' : 'base' %}
+{% extends 'MUSoundModule::' ~ baseTemplate ~ '.html.twig' %}
+{% block pageTitle %}{{ album|musoundmodule_formattedTitle|default(__('Album')) }}{% endblock %}
+{% block title %}
+    {% set templateTitle = album|musoundmodule_formattedTitle|default(__('Album')) %}
+    {{ templateTitle|notifyFilters('musoundmodule.filter_hooks.albums.filter')|safeHtml }}{% if routeArea == 'admin' %} <small>({{ album.workflowState|musoundmodule_objectState(false)|lower }})</small>{% endif %}
+    {% set itemActions = knp_menu_get('MUSoundModule:ItemActionsMenu:menu', [], {entity: album, area: routeArea, context: 'display'}) %}
+    <div class="dropdown">
+        <a id="itemActions{{ album.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> {{ __('Actions') }} <span class="caret"></span></a>
+        {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
+    </div>
+{% endblock %}
+{% block content %}
+    {% set isQuickView = app.request.query.getBoolean('raw', false) %}
+    <div class="musoundmodule-album musoundmodule-display">
+
+    <div class="row">
+        <div class="col-sm-9">
+    <dl>
+        {% if album.workflowState is not empty and routeArea == 'admin' %}
+            <dt>{{ __('State') }}</dt>
+            <dd>{{ album.workflowState|musoundmodule_listEntry('album', 'workflowState') }}</dd>
+        {% endif %}
+        {% if album.title is not empty %}
+            <dt>{{ __('Title') }}</dt>
+            <dd>{{ album.title }}</dd>
+        {% endif %}
+        {% if album.description is not empty %}
+            <dt>{{ __('Description') }}</dt>
+            <dd>{{ album.description|safeHtml }}</dd>
+        {% endif %}
+        {% if album.author is not empty %}
+            <dt>{{ __('Author') }}</dt>
+            <dd>{{ album.author }}</dd>
+        {% endif %}
+        {% if album.uploadCover is not empty %}
+            <dt>{{ __('Upload cover') }}</dt>
+            <dd>{% if album.uploadCover is not empty and album.uploadCoverMeta|default %}
+                        <a href="{{ album.uploadCoverUrl }}" title="{{ album|musoundmodule_formattedTitle|e('html_attr') }}"{% if album.uploadCoverMeta.isImage %} class="image-link"{% endif %}>
+            {% if album.uploadCoverMeta.isImage %}
+                {% set thumbOptions = attribute(thumbRuntimeOptions, 'albumUploadCover') %}
+                <img src="{{ album.uploadCover.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ album|musoundmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+            {% else %}
+                {{ __('Download') }} ({{ album.uploadCoverMeta.size|musoundmodule_fileSize(album.uploadCover.getPathname(), false, false) }})
+            {% endif %}
+            </a>
+            {% else %}&nbsp;{% endif %}
+            </dd>
+        {% endif %}
+        {% if album.publishedDate is not empty %}
+            <dt>{{ __('Published date') }}</dt>
+            <dd>{{ album.publishedDate|localizeddate('medium', 'short') }}</dd>
+        {% endif %}
+        {% if album.publishedText is not empty %}
+            <dt>{{ __('Published text') }}</dt>
+            <dd>{{ album.publishedText }}</dd>
+        {% endif %}
+        {% if album.collection|default %}
+            <dt>{{ __('Collection') }}</dt>
+            <dd>
+              {% if not isQuickView %}
+                  <a href="{{ path('musoundmodule_collection_' ~ routeArea ~ 'display', {'id': album.collection.getId()}) }}">{% spaceless %}
+                    {{ album.collection|musoundmodule_formattedTitle }}
+                  {% endspaceless %}</a>
+                  <a id="collectionItem{{ album.collection.getKey() }}Display" href="{{ path('musoundmodule_collection_' ~ routeArea ~ 'display', {'id': album.collection.getId(), raw: 1}) }}" title="{{ __('Open quick view window')|e('html_attr') }}" class="musound-inline-window hidden" data-modal-title="{{ album.collection|musoundmodule_formattedTitle|e('html_attr') }}"><span class="fa fa-id-card-o"></span></a>
+              {% else %}
+                  {{ album.collection|musoundmodule_formattedTitle }}
+              {% endif %}
+            </dd>
+        {% endif %}
+        
+    </dl>
+
+    {% if featureActivationHelper.isEnabled(constant('MU\\SoundModule\\Helper\\FeatureActivationHelper::CATEGORIES'), 'album') %}
+        {{ include('@MUSoundModule/Helper/includeCategoriesDisplay.html.twig', {obj: album}) }}
+    {% endif %}
+    {{ include('@MUSoundModule/Helper/includeStandardFieldsDisplay.html.twig', {obj: album}) }}
+
+    {{ block('display_hooks') }}
+        </div>
+        <div class="col-sm-3">
+            {{ block('related_items') }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block related_items %}
+    {% if routeArea == 'admin' %}
+        <h4>{{ __('Tracks') }}</h4>
+    {% else %}
+        <h3>{{ __('Tracks') }}</h3>
+    {% endif %}
+    
+    {% if album.track|default %}
+        {{ include(
+            '@MUSoundModule/Track/includeDisplayItemListMany.html.twig',
+            {items: album.track}
+        ) }}
+    {% endif %}
+    
+    {% set mayManage = hasPermission('MUSoundModule:Track:', '::', 'ACCESS_EDIT') %}
+    {% if mayManage %}
+        <p class="managelink">
+            {% set createTitle = __('Create track') %}
+            <a href="{{ path('musoundmodule_track_' ~ routeArea ~ 'edit', {album: album.getKey()}) }}" title="{{ createTitle|e('html_attr') }}" class="fa fa-plus">{{ createTitle }}</a>
+        </p>
+    {% endif %}
+{% endblock %}
+{% block display_hooks %}
+    {% set hooks = notifyDisplayHooks(eventName='musoundmodule.ui_hooks.albums.display_view', id=album.getKey(), urlObject=currentUrlObject) %}
+    {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
+        <h4>{{ providerArea }}</h4>
+        {{ hook }}
+    {% endfor %}
+{% endblock %}

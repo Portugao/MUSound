@@ -1,0 +1,86 @@
+services:
+    # Event subscribers and listeners
+    mu_sound_module.entity_lifecycle_listener:
+        class: MU\SoundModule\Listener\EntityLifecycleListener
+        arguments:
+            - "@service_container"
+            - "@event_dispatcher"
+            - "@logger"
+        tags:
+            - { name: doctrine.event_subscriber }
+    
+    mu_sound_module.kernel_listener:
+        class: MU\SoundModule\Listener\KernelListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.installer_listener:
+        class: MU\SoundModule\Listener\InstallerListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.moduledispatch_listener:
+        class: MU\SoundModule\Listener\ModuleDispatchListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.mailer_listener:
+        class: MU\SoundModule\Listener\MailerListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.theme_listener:
+        class: MU\SoundModule\Listener\ThemeListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.userlogin_listener:
+        class: MU\SoundModule\Listener\UserLoginListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.userlogout_listener:
+        class: MU\SoundModule\Listener\UserLogoutListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.user_listener:
+        class: MU\SoundModule\Listener\UserListener
+        arguments:
+            - "@translator.default"
+            - "@mu_sound_module.entity_factory"
+            - "@zikula_users_module.current_user"
+            - "@logger"
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.userregistration_listener:
+        class: MU\SoundModule\Listener\UserRegistrationListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.users_listener:
+        class: MU\SoundModule\Listener\UsersListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.group_listener:
+        class: MU\SoundModule\Listener\GroupListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.thirdparty_listener:
+        class: MU\SoundModule\Listener\ThirdPartyListener
+        arguments:
+            - "@mu_sound_module.workflow_helper"
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    mu_sound_module.workflow_events_listener:
+        class: MU\SoundModule\Listener\WorkflowEventsListener
+        arguments:
+            - "@zikula_permissions_module.api.permission"
+            - "@mu_sound_module.notification_helper"
+        tags:
+            - { name: kernel.event_subscriber }
+    

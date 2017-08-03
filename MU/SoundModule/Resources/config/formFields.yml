@@ -1,0 +1,17 @@
+services:
+    # Form field types
+    
+    mu_sound_module.form.type.field.translation:
+        class: MU\SoundModule\Form\Type\Field\TranslationType
+        tags:
+            - { name: form.type }
+    
+    mu_sound_module.form.type.field.upload:
+        class: MU\SoundModule\Form\Type\Field\UploadType
+        arguments:
+            - "@translator.default"
+            - "@request_stack"
+            - "@mu_sound_module.image_helper"
+            - "@mu_sound_module.upload_helper"
+        tags:
+            - { name: form.type }

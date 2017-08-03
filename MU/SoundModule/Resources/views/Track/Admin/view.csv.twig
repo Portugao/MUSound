@@ -1,0 +1,10 @@
+{# purpose of this template: tracks view csv view #}
+{% spaceless %}"{{ __('Title') }}";"{{ __('Description') }}";"{{ __('Author') }}";"{{ __('Upload track') }}";"{{ __('Upload zip') }}";"{{ __('Workflow state') }}"
+;"{{ __('Album') }}"
+{% endspaceless %}
+{% for track in items %}
+{% spaceless %}
+    "{{ track.title }}";"{{ track.description|safeHtml }}";"{{ track.author }}";"{{ track.uploadTrack }}";"{{ track.uploadZip }}";"{{ track.workflowState|musoundmodule_objectState(false)|lower }}"
+    ;"{% if track.album|default %}{{ track.album|musoundmodule_formattedTitle }}{% endif %}"
+{% endspaceless %}
+{% endfor %}

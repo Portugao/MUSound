@@ -1,0 +1,141 @@
+application "Sound" {
+	vendor "MU"
+	author "Michael Ueberschaer"
+	email "info@homepages-mit-zikula.de"
+	url "https://homepages-mit-zikula.de"
+  version "1.2.0"
+	prefix "sound"
+	generatorSettings {
+		settingsContainer "Einstellungen"
+		targetCoreVersion ZK15
+		generateOnlyBaseClasses false
+	versionAllGeneratedFiles false
+        separateAdminTemplates true
+        generatePoweredByBacklinksIntoFooterTemplates false
+        generateTests false
+    }
+			entities {
+				entity "album"  categorisable {
+					nameMultiple "albums"
+					displayPattern "#title#"
+					workflow STANDARD
+          fields {
+						string "title" translatable,
+						text "description" translatable {
+							mandatory false
+						},
+						string "author" {
+							defaultValue ""
+							mandatory false
+						},
+						upload "uploadCover" {
+							defaultValue ""
+							mandatory false
+							maxSize "200k"
+						},
+						datetime "publishedDate" nullable {
+							mandatory false
+						},
+						string "publishedText" {
+							mandatory false
+						}
+					}
+          actions {
+                mainAction "Main",
+                viewAction "View",
+                displayAction "Display",
+                editAction "Edit",
+                deleteAction "Delete"
+            }
+				},
+				entity "track" {
+					nameMultiple "tracks"
+					displayPattern "#title#"
+          fields {
+						string "title",
+						text "description" translatable {
+							mandatory false
+						},
+						string "author" {
+							defaultValue ""
+							mandatory false
+						},
+						upload "uploadTrack" {
+							mandatory false
+							allowedExtensions "mp3"
+							maxSize "5M"
+						mimeTypes "audio/*"
+                },
+						upload "uploadZip" {
+							mandatory false
+							allowedExtensions "zip"
+							maxSize "102400"
+						}
+					}
+          actions {
+                mainAction "Main",
+                viewAction "View",
+                displayAction "Display",
+                editAction "Edit",
+                deleteAction "Delete"
+            }
+				},
+				entity "collection" leading {
+					nameMultiple "collections"
+					displayPattern "#title#"
+					fields {
+						string "title" translatable,
+						text "description" translatable {
+							defaultValue ""
+							mandatory false
+						}
+            }
+            actions {
+                mainAction "Main",
+                viewAction "View",
+                displayAction "Display",
+                editAction "Edit",
+                deleteAction "Delete"
+            }
+        }
+    }
+
+			relations {
+				one2many bidirectional {
+					source "album"
+					sourceAlias "album"
+					target "track"
+					targetAlias "track"
+					editType ACTIVE_EDIT_PASSIVE_EDIT
+					cascade NONE
+				},
+				one2many bidirectional {
+					source "collection"
+					sourceAlias "collection"
+					target "album"
+					targetAlias "album"
+					editType ACTIVE_EDIT_PASSIVE_EDIT
+				}
+			}
+			variables {
+				varContainer "generalSettings" {
+					vars {
+						intVar "maxSizeCover" {
+							value "102400"
+						},
+						intVar "maxSizeTrack" {
+							value "1024000"
+						},
+						intVar "maxSizeZip" {
+							value "1024000"
+						},
+						textVar "allowedExtensionCover" {
+							value "gif, jpeg, jpg, png"
+						},
+						textVar "allowedExtensionTrack" {
+							value "mp3"
+						}
+					}
+				}
+    }
+}

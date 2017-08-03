@@ -1,0 +1,179 @@
+{# purpose of this template: tracks admin list view #}
+{% extends 'MUSoundModule::adminBase.html.twig' %}
+{% block title own ? __('My tracks') : __('Tracks list') %}
+{% block admin_page_icon 'list-alt' %}
+{% block content %}
+<div class="musoundmodule-track musoundmodule-view">
+
+    {{ block('page_nav_links') }}
+
+    {{ include('@MUSoundModule/Track/Admin/viewQuickNav.html.twig', {workflowStateFilter: false}) }}{# see template file for available options #}
+
+    {% if routeArea == 'admin' %}
+    <form action="{{ path('musoundmodule_track_' ~ routeArea ~ 'handleselectedentries') }}" method="post" id="tracksViewForm" class="form-horizontal" role="form">
+        <div>
+    {% endif %}
+        <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover{% if routeArea == 'admin' %} table-condensed{% endif %}">
+            <colgroup>
+                {% if routeArea == 'admin' %}
+                    <col id="cSelect" />
+                {% endif %}
+                <col id="cItemActions" />
+                <col id="cTitle" />
+                <col id="cDescription" />
+                <col id="cAuthor" />
+                <col id="cUploadTrack" />
+                <col id="cUploadZip" />
+                <col id="cAlbum" />
+            </colgroup>
+            <thead>
+            <tr>
+                {% if routeArea == 'admin' %}
+                    <th id="hSelect" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}text-center z-w02">
+                        <input type="checkbox" class="musound-mass-toggle" />
+                    </th>
+                {% endif %}
+                <th id="hItemActions" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}z-order-unsorted z-w02">{{ __('Actions') }}</th>
+                <th id="hTitle" scope="col" class="text-left">
+                    <a href="{{ sort.title.url }}" title="{{ __f('Sort by %s', {'%s': 'title'}) }}" class="{{ sort.title.class }}">{{ __('Title') }}</a>
+                </th>
+                <th id="hDescription" scope="col" class="text-left">
+                    <a href="{{ sort.description.url }}" title="{{ __f('Sort by %s', {'%s': 'description'}) }}" class="{{ sort.description.class }}">{{ __('Description') }}</a>
+                </th>
+                <th id="hAuthor" scope="col" class="text-left">
+                    <a href="{{ sort.author.url }}" title="{{ __f('Sort by %s', {'%s': 'author'}) }}" class="{{ sort.author.class }}">{{ __('Author') }}</a>
+                </th>
+                <th id="hUploadTrack" scope="col" class="text-left">
+                    <a href="{{ sort.uploadTrack.url }}" title="{{ __f('Sort by %s', {'%s': 'upload track'}) }}" class="{{ sort.uploadTrack.class }}">{{ __('Upload track') }}</a>
+                </th>
+                <th id="hUploadZip" scope="col" class="text-left">
+                    <a href="{{ sort.uploadZip.url }}" title="{{ __f('Sort by %s', {'%s': 'upload zip'}) }}" class="{{ sort.uploadZip.class }}">{{ __('Upload zip') }}</a>
+                </th>
+                <th id="hAlbum" scope="col" class="text-left">
+                    <a href="{{ sort.album.url }}" title="{{ __f('Sort by %s', {'%s': 'album'}) }}" class="{{ sort.album.class }}">{{ __('Album') }}</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+        
+        {% for track in items %}
+            <tr>
+                {% if routeArea == 'admin' %}
+                    <td headers="hSelect" class="fixed-column text-center z-w02">
+                        <input type="checkbox" name="items[]" value="{{ track.getKey() }}" class="musound-toggle-checkbox" />
+                    </td>
+                {% endif %}
+                <td id="itemActions{{ track.getKey() }}" headers="hItemActions" class="fixed-column actions nowrap z-w02">
+                    {% set itemActions = knp_menu_get('MUSoundModule:ItemActionsMenu:menu', [], {entity: track, area: routeArea, context: 'view'}) %}
+                    <div class="dropdown">
+                        <a id="itemActions{{ track.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> <span class="caret"></span></a>
+                        {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
+                    </div>
+                </td>
+                <td headers="hTitle" class="text-left">
+                    <a href="{{ path('musoundmodule_track_' ~ routeArea ~ 'display', {'id': track.getId()}) }}" title="{{ __('View detail page')|e('html_attr') }}">{{ track.title|notifyFilters('musoundmodule.filterhook.tracks')|safeHtml }}</a>
+                </td>
+                <td headers="hDescription" class="text-left">
+                    {{ track.description|striptags|truncate(50) }}
+                </td>
+                <td headers="hAuthor" class="text-left">
+                    {{ track.author }}
+                </td>
+                <td headers="hUploadTrack" class="text-left">
+                    {% if track.uploadTrack is not empty and track.uploadTrackMeta|default %}
+                                <a href="{{ track.uploadTrackUrl }}" title="{{ track|musoundmodule_formattedTitle|e('html_attr') }}"{% if track.uploadTrackMeta.isImage %} class="image-link"{% endif %}>
+                    {% if track.uploadTrackMeta.isImage %}
+                        {% set thumbOptions = attribute(thumbRuntimeOptions, 'trackUploadTrack') %}
+                        <img src="{{ track.uploadTrack.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ track|musoundmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+                    {% else %}
+                        {{ __('Download') }} ({{ track.uploadTrackMeta.size|musoundmodule_fileSize(track.uploadTrack.getPathname(), false, false) }})
+                    {% endif %}
+                    </a>
+                    {% else %}&nbsp;{% endif %}
+                </td>
+                <td headers="hUploadZip" class="text-left">
+                    {% if track.uploadZip is not empty and track.uploadZipMeta|default %}
+                                <a href="{{ track.uploadZipUrl }}" title="{{ track|musoundmodule_formattedTitle|e('html_attr') }}"{% if track.uploadZipMeta.isImage %} class="image-link"{% endif %}>
+                    {% if track.uploadZipMeta.isImage %}
+                        {% set thumbOptions = attribute(thumbRuntimeOptions, 'trackUploadZip') %}
+                        <img src="{{ track.uploadZip.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ track|musoundmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+                    {% else %}
+                        {{ __('Download') }} ({{ track.uploadZipMeta.size|musoundmodule_fileSize(track.uploadZip.getPathname(), false, false) }})
+                    {% endif %}
+                    </a>
+                    {% else %}&nbsp;{% endif %}
+                </td>
+                <td headers="hAlbum" class="text-left">
+                    {% if track.album|default %}
+                        <a href="{{ path('musoundmodule_album_' ~ routeArea ~ 'display', {'id': track.album.getId()}) }}">{% spaceless %}
+                          {{ track.album|musoundmodule_formattedTitle }}
+                        {% endspaceless %}</a>
+                        <a id="albumItem{{ track.getKey() }}_rel_{{ track.album.getKey() }}Display" href="{{ path('musoundmodule_album_' ~ routeArea ~ 'display', {'id': track.album.getId(), raw: 1}) }}" title="{{ __('Open quick view window')|e('html_attr') }}" class="musound-inline-window hidden" data-modal-title="{{ track.album|musoundmodule_formattedTitle|e('html_attr') }}"><span class="fa fa-id-card-o"></span></a>
+                    {% else %}
+                        {{ __('Not set.') }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr class="z-{{ routeArea == 'admin' ? 'admin' : 'data' }}tableempty">
+                <td class="text-left" colspan="{% if routeArea == 'admin' %}8{% else %}7{% endif %}">
+            {{ __('No tracks found.') }}
+              </td>
+            </tr>
+        {% endfor %}
+        
+            </tbody>
+        </table>
+        </div>
+        
+        {% if all != 1 and pager|default %}
+            {{ pager({rowcount: pager.amountOfItems, limit: pager.itemsPerPage, display: 'page', route: 'musoundmodule_track_' ~ routeArea ~ 'view'}) }}
+        {% endif %}
+    {% if routeArea == 'admin' %}
+            <fieldset>
+                <label for="mUSoundModuleAction" class="col-sm-3 control-label">{{ __('With selected tracks') }}</label>
+                <div class="col-sm-6">
+                    <select id="mUSoundModuleAction" name="action" class="form-control input-sm">
+                        <option value="">{{ __('Choose action') }}</option>
+                        <option value="delete" title="{{ __('Delete content permanently.') }}">{{ __('Delete') }}</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <input type="submit" value="{{ __('Submit') }}" class="btn btn-default btn-sm" />
+                </div>
+            </fieldset>
+        </div>
+    </form>
+    {% endif %}
+
+    {{ block('display_hooks') }}
+</div>
+{% endblock %}
+{% block page_nav_links %}
+    <p>
+        {% if canBeCreated %}
+            {% if hasPermission('MUSoundModule:Track:', '::', 'ACCESS_EDIT') %}
+                {% set createTitle = __('Create track') %}
+                <a href="{{ path('musoundmodule_track_' ~ routeArea ~ 'edit') }}" title="{{ createTitle|e('html_attr') }}" class="fa fa-plus">{{ createTitle }}</a>
+            {% endif %}
+        {% endif %}
+        {% if all == 1 %}
+            {% set linkTitle = __('Back to paginated view') %}
+            <a href="{{ path('musoundmodule_track_' ~ routeArea ~ 'view') }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
+        {% else %}
+            {% set linkTitle = __('Show all entries') %}
+            <a href="{{ path('musoundmodule_track_' ~ routeArea ~ 'view', {all: 1}) }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
+        {% endif %}
+    </p>
+{% endblock %}
+{% block display_hooks %}
+    
+    {# here you can activate calling display hooks for the view page if you need it #}
+    {# % if routeArea != 'admin' %}
+        {% set hooks = notifyDisplayHooks(eventName='musoundmodule.ui_hooks.tracks.display_view', urlObject=currentUrlObject) %}
+        {% for providerArea, hook in hooks %}
+            {{ hook }}
+        {% endfor %}
+    {% endif % #}
+{% endblock %}

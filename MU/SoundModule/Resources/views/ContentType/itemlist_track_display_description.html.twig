@@ -1,0 +1,13 @@
+{# Purpose of this template: Display tracks within an external context #}
+<dl>
+    {% for track in items %}
+        <dt>{{ track|musoundmodule_formattedTitle }}</dt>
+        {% if track.description %}
+            <dd>{{ track.description|striptags|truncate(200, true, '&hellip;') }}</dd>
+        {% endif %}
+        <dd><a href="{{ path('musoundmodule_track_display', {'id': track.getId()}) }}">{{ __('Read more') }}</a>
+        </dd>
+    {% else %}
+        <dt>{{ __('No entries found.') }}</dt>
+    {% endfor %}
+</dl>

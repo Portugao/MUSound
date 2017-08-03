@@ -1,0 +1,25 @@
+workflow:
+    workflows:
+        musoundmodule_none:
+            type: state_machine
+            marking_store:
+                type: single_state
+                arguments:
+                    - workflowState
+            supports:
+                - MU\SoundModule\Entity\TrackEntity
+                - MU\SoundModule\Entity\CollectionEntity
+            places:
+                - initial
+                - approved
+                - deleted
+            transitions:
+                submit:
+                    from: initial
+                    to: approved
+                updateapproved:
+                    from: approved
+                    to: approved
+                delete:
+                    from: approved
+                    to: deleted

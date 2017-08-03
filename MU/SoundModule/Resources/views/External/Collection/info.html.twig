@@ -1,0 +1,5 @@
+{# Purpose of this template: Display item information for previewing from other modules #}
+<dl id="collection{{ collection.getKey() }}">
+<dt>{{ collection|musoundmodule_formattedTitle|notifyFilters('sound.filter_hooks.collections.filter')|safeHtml }}</dt>
+{% if collection.description is not empty %}<dd>{{ collection.description }}</dd>{% endif %}
+</dl>

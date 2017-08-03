@@ -1,0 +1,11 @@
+{# purpose of this template: tracks xml inclusion template #}
+<track id="{{ track.getId() }}" createdon="{{ track.createdDate|localizeddate('medium', 'short') }}" updatedon="{{ track.updatedDate|localizeddate('medium', 'short') }}">
+    <id>{{ track.id }}</id>
+    <title><![CDATA[{{ track.title }}]]></title>
+    <description><![CDATA[{{ track.description|safeHtml }}]]></description>
+    <author><![CDATA[{{ track.author }}]]></author>
+    <uploadTrack{% if track.uploadTrack is not empty and track.uploadTrackMeta|default %} extension="{{ track.uploadTrackMeta.extension }}" size="{{ track.uploadTrackMeta.size }}" isImage="{% if track.uploadTrackMeta.isImage %}true{% else %}false{% endif %}"{% if track.uploadTrackMeta.isImage %} width="{{ track.uploadTrackMeta.width }}" height="{{ track.uploadTrackMeta.height }}" format="{{ track.uploadTrackMeta.format }}"{% endif %}{% endif %}>{{ track.uploadTrack }}</uploadTrack>
+    <uploadZip{% if track.uploadZip is not empty and track.uploadZipMeta|default %} extension="{{ track.uploadZipMeta.extension }}" size="{{ track.uploadZipMeta.size }}" isImage="{% if track.uploadZipMeta.isImage %}true{% else %}false{% endif %}"{% if track.uploadZipMeta.isImage %} width="{{ track.uploadZipMeta.width }}" height="{{ track.uploadZipMeta.height }}" format="{{ track.uploadZipMeta.format }}"{% endif %}{% endif %}>{{ track.uploadZip }}</uploadZip>
+    <workflowState>{{ track.workflowState|musoundmodule_objectState(false)|lower }}</workflowState>
+    <album>{% if track.album|default %}{{ track.album|musoundmodule_formattedTitle }}{% endif %}</album>
+</track>

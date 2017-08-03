@@ -1,0 +1,9 @@
+{# purpose of this template: tracks view xml view #}
+<?xml version="1.0" encoding="{{ pageGetVar('meta.charset') }}" ?>
+<tracks>
+{% for track in items %}
+    {{ include('@MUSoundModule/Track/include.xml.twig') }}
+{% else %}
+    <noTrack />
+{% endfor %}
+</tracks>

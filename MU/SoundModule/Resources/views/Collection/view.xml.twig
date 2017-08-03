@@ -1,0 +1,9 @@
+{# purpose of this template: collections view xml view #}
+<?xml version="1.0" encoding="{{ pageGetVar('meta.charset') }}" ?>
+<collections>
+{% for collection in items %}
+    {{ include('@MUSoundModule/Collection/include.xml.twig') }}
+{% else %}
+    <noCollection />
+{% endfor %}
+</collections>

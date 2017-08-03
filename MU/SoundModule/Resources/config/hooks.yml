@@ -1,0 +1,64 @@
+services:
+    mu_sound_module.hook_subscriber.filter_hooks.albums:
+        class: MU\SoundModule\HookSubscriber\AlbumFilterHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.filter_hooks.albums' }
+
+    mu_sound_module.hook_subscriber.form_aware_hook.albums:
+        class: MU\SoundModule\HookSubscriber\AlbumFormAwareHookSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.form_aware_hook.albums' }
+
+    mu_sound_module.hook_subscriber.ui_hooks.albums:
+        class: MU\SoundModule\HookSubscriber\AlbumUiHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.ui_hooks.albums' }
+
+    mu_sound_module.hook_subscriber.filter_hooks.tracks:
+        class: MU\SoundModule\HookSubscriber\TrackFilterHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.filter_hooks.tracks' }
+
+    mu_sound_module.hook_subscriber.form_aware_hook.tracks:
+        class: MU\SoundModule\HookSubscriber\TrackFormAwareHookSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.form_aware_hook.tracks' }
+
+    mu_sound_module.hook_subscriber.ui_hooks.tracks:
+        class: MU\SoundModule\HookSubscriber\TrackUiHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.ui_hooks.tracks' }
+
+    mu_sound_module.hook_subscriber.filter_hooks.collections:
+        class: MU\SoundModule\HookSubscriber\CollectionFilterHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.filter_hooks.collections' }
+
+    mu_sound_module.hook_subscriber.form_aware_hook.collections:
+        class: MU\SoundModule\HookSubscriber\CollectionFormAwareHookSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.form_aware_hook.collections' }
+
+    mu_sound_module.hook_subscriber.ui_hooks.collections:
+        class: MU\SoundModule\HookSubscriber\CollectionUiHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.musoundmodule.ui_hooks.collections' }
+

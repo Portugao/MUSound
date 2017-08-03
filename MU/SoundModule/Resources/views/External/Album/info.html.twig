@@ -1,0 +1,26 @@
+{# Purpose of this template: Display item information for previewing from other modules #}
+<dl id="album{{ album.getKey() }}">
+<dt>{{ album|musoundmodule_formattedTitle|notifyFilters('sound.filter_hooks.albums.filter')|safeHtml }}</dt>
+<dd>{% if album.uploadCover is not empty and album.uploadCoverMeta|default %}
+            <a href="{{ album.uploadCoverUrl }}" title="{{ album|musoundmodule_formattedTitle|e('html_attr') }}"{% if album.uploadCoverMeta.isImage %} class="image-link"{% endif %}>
+{% if album.uploadCoverMeta.isImage %}
+    {% set thumbOptions = attribute(thumbRuntimeOptions, 'albumUploadCover') %}
+    <img src="{{ album.uploadCover.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ album|musoundmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+{% else %}
+    {{ __('Download') }} ({{ album.uploadCoverMeta.size|musoundmodule_fileSize(album.uploadCover.getPathname(), false, false) }})
+{% endif %}
+</a>
+{% else %}&nbsp;{% endif %}
+</dd>
+{% if album.description is not empty %}<dd>{{ album.description }}</dd>{% endif %}
+{% if featureActivationHelper.isEnabled(constant('MU\\SoundModule\\Helper\\FeatureActivationHelper::CATEGORIES'), 'album') %}
+    <dd>
+        <dl class="category-list">
+        {% for propName, catMapping in album.categories %}
+            <dt>{{ propName }}</dt>
+            <dd>{{ catMapping.category.display_name[app.request.locale]|default(catMapping.category.name) }}</dd>
+        {% endfor %}
+        </dl>
+    </dd>
+{% endif %}
+</dl>

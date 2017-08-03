@@ -1,0 +1,18 @@
+{# purpose of this template: albums view csv view #}
+{% spaceless %}"{{ __('Title') }}";"{{ __('Description') }}";"{{ __('Author') }}";"{{ __('Upload cover') }}";"{{ __('Published date') }}";"{{ __('Published text') }}";"{{ __('Workflow state') }}"
+;"{{ __('Collection') }}"
+;"{{ __('Track') }}"
+{% endspaceless %}
+{% for album in items %}
+{% spaceless %}
+    "{{ album.title }}";"{{ album.description|safeHtml }}";"{{ album.author }}";"{{ album.uploadCover }}";"{{ album.publishedDate|localizeddate('medium', 'short') }}";"{{ album.publishedText }}";"{{ album.workflowState|musoundmodule_objectState(false)|lower }}"
+    ;"{% if album.collection|default %}{{ album.collection|musoundmodule_formattedTitle }}{% endif %}"
+    ;"
+    {% if album.track|default %}
+        {% for relatedItem in album.track %}
+        {{ relatedItem|musoundmodule_formattedTitle }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    {% endif %}
+    "
+{% endspaceless %}
+{% endfor %}

@@ -1,0 +1,14 @@
+{# purpose of this template: collections xml inclusion template #}
+<collection id="{{ collection.getId() }}" createdon="{{ collection.createdDate|localizeddate('medium', 'short') }}" updatedon="{{ collection.updatedDate|localizeddate('medium', 'short') }}">
+    <id>{{ collection.id }}</id>
+    <title><![CDATA[{{ collection.title }}]]></title>
+    <description><![CDATA[{{ collection.description|safeHtml }}]]></description>
+    <workflowState>{{ collection.workflowState|musoundmodule_objectState(false)|lower }}</workflowState>
+    <album>
+    {% if collection.album|default %}
+        {% for relatedItem in collection.album %}
+        <album>{{ relatedItem|musoundmodule_formattedTitle }}</album>
+        {% endfor %}
+    {% endif %}
+    </album>
+</collection>

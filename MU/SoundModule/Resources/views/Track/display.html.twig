@@ -1,0 +1,86 @@
+{# purpose of this template: tracks user display view #}
+{% set baseTemplate = app.request.query.getBoolean('raw', false) ? 'raw' : 'base' %}
+{% extends 'MUSoundModule::' ~ baseTemplate ~ '.html.twig' %}
+{% block pageTitle %}{{ track|musoundmodule_formattedTitle|default(__('Track')) }}{% endblock %}
+{% block title %}
+    {% set templateTitle = track|musoundmodule_formattedTitle|default(__('Track')) %}
+    {{ templateTitle|notifyFilters('musoundmodule.filter_hooks.tracks.filter')|safeHtml }}
+    {% set itemActions = knp_menu_get('MUSoundModule:ItemActionsMenu:menu', [], {entity: track, area: routeArea, context: 'display'}) %}
+    <div class="dropdown">
+        <a id="itemActions{{ track.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> {{ __('Actions') }} <span class="caret"></span></a>
+        {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
+    </div>
+{% endblock %}
+{% block content %}
+    {% set isQuickView = app.request.query.getBoolean('raw', false) %}
+    <div class="musoundmodule-track musoundmodule-display">
+
+    <dl>
+        {% if track.title is not empty %}
+            <dt>{{ __('Title') }}</dt>
+            <dd>{{ track.title }}</dd>
+        {% endif %}
+        {% if track.description is not empty %}
+            <dt>{{ __('Description') }}</dt>
+            <dd>{{ track.description|safeHtml }}</dd>
+        {% endif %}
+        {% if track.author is not empty %}
+            <dt>{{ __('Author') }}</dt>
+            <dd>{{ track.author }}</dd>
+        {% endif %}
+        {% if track.uploadTrack is not empty %}
+            <dt>{{ __('Upload track') }}</dt>
+            <dd>{% if track.uploadTrack is not empty and track.uploadTrackMeta|default %}
+                        <a href="{{ track.uploadTrackUrl }}" title="{{ track|musoundmodule_formattedTitle|e('html_attr') }}"{% if track.uploadTrackMeta.isImage %} class="image-link"{% endif %}>
+            {% if track.uploadTrackMeta.isImage %}
+                {% set thumbOptions = attribute(thumbRuntimeOptions, 'trackUploadTrack') %}
+                <img src="{{ track.uploadTrack.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ track|musoundmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+            {% else %}
+                {{ __('Download') }} ({{ track.uploadTrackMeta.size|musoundmodule_fileSize(track.uploadTrack.getPathname(), false, false) }})
+            {% endif %}
+            </a>
+            {% else %}&nbsp;{% endif %}
+            </dd>
+        {% endif %}
+        {% if track.uploadZip is not empty %}
+            <dt>{{ __('Upload zip') }}</dt>
+            <dd>{% if track.uploadZip is not empty and track.uploadZipMeta|default %}
+                        <a href="{{ track.uploadZipUrl }}" title="{{ track|musoundmodule_formattedTitle|e('html_attr') }}"{% if track.uploadZipMeta.isImage %} class="image-link"{% endif %}>
+            {% if track.uploadZipMeta.isImage %}
+                {% set thumbOptions = attribute(thumbRuntimeOptions, 'trackUploadZip') %}
+                <img src="{{ track.uploadZip.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ track|musoundmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+            {% else %}
+                {{ __('Download') }} ({{ track.uploadZipMeta.size|musoundmodule_fileSize(track.uploadZip.getPathname(), false, false) }})
+            {% endif %}
+            </a>
+            {% else %}&nbsp;{% endif %}
+            </dd>
+        {% endif %}
+        {% if track.album|default %}
+            <dt>{{ __('Album') }}</dt>
+            <dd>
+              {% if not isQuickView %}
+                  <a href="{{ path('musoundmodule_album_' ~ routeArea ~ 'display', {'id': track.album.getId()}) }}">{% spaceless %}
+                    {{ track.album|musoundmodule_formattedTitle }}
+                  {% endspaceless %}</a>
+                  <a id="albumItem{{ track.album.getKey() }}Display" href="{{ path('musoundmodule_album_' ~ routeArea ~ 'display', {'id': track.album.getId(), raw: 1}) }}" title="{{ __('Open quick view window')|e('html_attr') }}" class="musound-inline-window hidden" data-modal-title="{{ track.album|musoundmodule_formattedTitle|e('html_attr') }}"><span class="fa fa-id-card-o"></span></a>
+              {% else %}
+                  {{ track.album|musoundmodule_formattedTitle }}
+              {% endif %}
+            </dd>
+        {% endif %}
+        
+    </dl>
+
+    {{ include('@MUSoundModule/Helper/includeStandardFieldsDisplay.html.twig', {obj: track}) }}
+
+    {{ block('display_hooks') }}
+</div>
+{% endblock %}
+{% block display_hooks %}
+    {% set hooks = notifyDisplayHooks(eventName='musoundmodule.ui_hooks.tracks.display_view', id=track.getKey(), urlObject=currentUrlObject) %}
+    {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
+        <h4>{{ providerArea }}</h4>
+        {{ hook }}
+    {% endfor %}
+{% endblock %}
